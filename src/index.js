@@ -2,7 +2,7 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Routes from './Routes';
+//import Routes from './Routes';
 import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
