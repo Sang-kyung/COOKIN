@@ -7,11 +7,7 @@ const MyPage = () => {
   const jwtToken = useSelector((state) => state.user.jwtToken);
 
   return <div>
-    <Link to="/daily">to daily!</Link>
-    <div>{jwtToken}</div>
-    <div onClick={(e) => {
-      history.push("/daily");
-    }}>Another way to go daily</div>
+    mypage
   </div>
 }
 
