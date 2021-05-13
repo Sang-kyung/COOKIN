@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom'
-import Routes from './Routes';
+// import Routes from './Routes';
 import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
