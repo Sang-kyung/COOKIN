@@ -8,16 +8,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <ul>
-        <li>
-          <Link to="/">home</Link>
-        </li>
-        <li>
-          <Link to="/mypage">mypage</Link>
-        </li>
-      </ul>
-      <hr />
-      <Route path="/" component={HomePage} />
+
+      <Route path="/home" component={HomePage} />
       <Route path="/mypage" component={MyPage} />
     </div>
   );
