@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderView.css'
-import MyPageButton from '../Buttons/MyPageButton';
+import MyPageButton from './Buttons/MyPageButton';
 
 const HeaderViewRight = () => {
   var this_div = 
