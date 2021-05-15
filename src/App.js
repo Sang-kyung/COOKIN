@@ -12,7 +12,7 @@ function App() {
 
       <Route path="/home" component={HomePage} />
       <Route path="/mypage" component={MyPage} />
-      <Route path="/search" compoment={SearchPage} />
+      <Route path="/search" component={SearchPage} />
     </div>
   );
 }
