@@ -1,4 +1,5 @@
-.inputWrapper {display: block;
+.inputWrapper {
+    vertical-align: middle;
     width:930px; 
     height:100px;
     display: flex;
@@ -27,3 +28,11 @@ button {width:200px;
     margin: auto; 
     background-color: white;
 }
+
+#mainContainer {
+    height: 90vh;
+    width: 100vw;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: aqua;
+  }

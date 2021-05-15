@@ -3,7 +3,7 @@ import './SearchView.css'
 
 const SearchView = () => {
   var this_div = 
-  <div>
+  <div id="mainContainer">
   <div className= 'inputWrapper' >
     <input className='input' placeholder="Enter your locations!">
     </input>

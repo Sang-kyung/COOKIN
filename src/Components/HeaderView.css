@@ -1,0 +1,42 @@
+#HeaderLeft {
+    Width:50%;
+    Height: 10vh;
+    background-color: yellow;
+    float:left
+}
+
+#HeaderRight{
+    Width:50%;
+    Height: 10vh;
+    background-color: green;
+    float:left
+}
+
+#CookinTitle{
+    color: #ff5050;
+    font-size:30px;
+    font-weight: bold;
+    vertical-align: middle;
+    height: 70%
+}
+
+#CookinSubTitle{
+    color: #005050;
+    font-size: 5px;
+    height: 10%
+}
+
+#iconContainer{
+    Width:10%;
+    Height: 90%;
+    background-color: bisque;
+    float: left;
+}
+
+#textContainer{
+    Width: 90%;
+    Height: 90%;
+    background-color:darkmagenta;
+    float: left;
+    text-align: left;
+}
