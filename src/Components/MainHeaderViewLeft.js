@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderView.css'
-import HomePageButton from '../Buttons/homePageButton';
+import HomePageButton from './Buttons/homePageButton';
 
 
 const MainHeaderViewLeft = () => {

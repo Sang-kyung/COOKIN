@@ -1,0 +1,46 @@
+.detailViewWrapper {
+    padding: 2% 5%;
+    text-align: left;
+
+}
+
+.detailInfoWrapper {
+    display: inline-block;
+    width: 50%;
+}
+
+.detailInfoWrapper p {
+    font-size: 15px;
+    font-weight: normal;
+    color: #888888;
+}
+
+.kitchenImg {
+    width: 400px;
+}
+
+.detailUtensil p {
+    color : #000000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.detailIngredients {
+    height: 200px;
+}
+
+.detailIngredients p {
+    color : #000000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+hr {
+    border: 1px solid #c4c4c4;
+}
+
+.rightWrapper {
+    display: inline-block;
+    width: 40%;
+}
+
