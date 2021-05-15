@@ -9,8 +9,12 @@ const MyPage = () => {
   const history = useHistory();
   const jwtToken = useSelector((state) => state.user.jwtToken);
 
+  //const nickname = useSelector((state) => state.users.nickname);
+  const nickname = "MISS Team";
+   
+
   return <div>
-    <MyinformationView />
+    <MyinformationView nickname={nickname}/>
     <div class='reservation'>
       <h3>Upcoming Reservations</h3>
       <MyreservationBox />

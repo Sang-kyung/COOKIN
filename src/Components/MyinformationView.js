@@ -3,19 +3,18 @@ import './Mypage.css';
 
 // view
 
-const MyinformationView = () => {
+const MyinformationView = ({nickname}) => {
 
   return <div>
             <div class = "grid">
               <div></div>
               <div class="information_box">
-                <h4>CHICKEN LOVER</h4>
-                <h5>My Reservation : </h5>
-                <h5>Upcoming : </h5>
+                <h3>{nickname}</h3>
+                <h4>My Reservation : </h4>
+                <h4>Upcoming : </h4>
               </div>
             </div>
           </div>
-          
 }
 
 export default MyinformationView
