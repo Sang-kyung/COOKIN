@@ -10,14 +10,14 @@ function App() {
     <div className="App">
       <ul>
         <li>
-          <Link to="/">home</Link>
+          <Link to="/home">home</Link>
         </li>
         <li>
           <Link to="/mypage">mypage</Link>
         </li>
       </ul>
       <hr />
-      <Route path="/" component={HomePage} />
+      <Route path="/home" component={HomePage} />
       <Route path="/mypage" component={MyPage} />
     </div>
   );
