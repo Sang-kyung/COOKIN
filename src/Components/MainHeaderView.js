@@ -6,7 +6,7 @@ import HeaderViewRight from './HeaderViewRight';
 //<MyPageButton />
 //</div>
 // view
-import MyPageButton from '../Buttons/MyPageButton';
+import MyPageButton from './Buttons/MyPageButton';
 
 const MainHeaderView = () => {
 
