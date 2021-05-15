@@ -1,7 +1,7 @@
 import React from 'react';
 
 // view
-import MyPageButton from '../Buttons/MyPageButton';
+import MyPageButton from './Buttons/MyPageButton';
 
 const MainHeaderView = () => {
 

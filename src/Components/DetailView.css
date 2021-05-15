@@ -1,0 +1,37 @@
+.detailViewWrapper {
+    padding: 2% 5%;
+    text-align: left;
+
+}
+
+.detailInfoWrapper {
+    display: inline-block;
+    width: 50%;
+}
+
+.detailUtensil {
+
+}
+
+.detailIngredients {
+    height: 200px;
+}
+
+p {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+span {
+    color: #888888;
+}
+
+hr {
+    border: 1px solid #c4c4c4;
+}
+
+.rightWrapper {
+    display: inline-block;
+    width: 40%;
+}
+
