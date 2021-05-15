@@ -16,6 +16,7 @@ const initialState = {
   jwtToken: null,
 	cnt: 0,
   currentCategoryId: 2, //default
+  nickname: null,
 }
 
 const user = (state = initialState, action) => {
