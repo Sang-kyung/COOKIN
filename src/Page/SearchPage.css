@@ -1,0 +1,15 @@
+#leftBox{
+    Width: 49%;
+    height: 90vh;
+    background-color: yellow;
+    float: left;
+    margin: 5px
+}
+
+#rightBox{
+    Width:49%;
+    height: 90vh;
+    background-color: blue;
+    float: left;
+    margin: 5px
+}

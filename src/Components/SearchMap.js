@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const SearchMap = () => {
-  var this_div = 
-  <div>
-      <div id="map" style="width:500px;height:400px;">
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=61beca755e319b4491ac77d1b1e12efe."></script>
-      </div>
-  </div>
-  return this_div
+const { kakao } = window;
+
+const MapContainer = () => {
+
+    useEffect(() => {
+        const container = document.getElementById('myMap');
+		const options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+        const map = new kakao.maps.Map(container, options);
+    }, []);
+
+    return (
+        <div id='myMap' style={{
+            width: '90%', 
+            height: '90%',
+            margin: 'auto'
+        }}></div>
+    );
 }
 
-export default SearchMap
+export default MapContainer; 
