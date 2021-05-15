@@ -1,5 +1,5 @@
 import React from  'react'
-import './ListMapView.css'
+
 
 const ListMapView = () => {
     var this_div = 

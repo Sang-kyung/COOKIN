@@ -1,14 +1,9 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
-<<<<<<< HEAD
 import MapContainer from '../Components/Views/SearchMap';
-import MainHeaderView from '../Components/Views/MainHeaderView';
-=======
-import MapContainer from '../Components/SearchMap';
-import SearchHeaderView from '../Components/SearchHeaderView';
-import ListMapView from '../Components/ListMapView';
->>>>>>> acc706cdcbf8583d73f864aa96718c32523173e2
+import SearchHeaderView from '../Components/Views/SearchHeaderView';
+import ListMapView from '../Components/Views/ListMapView';
 import './SearchPage.css'
 const SearchPage = () => {
 
