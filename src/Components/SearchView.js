@@ -9,7 +9,7 @@ const SearchView = () => {
     </input>
   </div>
   <div className='buttonWrapper'>
-    <button id="buttonSearch" >Search</button>
+    <button id="buttonSearch" onClick={() => window.location.href="/search"}>Search</button>
     <button id="buttonRecommendation">Recommend Me</button>
   </div>
   </div>
