@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 //view
 import DatePicker from "react-datepicker";
 import UtensilItem from './Items/UtensilItem';
+import IngredientItem from './Items/IngredientItem';
 
 // style
 import './DetailView.css';
@@ -17,14 +18,22 @@ const DetailView = () => {
         {name: "Pan", num: 5, imgUrl: 'pan'},
         {name: "Wok", num: 3, imgUrl: 'wok'},
         {name: "Oven", num: 1, imgUrl: 'oven'},
-        {name: "Sink", num: 1, imgUrl: 'sink'}]
+        {name: "Sink", num: 1, imgUrl: 'sink'}
+    ]
+
+    const Ingredients = [
+        {name: "Bok choy", price: 860, unit: "100g", imgUrl: 'stove'},
+        {name: "Cilantro", price: 1200, unit: "100g", imgUrl: 'pan'},
+        {name: "Onion", price: 340, unit: "100g", imgUrl: 'wok'},
+        {name: "Gree Onion", price: 870, unit: "100g", imgUrl: 'oven'},
+    ]
 
     return <div className={"detailViewWrapper"}>
         <div className={"detailInfoWrapper"}>
-            <h2>Din Tai Fung</h2>
-            <span>12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea</span>
+            <h2>"Din Tai Fung"</h2>
+            <p>12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea</p>
             <div className={"detailPicture"}>
-                <img src={require('../img/Kitchen/Dintaifung_1.png')} />
+                <img className={"kitchenImg"} src={require('../img/Kitchen/Dintaifung_1.png').default} />
             </div>
             <hr />
             <div className={"detailUtensil"}>
@@ -36,6 +45,10 @@ const DetailView = () => {
             <hr />
             <div className={"detailIngredients"}>
                 <p>Ingredients</p>
+                {Ingredients.map((item) => {
+                    return <IngredientItem item={item} />
+                })}
+
             </div>
         </div>
         <div className={"rightWrapper"}>

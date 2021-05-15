@@ -9,21 +9,30 @@
     width: 50%;
 }
 
-.detailUtensil {
+.detailInfoWrapper p {
+    font-size: 15px;
+    font-weight: normal;
+    color: #888888;
+}
 
+.kitchenImg {
+    width: 400px;
+}
+
+.detailUtensil p {
+    color : #000000;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .detailIngredients {
     height: 200px;
 }
 
-p {
+.detailIngredients p {
+    color : #000000;
     font-size: 25px;
     font-weight: bold;
-}
-
-span {
-    color: #888888;
 }
 
 hr {
