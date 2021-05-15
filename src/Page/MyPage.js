@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import '../Components/Mypage.css';
-import MyinformationView from '../Components/MyinformationView';
-import MyreservationBox from '../Components/MyreservationBox';
+import './Mypage.css';
+import MyinformationView from '../Components/Views/MyinformationView';
+import MyreservationBox from '../Components/Views/MyreservationBox';
 
 const MyPage = () => {
   const history = useHistory();
@@ -11,7 +11,6 @@ const MyPage = () => {
 
   //const nickname = useSelector((state) => state.users.nickname);
   const nickname = "MISS Team";
-   
 
   return <div>
     <MyinformationView nickname={nickname}/>

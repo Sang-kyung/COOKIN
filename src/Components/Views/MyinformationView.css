@@ -1,0 +1,12 @@
+.information_box {
+    padding-left: 5%;
+    border : 5px solid orange;
+    text-align: left;
+}
+
+.grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 2fr;
+    margin: 3%;
+}

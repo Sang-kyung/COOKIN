@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 //view
 import DatePicker from "react-datepicker";
-import UtensilItem from './Items/UtensilItem';
-import IngredientItem from './Items/IngredientItem';
+import UtensilItem from '../Items/UtensilItem';
+import IngredientItem from '../Items/IngredientItem';
 
 // style
 import './DetailView.css';
@@ -33,7 +33,7 @@ const DetailView = () => {
             <h2>"Din Tai Fung"</h2>
             <p>12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea</p>
             <div className={"detailPicture"}>
-                <img className={"kitchenImg"} src={require('../img/Kitchen/Dintaifung_1.png').default} />
+                {/* <img className={"kitchenImg"} src={require('../img/Kitchen/Dintaifung_1.png').default} /> */}
             </div>
             <hr />
             <div className={"detailUtensil"}>

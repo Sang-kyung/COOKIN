@@ -3,8 +3,8 @@ import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
 // view
-import MainHeaderView from '../Components/MainHeaderView';
-import SearchView from '../Components/SearchView';
+import MainHeaderView from '../Components/Views/MainHeaderView';
+import SearchView from '../Components/Views/SearchView';
 
 const Home = () => {
 

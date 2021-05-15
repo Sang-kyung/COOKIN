@@ -1,0 +1,13 @@
+.reservation_box {
+    border : 5px solid orange;
+    margin: 3%;
+    margin-top: 1%;
+    padding: 3%;
+}
+
+.inform {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 3fr 1fr;
+    text-align: left;
+}

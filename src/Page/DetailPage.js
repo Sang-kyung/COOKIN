@@ -1,7 +1,7 @@
 import React from 'react';
 
 // view
-import DetailView from '../Components/DetailView';
+import DetailView from '../Components/Views/DetailView';
 
 const DetailPage = () => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Mypage.css';
+import './MyinformationView.css';
 
 // view
 
