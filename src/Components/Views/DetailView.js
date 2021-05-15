@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 //view
-import DatePicker from "react-datepicker";
+
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 
@@ -52,7 +52,6 @@ const DetailView = () => {
             </div>
         </div>
         <div className={"rightWrapper"}>
-            <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
         </div>
     </div>
 }
