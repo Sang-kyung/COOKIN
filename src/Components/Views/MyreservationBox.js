@@ -5,8 +5,8 @@ import './MyreservationBox.css';
 
 const MyreservationBox = () => {
     if( true ) { // Upcoming reservation
-        return <div class ="reservation_box">
-            <div class="inform">
+        return <div className ="reservation_box">
+            <div className ="inform">
                 <div>
                     <h3>Din Tai Fung</h3>
                     <h4>date : </h4>
@@ -19,8 +19,8 @@ const MyreservationBox = () => {
             </div>
         </div>
     }   //past reservation
-    return <div class ="reservation_box">
-                <div class="inform">
+    return <div className ="reservation_box">
+                <div className ="inform">
                     <h3>Din Tai Fung</h3>
                     <h4>date : </h4>
                     <h4>options : </h4>

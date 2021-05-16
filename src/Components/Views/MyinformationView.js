@@ -6,9 +6,9 @@ import './MyinformationView.css';
 const MyinformationView = ({nickname}) => {
 
   return <div>
-            <div class = "grid">
+            <div className = "grid">
               <div></div>
-              <div class="information_box">
+              <div className="information_box">
                 <h3>{nickname}</h3>
                 <h4>My Reservation : </h4>
                 <h4>Upcoming : </h4>
