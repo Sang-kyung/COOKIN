@@ -11,3 +11,20 @@
     grid-template-columns: 3fr 1fr;
     text-align: left;
 }
+
+.reservation h3 {
+    text-align: left;
+    margin:0;
+    margin-left: 3%;
+    
+}
+
+.options {
+    display: inline;
+}
+
+.reservationScroll {
+    height: 180px;
+    overflow: auto;
+    margin-bottom: 30px;
+}

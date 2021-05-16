@@ -6,7 +6,7 @@
 
 .grid {
     display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 2fr 2fr;
+    /* grid-auto-flow: column;
+    grid-template-columns: 2fr 2fr; */
     margin: 3%;
 }
