@@ -22,8 +22,8 @@ export const deleteFirstCity = () => ({
 
 const initialState = {
   firstCity: 'Gangnam',
-	secondCity: null,
-  thirdCity:  null,
+	secondCity: 'Hongdae',
+  thirdCity:  'null',
   fourthCity: null,
 }
 

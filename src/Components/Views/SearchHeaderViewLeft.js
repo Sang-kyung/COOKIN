@@ -3,16 +3,21 @@ import './HeaderView.css'
 import HomePageButton from '../Buttons/homePageButton';
 import { Route, Link, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { setFirstCity } from '../../reducers/searchCity';
+import { deleteFirstCity, setFirstCity } from '../../reducers/searchCity';
+import * as SearchMap from './SearchMap'
 
 
 const SearchHeaderViewLeft = () => {
   const firstCity = useSelector((state:any) => state.searchCity.firstCity);
+  
   const dispatch = useDispatch();
   const updateFirstCity = () => {
     var thisInput = document.getElementById("searchInput")
     var thisInputValue = thisInput.value;
     dispatch(setFirstCity(thisInputValue));
+    //SearchMap.setMapCenter(35.166668,129.066666);
+    SearchMap.searchMapKeyWord('gangnam station');
+    //dispatch(deleteFirstCity())
   }
   var this_div = 
   <div id= "HeaderLeft">
