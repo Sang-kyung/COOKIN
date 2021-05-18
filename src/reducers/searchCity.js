@@ -3,6 +3,8 @@ export const SET_FIRST_CITY = 'SET_FIRST_CITY'
 export const SET_SECOND_CITY = 'SET_SECOND_CITY'
 export const SET_THIRD_CITY = 'SET_THIRD_CITY'
 export const SET_FOURTH_CITY = 'SET_FOURTH_CITY'
+export const SET_FIRST_COORD = 'SET_FIRST_COORD'
+
 
 export const DELETE_FIRST_CITY = 'DELETE_FIRST_CITY'
 export const DELETE_SECOND_CITY = 'DELETE_SECOND_CITY'
@@ -12,6 +14,11 @@ export const DELETE_FOURTH_CITY = 'DELETE_FOURTH_CITY'
 export const setFirstCity = (firstCity) => ({
   type: SET_FIRST_CITY,
   payload: firstCity
+});
+
+export const setFirstCoord = (firstCityCoord) => ({
+  type: SET_FIRST_COORD,
+  payload: firstCityCoord
 });
 
 export const deleteFirstCity = () => ({
@@ -64,6 +71,13 @@ const searchCity = (state = initialState, action) => {
       return {
         ...state,
         firstCity: action.payload
+      }
+    }
+
+    case SET_FIRST_COORD:{
+      return {
+        ...state,
+        firstCityCoord: action.payload
       }
     }
 
