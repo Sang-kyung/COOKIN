@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import MainHeaderView from '../Components/Views/MainHeaderView';
 import SearchView from '../Components/Views/SearchView';
 
+
 const Home = () => {
 
   return <div>

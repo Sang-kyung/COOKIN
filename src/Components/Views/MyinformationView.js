@@ -1,13 +1,17 @@
 import React from 'react';
 import './MyinformationView.css';
+import { useSelector } from 'react-redux';
 
 
-const MyinformationView = ({userInfo}) => {
+const MyinformationView = () => {
+  const user = useSelector(state => state.user);
+  const res = useSelector(state => state.reservation);
+
   return <div className = "grid">
             <div className="information_box">
-              <h3>{userInfo.name}</h3>
-              <h4>My Reservation : {userInfo.Books}</h4>
-              <h4>Upcoming : {userInfo.Upcoming}</h4>
+              <h3>{user.name}</h3>
+              <h4>My Reservation : {res.number}</h4>
+              <h4>Upcoming : {res.upcoming}</h4>
             </div>
           </div>
 }
