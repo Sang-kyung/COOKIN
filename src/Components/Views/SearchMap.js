@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 const { kakao } = window;
 
 var map;
+var center;
 
 export function setMapCenter(Lat, Lng) {
     var moveLatLon = new kakao.maps.LatLng(Lat, Lng);
@@ -13,6 +14,10 @@ export function setMapCenter(Lat, Lng) {
 export function searchMapKeyWord(keyword) {
     var ps = new kakao.maps.services.Places(); 
     ps.keywordSearch(keyword, placesSearchCB); 
+}
+
+export function getMapCenter() {
+    return center;
 }
 
 function placesSearchCB (data, status, pagination) {
@@ -27,6 +32,8 @@ function placesSearchCB (data, status, pagination) {
         }       
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
+        center = map.getCenter(); 
+        console.log(center);
     } 
 }
 
