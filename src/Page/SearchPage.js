@@ -14,10 +14,22 @@ const SearchPage = () => {
         Recommended place is ....
       </div>
       <div id="ListMapView">
-        <div>
+        <div className="ListMapView">
           <ListMapView />
         </div>
-        <div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
           <ListMapView />
         </div>
       </div>  

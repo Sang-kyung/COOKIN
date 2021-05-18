@@ -3,7 +3,7 @@ import "./ListMapView.css";
 
 const ListMapView = () => {
     var this_div = 
-    <div>
+    <div id="body">
         <h4 id="name">
             Restaurant name
         </h4>
