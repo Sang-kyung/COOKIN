@@ -16,7 +16,7 @@ const SearchHeaderViewLeft = () => {
     var thisInputValue = thisInput.value;
     dispatch(setFirstCity(thisInputValue));
     //SearchMap.setMapCenter(35.166668,129.066666);
-    SearchMap.searchMapKeyWord('gangnam station');
+    SearchMap.searchMapKeyWord(thisInputValue);
     //dispatch(deleteFirstCity())
   }
   var this_div = 
