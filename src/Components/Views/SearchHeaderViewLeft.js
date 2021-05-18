@@ -9,6 +9,9 @@ import * as SearchMap from './SearchMap'
 
 const SearchHeaderViewLeft = () => {
   const firstCity = useSelector((state:any) => state.searchCity.firstCity);
+  if(firstCity == '-'){
+    SearchMap.searchMapKeyWord(firstCity);
+  }
   const secondCity = useSelector((state:any) => state.searchCity.secondCity);
   const thirdCity = useSelector((state:any) => state.searchCity.thirdCity);
   const fourthCity = useSelector((state:any) => state.searchCity.fourthCity);
