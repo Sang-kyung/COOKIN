@@ -3,8 +3,7 @@
     height: 90vh;
     background-color: yellow;
     float: left;
-    overflow-x: hidden;
-    overflow-y: auto;
+
 }
 
 #rightBox{
@@ -13,4 +12,9 @@
     background-color: blue;
     float: left;
 
+}
+
+#ListMapView{
+    overflow-x: hidden;
+    overflow-y: auto;
 }
