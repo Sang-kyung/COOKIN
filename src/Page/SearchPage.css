@@ -4,7 +4,6 @@
     background-color: yellow;
     float: left;
     overflow: hidden;
-    will-change: overflow;
 }
 
 #rightBox{
