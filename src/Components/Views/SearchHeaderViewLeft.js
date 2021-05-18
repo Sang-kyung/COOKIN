@@ -2,7 +2,18 @@ import React from 'react';
 import './HeaderView.css'
 import HomePageButton from '../Buttons/homePageButton';
 import { Route, Link, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { setFirstCity } from '../../reducers/searchCity';
+
+
 const SearchHeaderViewLeft = () => {
+  const firstCity = useSelector((state:any) => state.searchCity.firstCity);
+  const dispatch = useDispatch();
+  const updateFirstCity = () => {
+    var thisInput = document.getElementById("searchInput")
+    var thisInputValue = thisInput.value;
+    dispatch(setFirstCity(thisInputValue));
+  }
   var this_div = 
   <div id= "HeaderLeft">
       <div style={{height: "100%", width:'100%', backgroundColor:'black', float: 'left'}}>
@@ -10,11 +21,11 @@ const SearchHeaderViewLeft = () => {
         <HomePageButton />
         </div>
         <div style={{height: "50%", width:'100%', backgroundColor:'orange'}}>
-
+          {firstCity}
         </div>
         <div style={{height: "50%", width:'100%', backgroundColor:'red'}}>
-          <input style={{height: "80%", width: '50%'}}></input>
-          <button style= {{height:'80%', width: '10%'}}></button>
+          <input id="searchInput" style={{height: "80%", width: '50%'}}></input>
+          <button style= {{height:'80%', width: '10%'}} onClick={(e:any) => {updateFirstCity()}}></button>
         </div>
       
       </div>
