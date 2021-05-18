@@ -33,7 +33,7 @@ const SearchHeaderViewLeft = () => {
       dispatch(setFourthCity(thisInputValue));
       SearchMap.searchMapKeyWord(thisInputValue);
     }
-    console.log(SearchMap.getMapCenter());
+    setTimeout(function(){console.log(SearchMap.getMapCenter())}, 500);
     thisInput.value = "";
     
     //SearchMap.setMapCenter(35.166668,129.066666);
