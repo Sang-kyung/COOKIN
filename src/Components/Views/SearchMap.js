@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux'
 const { kakao } = window;
 
 var map;
@@ -38,7 +38,7 @@ function placesSearchCB (data, status, pagination) {
 }
 
 const MapContainer = () => {
-
+    const firstCity = useSelector((state:any) => state.searchCity.firstCity);
     useEffect(() => {
         const container = document.getElementById('myMap');
 		const options = {
@@ -46,6 +46,7 @@ const MapContainer = () => {
 			level: 3
 		};
         map = new kakao.maps.Map(container, options);
+        searchMapKeyWord(firstCity);
     }, []);
 
     return (
