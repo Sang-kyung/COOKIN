@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import MapContainer from '../Components/Views/SearchMap';
 import SearchHeaderView from '../Components/Views/SearchHeaderView';
 import ListMapView from '../Components/Views/ListMapView';
 import './SearchPage.css'
+import db from './../firebase';
+
 const SearchPage = () => {
+  
+  // hard coded => should be fixed with database
+  const [kitchenList, onLoad] = useState({});
+
+  useEffect(() => {
+      // Update the document title using the browser API
+      loadKitchenList();
+    });
+
+  // load kitchen data from firebase
+  const loadKitchenList = () => {
+      // hard coded -> database loading
+      const list = {
+        places: [
+          {place: "Din Tai Fung", 
+          imgUrl: "Dintaifung_1", 
+          price: 40000, 
+          utensils: [
+            {name: "Stove", num: 6},
+            {name: "Pan", num: 5},
+            {name: "Wok", num: 3},
+            {name: "Oven", num: 1},
+            {name: "Sink", num: 1}
+          ],
+          ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"]
+        }
+        ]
+      };
+      onload(list);
+    } 
 
   return <div>
     <SearchHeaderView />
@@ -15,29 +47,15 @@ const SearchPage = () => {
       </div>
       <div id="ListMapView">
         <div className="ListMapView">
-          <ListMapView />
-        </div>
-        <div className="ListMapView">
-          <ListMapView />
-        </div>
-        <div className="ListMapView">
-          <ListMapView />
-        </div>
-        <div className="ListMapView">
-          <ListMapView />
-        </div>
-        <div className="ListMapView">
-          <ListMapView />
-        </div>
-        <div className="ListMapView">
-          <ListMapView />
+          {kitchenList.places && kitchenList.places.map((restaurant) => {
+            return <ListMapView restaurant={restaurant} />
+          })}
         </div>
       </div>  
     </div>
     <div id="rightBox">
       <MapContainer />
     </div>
-
   </div>
 }
 
