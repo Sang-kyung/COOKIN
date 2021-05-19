@@ -1,14 +1,14 @@
 #HeaderLeft {
     Width:50%;
     Height: 10vh;
-    background-color: yellow;
+
     float:left
 }
 
 #HeaderRight{
     Width:50%;
     Height: 10vh;
-    background-color: green;
+
     float:left
 }
 
