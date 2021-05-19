@@ -1,10 +1,14 @@
 .detailViewWrapper {
-    padding: 2% 5%;
     text-align: left;
-
+    margin: 20px 30px;
 }
 
 .detailInfoWrapper {
+    display: inline-block;
+    width: 50%;
+}
+
+.reservationInfoWrapper {
     display: inline-block;
     width: 50%;
 }
@@ -26,7 +30,6 @@
 }
 
 .detailIngredients {
-    height: 200px;
 }
 
 .detailIngredients p {

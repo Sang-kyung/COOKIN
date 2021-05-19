@@ -1,13 +1,23 @@
 .itemWrapper {
     display: inline-block;
     width: 150px;
-    margin: 10px 10px;
+    margin: 10px;
 }
 
 .itemWrapper span {
     color: #000000;
 }
 
-img {
-    width: 60px;
+.utensilImg {
+    width: 100px;
 }
+
+.plusIcon, .minusIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.plusIcon {
+    margin-right: 10px;
+}
+

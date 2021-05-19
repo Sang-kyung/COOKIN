@@ -1,5 +1,11 @@
 .itemWrapper {
+    display: inline-block;
+    width: 150px;
     margin: 10px;
+}
+
+.itemWrapper span {
+    color: #000000;
 }
 
 img {

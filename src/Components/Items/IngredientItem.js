@@ -4,20 +4,25 @@ import React from 'react';
 // style
 import './IngredientItem.css';
 
-const IngredientItem = ({item}) => {
+const IngredientItem = ({item, onClickPlus, onClickMinus}) => {
 
-  return <div>
-      <div className="itemWrapper">
-        <div>
-          <img src={require(`../../img/Utensils/${item.imgUrl}.png`).default}/> 
+  return <div className={"itemWrapper"}>
+          <img className="utensilImg" src={require(`../../img/Utensils/${item.imgUrl}.png`).default}/> 
+          <br />
+          <span>{item.name}</span>
+          <br/>
+          <span>{item.price}</span>  
+        <div className="buttonWrapper">
+          <img 
+            className="plusIcon" 
+            src={require(`../../img/Buttons/plus.png`).default}
+            onClick={onClickPlus(item.name)}/>
+          <img 
+            className="minusIcon" 
+            src={require(`../../img/Buttons/minus.png`).default}
+            onClick={onClickMinus(item.name)}/>  
         </div>
-        <span>{item.name}</span>
-        <span>{item.price}</span>  
       </div>
-      <div className="buttonWrapper">
-
-      </div>
-  </div>
 }
 
 export default IngredientItem
