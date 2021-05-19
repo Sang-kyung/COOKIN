@@ -29,13 +29,46 @@ const SearchPage = () => {
   const [kitchenList, onLoad] = useState([]);
   var kitchen_list = [];
 
-  db.collection("kitchen_list").where("place", "==", "Gangnam")
+  const targetNode = document.getElementById('recommend');
+ 
+  // 변화 감지 설정입니다.
+  const config = {characterData: true};
+  // 옵션 설명
+  //  - childList : 대상 노드의 하위 요소가 추가되거나 제거되는 것을 감지합니다.
+  //  - attributes : 대상 노드의 속성 변화를 감지합니다.
+  //  - characterData : 대상 노드의 데이터 변화를 감지합니다.
+  //  - subtree : 대상의 하위의 하위의 요소들까지의 변화를 감지합니다.
+  //  - attributeOldValue : 변화 이전의 속성 값을 기록합니다.
+  //  - characterDataOldValue : 변화 이전의 데이터 값을 기록합니다.
+  //  - attributeFilter : 모든 속성의 변화를 감지할 필요가 없는 경우 속성을 배열로 설정합니다.
+   
+  // 변화가 감지될 때 실행할 콜백 함수
+  const callback = function(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+      if (mutation.type === 'characterData') {
+        // 자식 노드가 추가되거나 제거되었습니다.
+        fetchData();
+        document.getElementsByClassName("ListMapView").style.visibility = "none";
+      }
+    }
+  };
+   
+  // 콜백 함수가 연결된 옵저버 인스턴스를 생성합니다.
+  const observer = new MutationObserver(callback);
+   
+  // 선택한 노드의 변화 감지를 시작합니다.
+  observer.observe(targetNode, config);
+
+  const fetchData = (() => {
+    db.collection("kitchen_list").where("place", "==", "Gangnam")
     .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        kitchen_list.push(doc.data());
-      });
-    });
+    .then(query => {
+        query.forEach((doc) => {
+          kitchen_list.push(doc.data());
+          console.log(kitchen_list);
+        })}
+    );
+  });
 
   useEffect(() => {
       loadKitchenList();
@@ -46,6 +79,35 @@ const SearchPage = () => {
     console.log(kitchen_list);
   }
 
+
+  useEffect(() => {
+      // Update the document title using the browser API
+      loadKitchenInfo();
+    }, []);
+
+
+
+  // load kitchen data from firebase
+  const loadKitchenInfo = () => {
+      // hard coded -> database loading
+      const kitchen = {
+          name: "Din Tai Fung",
+          address: "12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea",
+          imgUrl: ["dintaifung-1", "dintaifung-2"],
+          price: 40000,
+          capacity: 10,
+          ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"],
+          availableDate: "",
+          utensils: [
+              {name: "Stove", num: 6, imgUrl: 'stove'},
+              {name: "Pan", num: 5, imgUrl: 'pan'},
+              {name: "Wok", num: 3, imgUrl: 'wok'},
+              {name: "Oven", num: 1, imgUrl: 'oven'},
+              {name: "Sink", num: 1, imgUrl: 'sink'}
+          ]
+      };
+      onLoad(kitchen);
+  }
   /* hardcoded eg
   const loadKitchenList = () => {
       // hard coded -> database loading
@@ -67,24 +129,25 @@ const SearchPage = () => {
       };
       onload(list);
     } */
+  
   return <div>
-    <SearchHeaderView />
-    <div id="leftBox">
-      <div id="recommend">
-        Recommended place is {recommendedPlaceDisplay}
-      </div>
-      <div id="ListMapView">
-        <div className="ListMapView">
-          {kitchenList.map((restaurant) => {
-            return <ListMapView restaurant={restaurant} />
-          })}
+          <SearchHeaderView />
+          <div id="leftBox">
+            <div id="recommend">
+              Recommended place is {recommendedPlaceDisplay}
+            </div>
+            <div id="ListMapView">
+              <div className="ListMapView">
+                {kitchenList.map((restaurant) => {
+                  return <ListMapView restaurant={restaurant} />
+                })}
+              </div>
+            </div>  
+          </div>
+          <div id="rightBox">
+            <MapContainer />
+          </div>
         </div>
-      </div>  
-    </div>
-    <div id="rightBox">
-      <MapContainer />
-    </div>
-  </div>
 }
 
 export default SearchPage
