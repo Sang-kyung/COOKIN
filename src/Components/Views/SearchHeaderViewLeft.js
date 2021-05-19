@@ -3,7 +3,7 @@ import './HeaderView.css'
 import HomePageButton from '../Buttons/homePageButton';
 import { Route, Link, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteFirstCity, setFirstCity,deleteSecondCity, setSecondCity,deleteThirdCity, setThirdCity,deleteFourthCity, setFourthCity } from '../../reducers/searchCity';
+import { deleteFirstCity, setFirstCity,deleteSecondCity, setSecondCity,deleteThirdCity, setThirdCity,deleteFourthCity, setFourthCity, setFirstCoord } from '../../reducers/searchCity';
 import * as SearchMap from './SearchMap'
 
 
@@ -12,14 +12,18 @@ const SearchHeaderViewLeft = () => {
   const secondCity = useSelector((state:any) => state.searchCity.secondCity);
   const thirdCity = useSelector((state:any) => state.searchCity.thirdCity);
   const fourthCity = useSelector((state:any) => state.searchCity.fourthCity);
+  const firstCoord = useSelector((state:any) => state.searchCity.firstCoord);
   const cities = useSelector((state:any) => state.searchCity);
   const dispatch = useDispatch();
+  var currentCoord = 0;
   const updateCity = () => {
     var thisInput = document.getElementById("searchInput")
     var thisInputValue = thisInput.value;
     if(firstCity == '-'){
       dispatch(setFirstCity(thisInputValue));
       SearchMap.searchMapKeyWord(thisInputValue);
+      setTimeout(function(){currentCoord = SearchMap.getMapCenter()}, 500);
+      dispatch(setFirstCoord(currentCoord));
     }
     else if(secondCity == '-'){
       dispatch(setSecondCity(thisInputValue));
@@ -34,6 +38,7 @@ const SearchHeaderViewLeft = () => {
       SearchMap.searchMapKeyWord(thisInputValue);
     }
     setTimeout(function(){console.log(SearchMap.getMapCenter())}, 500);
+    console.log(firstCoord);
     thisInput.value = "";
     
     //SearchMap.setMapCenter(35.166668,129.066666);
