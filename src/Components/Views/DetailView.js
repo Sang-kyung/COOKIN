@@ -16,7 +16,7 @@ const DetailView = () => {
     useEffect(() => {
         // Update the document title using the browser API
         loadKitchenInfo();
-      });
+      }, []);
 
     // load kitchen data from firebase
     const loadKitchenInfo = () => {
@@ -58,15 +58,15 @@ const DetailView = () => {
             <hr />
             <div className={"detailUtensil"}>
                 <p>Utensils</p>
-                {kitchenInfo.utensils && kitchenInfo.utensils.map((item) => {
-                    return <UtensilItem item={item} />
+                {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
+                    return <UtensilItem key={index} item={item} />
                 })}
             </div> 
             <hr />
             <div className={"detailIngredients"}>
                 <p>Ingredients</p>
-                {Ingredients.map((item) => {
-                    return <IngredientItem item={item} />
+                {Ingredients.map((item, index) => {
+                    return <IngredientItem key={index} item={item} />
                 })}
 
             </div>
