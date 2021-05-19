@@ -28,7 +28,6 @@ const user = (state = initialState, action) => {
       }
     }
     case LOG_OUT: {
-      console.log("log out");
       return {
         ...state,
         isloggedIn : false,
