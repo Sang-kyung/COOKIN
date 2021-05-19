@@ -10,7 +10,6 @@ import db from './../firebase';
 
 const SearchPage = () => {
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
-  var recommendedPlaceDisplay = '...';
   
   const [kitchenList, setKitchenList] = useState([]);
   var kitchen_list = [];
@@ -20,11 +19,12 @@ const SearchPage = () => {
     .get()
     .then(query => {
         query.forEach((doc) => {
-          if (doc.data().place == "Gangnam") {
+          //if (doc.data().place === "Gangnam") {
+            console.log(doc.data().place);
             kitchen_list.push(doc.data());
             console.log(kitchen_list);
             setKitchenList(kitchen_list);
-          }
+          //}
         })}
     );
   });
@@ -73,10 +73,11 @@ observer.observe(targetNode, {CharacterData: true});
   
   return <div>
           <SearchHeaderView />
-          <div id="leftBox">
+          <div className="leftBox">
             <div id="recommend">
               Recommended place is {recommendedPlace}
             </div>
+            <button type="button" onClick={fetchData}>fetch</button>
             <div id="ListMapView">
               <div className="ListMapView">
                 {kitchenList.map((kitchen) => {
@@ -85,11 +86,11 @@ observer.observe(targetNode, {CharacterData: true});
               </div>
             </div>  
           </div>
-          <div id="rightBox">
+          <div className="rightBox">
             <MapContainer />
           </div>
         </div>
-  return <div>
+ /* return <div>
     <SearchHeaderView />
     <div className="leftBox">
       <div>leftbox</div>
@@ -121,7 +122,7 @@ observer.observe(targetNode, {CharacterData: true});
       <MapContainer />
     </div>
 
-  </div>
+  </div>*/
 }
 
 export default SearchPage
