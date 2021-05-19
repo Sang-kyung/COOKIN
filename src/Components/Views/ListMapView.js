@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./ListMapView.css";
 
-const ListMapView = ({restaurant}) => {
+const ListMapView = ({kitchen}) => {
     var this_div = 
     <div id="body">
         <Link to="/detail/${restaurant.place}">
@@ -11,17 +11,17 @@ const ListMapView = ({restaurant}) => {
         </div>
         <div id="content">
             <div id="name">
-                {restaurant.name}
+                {kitchen.name}
             </div>
             <div id="information">
             <p id="price">
-                {restaurant.price}
+                {kitchen.price}
             </p>
             <p id="utensils">
-                {restaurant.utensils}
+                {kitchen.utensils}
             </p>
             <p id="ingredients">
-                {restaurant.ingredients}
+                {kitchen.ingredients}
             </p>
             </div>
         </div>
