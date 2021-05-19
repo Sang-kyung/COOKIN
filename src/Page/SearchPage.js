@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, query, where } from "firebase/firestore";
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
+import ReactDOM from 'react-dom';
 import MapContainer from '../Components/Views/SearchMap';
 import SearchHeaderView from '../Components/Views/SearchHeaderView';
 import ListMapView from '../Components/Views/ListMapView';
@@ -13,6 +14,7 @@ const SearchPage = () => {
   
   const [kitchenList, setKitchenList] = useState([]);
   var kitchen_list = [];
+  var utensils = [];
 
   const fetchData = (() => {
     db.collection("kitchen_list")
@@ -20,14 +22,21 @@ const SearchPage = () => {
     .then(query => {
         query.forEach((doc) => {
           //if (doc.data().place === "Gangnam") {
-            console.log(doc.data().place);
             kitchen_list.push(doc.data());
             console.log(kitchen_list);
-            setKitchenList(kitchen_list);
+            
+            var kitchen = doc.data();
+            var element = <div className="ListMapView"> <ListMapView kitchen={kitchen} /> </div>;
+            ReactDOM.render(element, document.getElementById('ListMapView'));
+            //setKitchenList(kitchen_list);
           //}
         })}
     );
   });
+  
+  
+
+
 /*
 // Select the node that will be observed for mutations
 const targetNode = document.getElementById("recommend");
@@ -79,11 +88,6 @@ observer.observe(targetNode, {CharacterData: true});
             </div>
             <button type="button" onClick={fetchData}>fetch</button>
             <div id="ListMapView">
-              <div className="ListMapView">
-                {kitchenList.map((kitchen) => {
-                    return <ListMapView kitchen={kitchen} />
-                })}
-              </div>
             </div>  
           </div>
           <div className="rightBox">

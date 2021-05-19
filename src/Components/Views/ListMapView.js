@@ -5,7 +5,6 @@ import "./ListMapView.css";
 const ListMapView = ({kitchen}) => {
     var this_div = 
     <div id="body">
-        <Link to="/detail/${restaurant.place}">
         <div id="photo">
             hello
         </div>
@@ -24,8 +23,7 @@ const ListMapView = ({kitchen}) => {
                 {kitchen.ingredients}
             </p>
             </div>
-        </div>
-        </Link>    
+        </div>  
     </div>
     return this_div;
 }
