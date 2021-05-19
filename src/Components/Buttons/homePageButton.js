@@ -9,7 +9,7 @@ import './MyPageButton.css'
 const HomePageButton = () => {
 
   return <div style={{height: '90px', width:'290px', backgroundColor:'black', float: 'left'}}>
-    <Link to="/home"><img style={{width: 'auto'}} src={imgfile}/></Link>
+    <Link to="/"><img style={{width: 'auto'}} src={imgfile}/></Link>
     </div>
 }
 
