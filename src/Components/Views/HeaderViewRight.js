@@ -6,7 +6,6 @@ const HeaderViewRight = () => {
   var this_div = 
   <div id= "HeaderRight">
       <MyPageButton />
-      
     </div>
   return this_div
 }
