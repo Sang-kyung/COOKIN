@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { collection, query, where } from "firebase/firestore";
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import MapContainer from '../Components/Views/SearchMap';
@@ -8,26 +9,45 @@ import './SearchPage.css'
 import db from './../firebase';
 
 const SearchPage = () => {
+  const recommendedPlace = useSelector((state:any) => state.searchCity.recommendedPlace);
+  var recommendedPlaceDisplay = '...';
+  switch(recommendedPlace){
+    case 'gangnam':{
+      recommendedPlaceDisplay = 'Gangnam'
+    }
+    case 'hongdae':{
+      recommendedPlaceDisplay = 'Hongdae'
+    }
+    case 'yeoyido':{
+      recommendedPlaceDisplay = 'Yeouido'
+    }
+    case 'jonglo':{
+      recommendedPlaceDisplay = 'Jonglo'
+    }
+  }
   
+  const [kitchenList, onLoad] = useState([]);
+  var kitchen_list = [];
 
-  var allRestaurants = db.collection("kitchen_list");
-
-  var query = allRestaurants.where("place", "==", "gangnam");
-  console.log(query);
-
-
-  const [kitchenList, onLoad] = useState({});
+  db.collection("kitchen_list").where("place", "==", "Gangnam")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        kitchen_list.push(doc.data());
+      });
+    });
 
   useEffect(() => {
       loadKitchenList();
   });
 
   const loadKitchenList = () => {
-    onLoad(query);
+    onLoad(kitchen_list);
+    console.log(kitchen_list);
   }
 
-  // load kitchen data from firebase
-  /*const loadKitchenList = () => {
+  /* hardcoded eg
+  const loadKitchenList = () => {
       // hard coded -> database loading
       const list = {
         places: [
@@ -47,32 +67,15 @@ const SearchPage = () => {
       };
       onload(list);
     } */
-
-  const recommendedPlace = useSelector((state:any) => state.searchCity.recommendedPlace);
-  var recommendedPlaceDisplay = '...';
-  switch(recommendedPlace){
-    case 'gangnam':{
-      recommendedPlaceDisplay = 'Gangnam'
-    }
-    case 'hongdae':{
-      recommendedPlaceDisplay = 'Hongdae'
-    }
-    case 'jonglo':{
-      recommendedPlaceDisplay = 'Jonglo'
-    }
-    case 'yeoyido':{
-      recommendedPlaceDisplay = 'Yeouido'
-    }
-  }
   return <div>
     <SearchHeaderView />
     <div id="leftBox">
       <div id="recommend">
-        Recommended place is  {recommendedPlaceDisplay}
+        Recommended place is {recommendedPlaceDisplay}
       </div>
       <div id="ListMapView">
         <div className="ListMapView">
-          {kitchenList.places && kitchenList.places.map((restaurant) => {
+          {kitchenList.map((restaurant) => {
             return <ListMapView restaurant={restaurant} />
           })}
         </div>
