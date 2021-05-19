@@ -14,23 +14,21 @@ const ListMapView = ({kitchen}) => {
             </div>
             <div id="information">
                 <p id="price">
-                    {kitchen.price}
+                    price: {kitchen.price}
                 </p>
-                <p id="utensils">
+                <div id="utensils">
                     utensils:
-                    {kitchen.utensils.map(items => {
-                        return (<p>
-                                    {items.name}: {items.num}
-                                </p>)
+                    {kitchen.utensils.map((items, index) => {
+                        return (<div key={index}>{items.name}: {items.num}</div>)
                     })}
-                </p>
-                <p id="ingredients">
+                </div>
+                <div id="ingredients">
                     {kitchen.ingredients}
-                </p>
+                </div>
             </div>
-        </div>  
+        </div>
     </div>
-    return this_div;
+    return this_div
 }
 
 export default ListMapView;
