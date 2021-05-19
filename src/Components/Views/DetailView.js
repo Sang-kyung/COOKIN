@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 
+import db from '../../firebase';
+
 // style
 import './DetailView.css';
 

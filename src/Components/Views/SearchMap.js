@@ -38,7 +38,7 @@ function placesSearchCB (data, status, pagination) {
 }
 
 const MapContainer = () => {
-    const firstCity = useSelector((state:any) => state.searchCity.firstCity);
+    const firstCity = useSelector((state) => state.searchCity.firstCity);
     useEffect(() => {
         const container = document.getElementById('myMap');
 		const options = {
