@@ -10,6 +10,10 @@ export function setMapCenter(Lat, Lng) {
     map.setCenter(moveLatLon);
 }
 
+export function setMapZoom(level) {
+    map.setLevel(level);
+}
+
 
 export function searchMapKeyWord(keyword) {
     var ps = new kakao.maps.services.Places(); 
@@ -38,7 +42,7 @@ function placesSearchCB (data, status, pagination) {
 }
 
 const MapContainer = () => {
-    const firstCity = useSelector((state:any) => state.searchCity.firstCity);
+    const firstCity = useSelector((state) => state.searchCity.firstCity);
     useEffect(() => {
         const container = document.getElementById('myMap');
 		const options = {

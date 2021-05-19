@@ -12,11 +12,16 @@ const SearchView = () => {
     SearchMap.searchMapKeyWord(input);
     window.location.href="/search";
   }
+  
 
   var this_div = 
   <div id="mainContainer">
   <div className= 'inputWrapper' >
-    <input type="text" id='input' placeholder="Enter your locations!">
+    <input type="text" id='input' placeholder="Enter your locations!" onKeyDown = {function(e){
+      if(e.keyCode == 13){
+        clickfunction();
+      }
+    }}>
     </input>
   </div>
   <div className='buttonWrapper'>
