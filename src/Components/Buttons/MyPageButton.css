@@ -149,3 +149,12 @@ img {
           border-radius: 3px;
           border-style: none;
         } */
+  
+.myPageBtnWrapper {
+    display: inline-block;
+    /* margin-left: calc(100% - 1000px); */
+
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
