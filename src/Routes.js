@@ -15,7 +15,7 @@ class Routes extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route path="/home" component={HomePage} />
+                    <Route path="/" component={HomePage} />
                     <Route path="/mypage" component={MyPage} />
                     <Route path="/search" component={SearchPage} />
                     <Route path="/detail" component={DetailPage} />
