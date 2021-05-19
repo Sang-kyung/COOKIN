@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import db from '../../firebase';
 
 //view
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
-
-import db from '../../firebase';
 
 // style
 import './DetailView.css';
@@ -13,10 +12,24 @@ const DetailView = () => {
 
     const [kitchenInfo, onLoad] = useState({});
 
+    const fetchData = (() => {
+        let datas = []
+        db.collection('ingredient_list')
+        .get()
+        .then(query => {
+            query.forEach((doc) => {
+            datas.push(doc.data().name)
+            console.log(datas)
+            })}
+        );
+    });
+
     useEffect(() => {
         // Update the document title using the browser API
         loadKitchenInfo();
-      });
+      }, []);
+
+
 
     // load kitchen data from firebase
     const loadKitchenInfo = () => {
@@ -48,6 +61,7 @@ const DetailView = () => {
     ]
 
     return <div className={"detailViewWrapper"}>
+        <h1 onClick={() => fetchData()}>click</h1>
         <div className={"detailInfoWrapper"}>
             <h1>{kitchenInfo.name}</h1>
             <span>{kitchenInfo.address}</span>
@@ -58,15 +72,15 @@ const DetailView = () => {
             <hr />
             <div className={"detailUtensil"}>
                 <p>Utensils</p>
-                {kitchenInfo.utensils && kitchenInfo.utensils.map((item) => {
-                    return <UtensilItem item={item} />
+                {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
+                    return <UtensilItem key={index} item={item} />
                 })}
             </div> 
             <hr />
             <div className={"detailIngredients"}>
                 <p>Ingredients</p>
-                {Ingredients.map((item) => {
-                    return <IngredientItem item={item} />
+                {Ingredients.map((item, index) => {
+                    return <IngredientItem key={index} item={item} />
                 })}
 
             </div>
