@@ -1,0 +1,23 @@
+.tagContainer {
+    border-radius: 10px;
+    background-color: #c4c4c4;
+    display: inline-block;
+    width: fit-content;
+    height: 40px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+.tagText {
+    font-size: 20px;
+    display: inline-block;
+}
+
+.tagBtn {
+    display: inline-block;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}

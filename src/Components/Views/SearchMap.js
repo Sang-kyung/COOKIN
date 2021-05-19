@@ -54,11 +54,7 @@ const MapContainer = () => {
     }, []);
 
     return (
-        <div id='myMap' style={{
-            width: '90%', 
-            height: '90%',
-            margin: 'auto'
-        }}></div>
+        <div id='myMap' style={{width: '96%', height: '80vh', margin: '0 2%', overflow: 'visible'}}></div>
     );
 }
 

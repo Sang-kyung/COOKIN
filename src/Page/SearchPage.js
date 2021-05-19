@@ -9,22 +9,8 @@ import './SearchPage.css'
 import db from './../firebase';
 
 const SearchPage = () => {
-  const recommendedPlace = useSelector((state:any) => state.searchCity.recommendedPlace);
+  const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var recommendedPlaceDisplay = '...';
-  switch(recommendedPlace){
-    case 'gangnam':{
-      recommendedPlaceDisplay = 'Gangnam'
-    }
-    case 'hongdae':{
-      recommendedPlaceDisplay = 'Hongdae'
-    }
-    case 'yeoyido':{
-      recommendedPlaceDisplay = 'Yeouido'
-    }
-    case 'jonglo':{
-      recommendedPlaceDisplay = 'Jonglo'
-    }
-  }
   
   const [kitchenList, setKitchenList] = useState([]);
   var kitchen_list = [];
@@ -89,7 +75,7 @@ observer.observe(targetNode, {CharacterData: true});
           <SearchHeaderView />
           <div id="leftBox">
             <div id="recommend">
-              Recommended place is {recommendedPlaceDisplay}
+              Recommended place is {recommendedPlace}
             </div>
             <div id="ListMapView">
               <div className="ListMapView">
@@ -103,6 +89,39 @@ observer.observe(targetNode, {CharacterData: true});
             <MapContainer />
           </div>
         </div>
+  return <div>
+    <SearchHeaderView />
+    <div className="leftBox">
+      <div>leftbox</div>
+      <div id="recommend">
+        Recommended place is  {recommendedPlace}
+      </div>
+      <div id="ListMapView">
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+      </div>  
+    </div>
+    <div className="rightBox">
+      <MapContainer />
+    </div>
+
+  </div>
 }
 
 export default SearchPage
