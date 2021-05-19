@@ -5,6 +5,8 @@ import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import { db } from '../../firebase';
 
+import db from '../../firebase';
+
 // style
 import './DetailView.css';
 
