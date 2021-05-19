@@ -5,7 +5,7 @@ const ListMapView = ({restaurant}) => {
     var this_div = 
     <div id="body">
         <div id="photo">
-            <img src={require('../../img/Kitchen/${restaurant.imgUrl}.png').default}/>
+            <img src={require('../../img/Kitchen/${restaurant.img}.png').default}/>
         </div>
         <div id="content">
             <div id="name">
@@ -13,7 +13,7 @@ const ListMapView = ({restaurant}) => {
             </div>
             <div id="information">
             <p id="price">
-                {restaurant.price}}
+                {restaurant.price}
             </p>
             <p id="utensils">
                 {restaurant.utensils}

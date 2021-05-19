@@ -9,16 +9,23 @@ import db from './../firebase';
 
 const SearchPage = () => {
   
-  // hard coded => should be fixed with database
+
+  var allRestaurants = db.collection("kitchen_list");
+
+  var query = allRestaurants.where("place", "==", "gangnam");
+
   const [kitchenList, onLoad] = useState({});
 
   useEffect(() => {
-      // Update the document title using the browser API
       loadKitchenList();
-    });
+  });
+
+  const loadKitchenList = () => {
+    onload(query);
+  }
 
   // load kitchen data from firebase
-  const loadKitchenList = () => {
+  /*const loadKitchenList = () => {
       // hard coded -> database loading
       const list = {
         places: [
@@ -37,7 +44,7 @@ const SearchPage = () => {
         ]
       };
       onload(list);
-    } 
+    } */
 
   return <div>
     <SearchHeaderView />
