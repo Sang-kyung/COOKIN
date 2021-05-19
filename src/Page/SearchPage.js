@@ -8,25 +8,11 @@ import './SearchPage.css'
 const SearchPage = () => {
   const recommendedPlace = useSelector((state:any) => state.searchCity.recommendedPlace);
   var recommendedPlaceDisplay = '...';
-  switch(recommendedPlace){
-    case 'gangnam':{
-      recommendedPlaceDisplay = 'Gangnam'
-    }
-    case 'hongdae':{
-      recommendedPlaceDisplay = 'Hongdae'
-    }
-    case 'jonglo':{
-      recommendedPlaceDisplay = 'Jonglo'
-    }
-    case 'yeoyido':{
-      recommendedPlaceDisplay = 'Yeouido'
-    }
-  }
   return <div>
     <SearchHeaderView />
     <div id="leftBox">
       <div id="recommend">
-        Recommended place is  {recommendedPlaceDisplay}
+        Recommended place is  {recommendedPlace}
       </div>
       <div id="ListMapView">
         <div className="ListMapView">

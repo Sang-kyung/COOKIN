@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchView.css'
 import * as SearchMap from './SearchMap'
-import { setFirstCity} from '../../reducers/searchCity';
+import { setFirstCity, setRecommendedPlace} from '../../reducers/searchCity';
 import { useDispatch} from 'react-redux'
 
 const SearchView = () => {
@@ -9,6 +9,7 @@ const SearchView = () => {
   const clickfunction = () => {
     var input = document.getElementById("input").value;
     dispatch(setFirstCity(input));
+    dispatch(setRecommendedPlace(". . ."))
     SearchMap.searchMapKeyWord(input);
     window.location.href="/search";
   }

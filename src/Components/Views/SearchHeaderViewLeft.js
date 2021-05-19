@@ -1,6 +1,7 @@
 import React from 'react';
 import './HeaderView.css'
 import HomePageButton from '../Buttons/homePageButton';
+import SearchResult from './SearchHeaderViewLeftSearchList'
 import { Route, Link, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFirstCity, setFirstCity,deleteSecondCity, setSecondCity,deleteThirdCity, setThirdCity,deleteFourthCity, setFourthCity, setFirstCoord, setSecondCoord, setThirdCoord, setFourthCoord, setRecommendedPlace } from '../../reducers/searchCity';
@@ -28,29 +29,33 @@ const SearchHeaderViewLeft = () => {
   const updateCity = () => {
     var thisInput = document.getElementById("searchInput");
     var thisInputValue = thisInput.value;
-    if(firstCity == '-'){
-      dispatch(setFirstCity(thisInputValue));
-      SearchMap.searchMapKeyWord(thisInputValue);
-      setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()))},500);
+    if(fourthCity!='-'){
+      getRecommendation()
     }
-    else if(secondCity == '-'){
-      dispatch(setSecondCity(thisInputValue));
-      SearchMap.searchMapKeyWord(thisInputValue);
-      setTimeout(function(){dispatch(setSecondCoord(SearchMap.getMapCenter()))},500);
+    else if(thisInputValue!= ""){
+      if(firstCity == '-'){
+        dispatch(setFirstCity(thisInputValue));
+        SearchMap.searchMapKeyWord(thisInputValue);
+        setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()))},500);
+      }
+      else if(secondCity == '-'){
+        dispatch(setSecondCity(thisInputValue));
+        SearchMap.searchMapKeyWord(thisInputValue);
+        setTimeout(function(){dispatch(setSecondCoord(SearchMap.getMapCenter()))},500);
+      }
+      else if(thirdCity == '-'){
+        dispatch(setThirdCity(thisInputValue));
+        SearchMap.searchMapKeyWord(thisInputValue);
+        setTimeout(function(){dispatch(setThirdCoord(SearchMap.getMapCenter()))},500);
+      }
+      else if(fourthCity == '-'){
+        dispatch(setFourthCity(thisInputValue));
+        SearchMap.searchMapKeyWord(thisInputValue);
+        setTimeout(function(){dispatch(setFourthCoord(SearchMap.getMapCenter()))},500);
+      }
+      setTimeout(function(){console.log(SearchMap.getMapCenter())}, 500);
+      thisInput.value = "";
     }
-    else if(thirdCity == '-'){
-      dispatch(setThirdCity(thisInputValue));
-      SearchMap.searchMapKeyWord(thisInputValue);
-      setTimeout(function(){dispatch(setThirdCoord(SearchMap.getMapCenter()))},500);
-    }
-    else if(fourthCity == '-'){
-      dispatch(setFourthCity(thisInputValue));
-      SearchMap.searchMapKeyWord(thisInputValue);
-      setTimeout(function(){dispatch(setFourthCoord(SearchMap.getMapCenter()))},500);
-    }
-    setTimeout(function(){console.log(SearchMap.getMapCenter())}, 500);
-    thisInput.value = "";
-    
     //SearchMap.setMapCenter(35.166668,129.066666);
     
     //dispatch(deleteFirstCity())
@@ -70,8 +75,69 @@ const SearchHeaderViewLeft = () => {
     }
   }
 
+  const deleteFC = () => {
+    dispatch(setFirstCity(secondCity))
+    dispatch(setFirstCoord(secondCoord))
+    dispatch(setSecondCity(thirdCity))
+    dispatch(setSecondCoord(thirdCoord))
+    dispatch(setThirdCity(fourthCity))
+    dispatch(setThirdCoord(fourthCoord))
+    dispatch(deleteFourthCity())
+  }
+
+  const deleteSC = () => {
+    dispatch(setSecondCity(thirdCity))
+    dispatch(setSecondCoord(thirdCoord))
+    dispatch(setThirdCity(fourthCity))
+    dispatch(setThirdCoord(fourthCoord))
+    dispatch(deleteFourthCity())
+  }
+  const deleteTC = () => {
+    dispatch(setThirdCity(fourthCity))
+    dispatch(setThirdCoord(fourthCoord))
+    dispatch(deleteFourthCity())
+  }
+
+  const deleteFoC = () => {
+    dispatch(deleteFourthCity())
+  }
+
+
+  const getMinimum = (gn, hd, jl, yd, sd) => {
+    switch (sd){
+      case (gn):{
+        console.log('gangnam');
+        return {location:'Gangnam',
+        coord: gangnamCoord};
+
+      }
+      case (hd):{
+        console.log('hongdae');
+        return {location:'Hongdae', 
+        coord: hongdaeCoord};
+
+      }
+      case (yd):{
+        console.log('yeoyido');
+        return {location: 'Yeouido', 
+        coord: yeoyidoCoord};
+
+      }
+      case (jl):{
+        console.log('jonglo');
+        return {location:'Jonglo', 
+        coord: jongloCoord};
+
+      } 
+    }
+  }
+
   const getRecommendation = () => {
-    console.log(cities);
+    if(firstCoord == '-'){
+      alert('You need to input at least one city');
+    }
+    else{
+      console.log(cities);
     var count = 0;
     var x_coord = 0;
     var y_coord = 0;
@@ -105,62 +171,52 @@ const SearchHeaderViewLeft = () => {
     x_coord = x_coord/count;
     y_coord = y_coord/count;
     console.log(x_coord, y_coord);
-    var currentDistance = Math.sqrt(Math.pow(gangnamCoord.x - x_coord,2)+Math.pow(gangnamCoord.y - y_coord, 2));
-    console.log('gangnam', currentDistance);
-    if(currentDistance<nearestDistance){
-      nearestDistance = currentDistance;
-      nearestPlace = 'gangnam';
-      nearestCoord = gangnamCoord;
-    }
-    var currentDistance = Math.sqrt(Math.pow(hongdaeCoord.x - x_coord,2)+Math.pow(hongdaeCoord.y - y_coord, 2));
-    console.log('hongdae', currentDistance);
-    if(currentDistance<nearestDistance){
-      nearestDistance = currentDistance;
-      nearestPlace = 'hongdae';
-      nearestCoord = hongdaeCoord;
-    }
-    var currentDistance = Math.sqrt(Math.pow(jongloCoord.x - x_coord,2)+Math.pow(jongloCoord.y - y_coord, 2));
-    console.log('jonglo', currentDistance);
-    if(currentDistance<nearestDistance){
-      nearestDistance = currentDistance;
-      nearestPlace = 'jonglo';
-      nearestCoord = jongloCoord;
-    }
-    var currentDistance = Math.sqrt(Math.pow(yeoyidoCoord.x - x_coord,2)+Math.pow(yeoyidoCoord.y - y_coord, 2));
-    console.log('yeoyido', currentDistance);
-    if(currentDistance<nearestDistance){
-      nearestDistance = currentDistance;
-      nearestPlace = 'yeoyido';
-      nearestCoord = yeoyidoCoord;
-    }
+    var gangnamDistance = parseInt(Math.sqrt(Math.pow(gangnamCoord.x - x_coord,2)+Math.pow(gangnamCoord.y - y_coord, 2))*10000);
+    var hongdaeDistance = parseInt(Math.sqrt(Math.pow(hongdaeCoord.x - x_coord,2)+Math.pow(hongdaeCoord.y - y_coord, 2))*10000);
+    var jongloDistance = parseInt(Math.sqrt(Math.pow(jongloCoord.x - x_coord,2)+Math.pow(jongloCoord.y - y_coord, 2))*10000);
+    var yeoyidoDistance = parseInt(Math.sqrt(Math.pow(yeoyidoCoord.x - x_coord,2)+Math.pow(yeoyidoCoord.y - y_coord, 2))*10000);
+    const smallestDistance = Math.min(gangnamDistance, hongdaeDistance, jongloDistance, yeoyidoDistance);
+    console.log('gn',gangnamDistance, 'hd',hongdaeDistance,'jl', jongloDistance,'yd', yeoyidoDistance, smallestDistance);
+    var minInfo = getMinimum(gangnamDistance, hongdaeDistance, jongloDistance, yeoyidoDistance, smallestDistance);
+    nearestPlace = minInfo.location;
+    nearestCoord = minInfo.coord;
     console.log(nearestCoord);
     SearchMap.setMapCenter(nearestCoord.x,nearestCoord.y);
     //SearchMap.setMapCenter(x_coord,y_coord);
     SearchMap.setMapZoom(4);
     dispatch(setRecommendedPlace(nearestPlace));
+    }
+    
   }
   var this_div = 
   <div id= "HeaderLeft">
       <div style={{height: "100%", width:'100%', backgroundColor:'black', float: 'left'}}>
-        <div style={{height: "100%",  backgroundColor:'purple', float: 'left'}}>
+        <div style={{height: "100%",  width:'auto', backgroundColor:'purple', float: 'left'}}>
         <HomePageButton />
         </div>
-        <div style={{height: "50%", width:'100%', backgroundColor:'orange'}}>
-          {firstCity}
-          {secondCity}
-          {thirdCity}
-          {fourthCity}
-          
+        <div style={{height: "50%", width:'60%', backgroundColor:'orange', float:'left', overflow:'auto'}}>
+          <div style={{ height: '50px',width:'fit-content', backgroundColor:'red', display:'inline-block', margin:'10px'}}>
+          <SearchResult item= {{city: firstCity, func: deleteFC}} />
+          </div>
+          <div style={{height: '50px', width:'fit-content', backgroundColor:'orange', display:'inline-block', margin:'10px'}}>
+          <SearchResult item= {{city: secondCity, func: deleteSC}} />
+          </div>
+          <div style={{height: '50px', width:'fit-content', backgroundColor:'yellow', display:'inline-block', margin:'10px'}}>
+          <SearchResult item= {{city: thirdCity, func: deleteTC}} />
+          </div>
+          <div style={{ height: '50px',width:'fit-content', backgroundColor:'green', display:'inline-block', margin:'10px'}}>
+          <SearchResult item= {{city: fourthCity, func: deleteFoC}} />
+          </div>
+
         </div>
-        <div style={{height: "50%", width:'100%', backgroundColor:'red'}}>
-          <input id="searchInput" style={{height: "80%", width: '30%'}} onKeyDown = {function(e){
+        <div style={{height: "50%", width:'60%', backgroundColor:'red', float:'left'}}>
+          <input id="searchInput" style={{height: "80%", width: '65%'}} onKeyDown = {function(e){
       if(e.keyCode == 13){
         updateCity();
       }
     }}></input>
-          <button style= {{height:'80%', width: '5%'}} onClick={(e:any) => {updateCity()}}></button>
-          <button style= {{height:'80%', width: '5%'}} onClick={(e:any) => {deleteCity()}}></button>
-          <button style= {{height:'80%', width: '5%'}} onClick={(e:any) => {getRecommendation()}}></button>
+          <button style= {{height:'80%', width: '9%', fontSize:'16px'}} onClick={(e:any) => {updateCity()}}>+</button>
+          <button style= {{height:'80%', width: '20%', fontSize:'16px'}} onClick={(e:any) => {getRecommendation()}}>Recommend</button>
         </div>
       
       </div>
