@@ -29,6 +29,7 @@ const ListMapView = () => {
                 Restaurant name
             </div>
             <div id="information">
+<<<<<<< Updated upstream
             <p id="price">
                 Price
             </p>
@@ -38,6 +39,24 @@ const ListMapView = () => {
             <p id="ingredients">
                 Ingredients
             </p>
+=======
+                <div id="price">
+                    Price: {kitchen.price}
+                </div>
+                <br/>
+                <div id="utensils">
+                    Available tensils:
+                    {kitchen.utensils.map((items, index) => {
+                        return (<div key={index}>{items.name}: {items.num}</div>)
+                    })}
+                </div>
+                <br/>
+                <div id="ingredients">
+                    Available Ingredients: {kitchen.ingredients.map((items, index) => {
+                        return (<div key={index}>{items}</div>)
+                    })}
+                </div>
+>>>>>>> Stashed changes
             </div>
         </div>    
     </div>
