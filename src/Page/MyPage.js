@@ -22,10 +22,10 @@ const MyPage = () => {
   //   dispatch(login({phone, name}));
   // }
 
-  const _logout = () => {
-    dispatch(logout());
-    history.push("/");
-  }
+  // const _logout = () => {
+  //   dispatch(logout());
+  //   history.push("/");
+  // }
 
   // const onPhoneChange = (e) => {
   //   console.log(e.target.value);
@@ -53,17 +53,16 @@ const MyPage = () => {
 
   var Upcoming = Ups.length;
 
-  var condition = Ups.length > 0 && Pasts.length > 0;
+  // var condition = Ups.length > 0 && Pasts.length > 0;
 
   return <div>
           <MainHeaderViewLeft />
-          <input type="button" value="Log Out" onClick={_logout} />
           <MyinformationView Upcoming={Upcoming}/>
-          {condition ?
-            <MyreservationView Ups={Ups} Pasts={Pasts}/>
-            :
-            <div>"No reservation"</div>
-          }
+          {/* {condition ? */}
+          <MyreservationView Ups={Ups} Pasts={Pasts}/>
+             {/* :
+             <div>"No reservation"</div>
+           } */}
         </div>
 }
 

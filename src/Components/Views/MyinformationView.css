@@ -1,12 +1,25 @@
-.information_box {
+.grid {
     padding-left: 5%;
     border : 5px solid orange;
     text-align: left;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 2fr;
+    margin: 3%;
 }
 
-.grid {
-    display: grid;
-    /* grid-auto-flow: column;
-    grid-template-columns: 2fr 2fr; */
-    margin: 3%;
+.logoutbtn {
+    height: 30%;
+    font-size: 17px;
+    width: 60%;
+    padding: 9px 12px;
+    outline: none;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: groove;
+    border-color: darkgray;
+}
+
+.modal-loginbtn input::placeholder {
+    color: #999999;
 }
