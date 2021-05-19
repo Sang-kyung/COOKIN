@@ -1,14 +1,10 @@
 import React from 'react';
-// import { db, firebaseApp } from '../../firebase';
+// import db from '../../firebase';
 
 // style
 import './IngredientItem.css';
 
 const IngredientItem = ({item}) => {
-
-  // const ingredient = db.collection("ingredient_list").get(item.name).then(() => {
-
-  // })
 
   return <div>
       <div className="itemWrapper">
