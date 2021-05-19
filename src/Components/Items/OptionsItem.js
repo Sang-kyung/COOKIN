@@ -6,8 +6,8 @@ import './OptionsItem.css';
 const OptionsItem = ({item}) => {
 
   return <div className="items">
-        <span>{item.amount} of </span>
-        <span>{item.name}, </span>
+        <span>{item.name} </span>
+        <span>{item.amount}, </span>
       </div>
 }
 

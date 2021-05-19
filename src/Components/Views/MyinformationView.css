@@ -13,8 +13,8 @@
     font-size: 17px;
     width: 60%;
     padding: 9px 12px;
-    outline: none;
     box-sizing: border-box;
+    border-radius: 4%;
     border-width: 1px;
     border-style: groove;
     border-color: darkgray;
