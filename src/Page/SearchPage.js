@@ -10,12 +10,29 @@ const SearchPage = () => {
   return <div>
     <SearchHeaderView />
     <div id="leftBox">
-      <div>
-        <ListMapView />
+      <div id="recommend">
+        Recommended place is ....
       </div>
-      <div>
-        <ListMapView />
-      </div>
+      <div id="ListMapView">
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+        <div className="ListMapView">
+          <ListMapView />
+        </div>
+      </div>  
     </div>
     <div id="rightBox">
       <MapContainer />

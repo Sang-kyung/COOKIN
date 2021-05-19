@@ -1,0 +1,31 @@
+#body{
+    border:solid;
+    background-color:red;
+    grid-template-columns: 20% 80%;
+    height:auto;
+    display:flex;
+}
+
+#photo{
+    background-color:brown;
+    height:15vh;
+    width:20%;
+}
+
+#content{
+    background-color:forestgreen;
+    height:15vh;
+    width:80%;
+    float:left;
+    grid-template-rows:20% 80%
+}
+
+#name{
+    height:20%;
+}
+
+#information{
+    height:80%;
+    overflow:auto;
+    border:solid;
+}

@@ -3,7 +3,7 @@
     height: 90vh;
     background-color: yellow;
     float: left;
-
+    overflow: hidden;
 }
 
 #rightBox{
@@ -12,4 +12,19 @@
     background-color: blue;
     float: left;
 
+}
+
+#ListMapView{
+    height:83vh;    
+    overflow: auto;
+}
+
+#recommend{
+    padding:1em;
+    border:solid;
+    background-color:#F0FFFF;
+}
+
+.ListMapView{
+    padding:1em;
 }

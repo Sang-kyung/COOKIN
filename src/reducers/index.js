@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import user from './user';
+import searchCity from './searchCity'
 
 export const USER_LOGOUT = "USER_LOGOUT"
 export const userLogOut = () => ({
@@ -8,6 +9,7 @@ export const userLogOut = () => ({
 
 const appReducer = combineReducers({
   user,
+  searchCity,
   //여기에 추가될 reducer를 선언하기.
 })
 
