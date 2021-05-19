@@ -11,31 +11,26 @@ import db from './../firebase';
 
 const SearchPage = () => {
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
-  
-  const [kitchenList, setKitchenList] = useState([]);
-  var kitchen_list = [];
-  var utensils = [];
 
   const fetchData = (() => {
     db.collection("kitchen_list")
     .get()
     .then(query => {
         query.forEach((doc) => {
-          //if (doc.data().place === "Gangnam") {
-            kitchen_list.push(doc.data());
-            console.log(kitchen_list);
-            
-            var kitchen = doc.data();
-            var element = <div className="ListMapView"> <ListMapView kitchen={kitchen} /> </div>;
+          if (doc.data().place === "Gangnam") {
+            var utensil = [];
+            var i = 0;
+            for (i=0;i<doc.data().utensils.length;i++) {
+              utensil.push(doc.data().utensils);
+            }
+            //var kitchen = {name: doc.data().name, img: doc.data().img, ingredients: doc.data().ingredients, price: doc.data().price, utensils: doc.data().utensils};
+            var element = <div className="ListMapView"> <ListMapView kitchen= {{name: doc.data().name, img: doc.data().img, ingredients: doc.data().ingredients, price: doc.data().price, /*utensils: doc.data().utensils*/}} /> </div>;
             ReactDOM.render(element, document.getElementById('ListMapView'));
-            //setKitchenList(kitchen_list);
-          //}
+            console.log(element)
+          }
         })}
     );
   });
-  
-  
-
 
 /*
 // Select the node that will be observed for mutations
