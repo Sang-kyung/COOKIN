@@ -8,12 +8,10 @@ const SearchView = () => {
   const dispatch = useDispatch();
   const clickfunction = () => {
     var input = document.getElementById("input").value;
-    if(input!= ""){
-      dispatch(setFirstCity(input));
-      dispatch(setRecommendedPlace(". . ."))
-      SearchMap.searchMapKeyWord(input);
-      window.location.href="/search";
-    }
+    dispatch(setFirstCity(input));
+    dispatch(setRecommendedPlace(". . ."))
+    SearchMap.searchMapKeyWord(input);
+    window.location.href="/search";
   }
   
 
