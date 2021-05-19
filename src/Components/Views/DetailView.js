@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 //view
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
-import { db } from '../../firebase';
-
 import db from '../../firebase';
 
 // style
