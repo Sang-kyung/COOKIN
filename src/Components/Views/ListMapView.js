@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./ListMapView.css";
 
-const ListMapView = ({kitchen}) => {
-    
-    
+const ListMapView = ({kitchen}) => {  
     var this_div = 
     <div id="body">
         <div id="photo">
@@ -15,15 +13,20 @@ const ListMapView = ({kitchen}) => {
                 {kitchen.name}
             </div>
             <div id="information">
-            <p id="price">
-                {kitchen.price}
-            </p>
-            <p id="utensils">
-                {kitchen.utensils[0].stove}
-            </p>
-            <p id="ingredients">
-                {kitchen.ingredients}
-            </p>
+                <p id="price">
+                    {kitchen.price}
+                </p>
+                <p id="utensils">
+                    utensils:
+                    {kitchen.utensils.map(items => {
+                        return (<p>
+                                    {items.name}: {items.num}
+                                </p>)
+                    })}
+                </p>
+                <p id="ingredients">
+                    {kitchen.ingredients}
+                </p>
             </div>
         </div>  
     </div>
