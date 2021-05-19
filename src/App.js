@@ -8,8 +8,6 @@ import DetailPage from './Page/DetailPage';
 
 import './App.css';
 
-
-
 function App() {
   return (
     <div className="App">

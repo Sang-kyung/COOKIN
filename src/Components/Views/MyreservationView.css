@@ -22,9 +22,3 @@
 .options {
     display: inline;
 }
-
-.reservationScroll {
-    height: 180px;
-    overflow: auto;
-    margin-bottom: 30px;
-}
