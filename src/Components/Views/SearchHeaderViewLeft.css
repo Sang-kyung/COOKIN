@@ -26,7 +26,8 @@
 .searchInput {
     display: inline-block;
     height: 42px;
-    width: 300px;
+    width: 340px;
+    margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -41,12 +42,14 @@ input {
     display: inline-block;
     height: 50px;
     width: 50px;
-    margin: 15px 0px;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 .recBtn {
     display: inline-block;
     height: 50px;
     width: 50px;
-    margin: 15px 0px;
+    margin-left:20px;
+    margin-top: 15px;
 }  
