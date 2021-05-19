@@ -13,8 +13,7 @@ export const reserve = (res) => ({
 
 const initialState = {
   number : 2,
-  upcoming : 1,
-  reservationsUp: [
+  reservations: [
     {
       name: "Din Tai Fung",
       date: "2021-05-31",
@@ -23,8 +22,6 @@ const initialState = {
         {name: "Cilantro", amount: "50g"}
       ]
     },
-  ],
-  ReservationsPast: [
     {
       name: "La grillia",
       date: "2021-05-05",
@@ -32,8 +29,8 @@ const initialState = {
         {name: "Onions", amount: "300g"},
         {name: "Green onions", amount: "100g"}
       ]
-    },
-  ]
+    }
+  ],
 }
 
 const reservation = (state = initialState, action) => {
@@ -41,9 +38,8 @@ const reservation = (state = initialState, action) => {
     case ADD_RESERVATION: {
       return {
         ...state,
-        reservationNum : state.number + 1,
-        upcoming : state.upcoming + 1,
-        resInfo: state.reservationsUp.concat(action.payload),   //push?
+        number : state.number + 1,
+        reservations: state.reservations.concat(action.payload),   //push?
       }
     }
     default:

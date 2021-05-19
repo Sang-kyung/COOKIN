@@ -26,12 +26,7 @@ const MyreservationBox = ({res, time}) => {
     </div>
 }
 
-const MyreservationView = () => {
-    const Ups = useSelector(state => state.reservation.reservationsUp);
-    const now = new Date();
-
-    const Pasts = useSelector(state => state.reservation.ReservationsPast);
-
+const MyreservationView = ({Ups, Pasts}) => {
     return <div className ='reservation'>
                 <h3>Upcoming Reservations</h3>
                 <div>
