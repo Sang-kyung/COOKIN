@@ -10,8 +10,6 @@ const SearchPage = () => {
   var recommendedPlaceDisplay = '...';
   return <div>
     <SearchHeaderView />
-
-
     <div className="leftBox">
       <div>leftbox</div>
       <div id="recommend">

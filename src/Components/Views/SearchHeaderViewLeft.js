@@ -217,7 +217,7 @@ const SearchHeaderViewLeft = () => {
 
         </div>
         <div className="searchInputWrapper">
-          <input className="searchInput" onKeyDown = {function(e){
+          <input id="searchInput" className="searchInput" onKeyDown = {function(e){
             if(e.keyCode == 13){
               updateCity();
             }
