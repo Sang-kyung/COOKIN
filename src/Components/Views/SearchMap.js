@@ -10,6 +10,10 @@ export function setMapCenter(Lat, Lng) {
     map.setCenter(moveLatLon);
 }
 
+export function setMapZoom(level) {
+    map.setLevel(level);
+}
+
 
 export function searchMapKeyWord(keyword) {
     var ps = new kakao.maps.services.Places(); 
