@@ -5,7 +5,7 @@ const ListMapView = ({restaurant}) => {
     var this_div = 
     <div id="body">
         <div id="photo">
-            <img src={require('../../img/Kitchen/${restaurant.img}.png').default}/>
+            hello
         </div>
         <div id="content">
             <div id="name">

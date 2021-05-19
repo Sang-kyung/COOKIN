@@ -13,6 +13,8 @@ const SearchPage = () => {
   var allRestaurants = db.collection("kitchen_list");
 
   var query = allRestaurants.where("place", "==", "gangnam");
+  console.log(query);
+
 
   const [kitchenList, onLoad] = useState({});
 
@@ -21,7 +23,7 @@ const SearchPage = () => {
   });
 
   const loadKitchenList = () => {
-    onload(query);
+    onLoad(query);
   }
 
   // load kitchen data from firebase
