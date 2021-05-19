@@ -18,13 +18,16 @@ const SearchPage = () => {
     .then(query => {
         query.forEach((doc) => {
           if (doc.data().place === "Gangnam") {
-            var utensil = [];
+            /*var utensil = [];
             var i = 0;
             for (i=0;i<doc.data().utensils.length;i++) {
-              utensil.push(doc.data().utensils);
-            }
-            //var kitchen = {name: doc.data().name, img: doc.data().img, ingredients: doc.data().ingredients, price: doc.data().price, utensils: doc.data().utensils};
-            var element = <div className="ListMapView"> <ListMapView kitchen= {{name: doc.data().name, img: doc.data().img, ingredients: doc.data().ingredients, price: doc.data().price, /*utensils: doc.data().utensils*/}} /> </div>;
+              console.log(doc.data().utensils[i])
+              var object1 = doc.data().utensils[i];
+              for (const [key, value] of Object.entries(object1)) {
+                utensil.push(key,value);
+              }
+            }*/
+            var element = <div className="ListMapView"> <ListMapView kitchen= {doc.data()}/*{{name: doc.data().name, img: doc.data().img, ingredients: doc.data().ingredients, price: doc.data().price, utensils: utensil}}*/ /> </div>;
             ReactDOM.render(element, document.getElementById('ListMapView'));
             console.log(element)
           }

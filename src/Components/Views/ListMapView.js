@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import "./ListMapView.css";
 
 const ListMapView = ({kitchen}) => {
+    
+    
     var this_div = 
     <div id="body">
         <div id="photo">
@@ -17,7 +19,7 @@ const ListMapView = ({kitchen}) => {
                 {kitchen.price}
             </p>
             <p id="utensils">
-                {kitchen.utensils}
+                {kitchen.utensils[0].stove}
             </p>
             <p id="ingredients">
                 {kitchen.ingredients}
