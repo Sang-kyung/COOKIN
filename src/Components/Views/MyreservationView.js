@@ -1,9 +1,16 @@
 import React from 'react';
 import './MyreservationView.css';
-import { useSelector } from 'react-redux';
-
 import OptionsItem from '../Items/OptionsItem.js'
 
+const _modify = () => {
+    // 예약정보 가지고 수정하러 수정페이지(=예약페이지로)
+    return;
+}
+
+const _cancel = () => {
+    // 예약정보 삭제(db에서도, reducer에서도(?)
+    return;
+}
 
 const MyreservationBox = ({res, time}) => {
     return <div className ="reservation_box">
@@ -18,8 +25,8 @@ const MyreservationBox = ({res, time}) => {
             </div>
             {time == "Future" && 
             <div>
-                <p>MODIFY</p>
-                <p>CANCEL</p>
+                <p className="modify" onClick={_modify}>MODIFY</p>
+                <p className="cancel" onClick={_cancel}>CANCEL</p>
             </div>
             }
         </div>

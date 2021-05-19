@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../reducers/user';
 
-const MyinformationView = ({Upcoming}) => {
+const MyinformationView = ({res_num ,Upcoming}) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -15,12 +15,11 @@ const MyinformationView = ({Upcoming}) => {
   }
 
   const user = useSelector(state => state.user);
-  const res = useSelector(state => state.reservation);
 
   return <div className="grid">
           <div>
             <h3>{user.name}</h3>
-            <h4>My Reservation : {res.number}</h4>
+            <h4>My Reservation : {res_num}</h4>
             <h4>Upcoming : {Upcoming}</h4>
           </div>
           <button className="logoutbtn" onClick={_logout}>

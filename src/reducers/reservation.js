@@ -12,7 +12,6 @@ export const reserve = (res) => ({
 // });
 
 const initialState = {
-  number : 2,
   reservations: [
     {
       name: "Din Tai Fung",
