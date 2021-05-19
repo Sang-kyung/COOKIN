@@ -11,7 +11,7 @@ const ListMapView = ({restaurant}) => {
         </div>
         <div id="content">
             <div id="name">
-                {restaurant.place}
+                {restaurant.name}
             </div>
             <div id="information">
             <p id="price">

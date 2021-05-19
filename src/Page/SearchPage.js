@@ -26,9 +26,21 @@ const SearchPage = () => {
     }
   }
   
-  const [kitchenList, onLoad] = useState([]);
+  const [kitchenList, setKitchenList] = useState([]);
   var kitchen_list = [];
 
+  const fetchData = (() => {
+    db.collection("kitchen_list").where("place", "==", "Gangnam")
+    .get()
+    .then(query => {
+        query.forEach((doc) => {
+          kitchen_list.push(doc.data());
+          console.log(kitchen_list);
+        })}
+    );
+  });
+
+//여기서부터 감시코드
   const targetNode = document.getElementById('recommend');
  
   // 변화 감지 설정입니다.
@@ -48,6 +60,7 @@ const SearchPage = () => {
       if (mutation.type === 'characterData') {
         // 자식 노드가 추가되거나 제거되었습니다.
         fetchData();
+        setKitchenList(kitchen_list);
         document.getElementsByClassName("ListMapView").style.visibility = "none";
       }
     }
@@ -59,55 +72,6 @@ const SearchPage = () => {
   // 선택한 노드의 변화 감지를 시작합니다.
   observer.observe(targetNode, config);
 
-  const fetchData = (() => {
-    db.collection("kitchen_list").where("place", "==", "Gangnam")
-    .get()
-    .then(query => {
-        query.forEach((doc) => {
-          kitchen_list.push(doc.data());
-          console.log(kitchen_list);
-        })}
-    );
-  });
-
-  useEffect(() => {
-      loadKitchenList();
-  });
-
-  const loadKitchenList = () => {
-    onLoad(kitchen_list);
-    console.log(kitchen_list);
-  }
-
-
-  useEffect(() => {
-      // Update the document title using the browser API
-      loadKitchenInfo();
-    }, []);
-
-
-
-  // load kitchen data from firebase
-  const loadKitchenInfo = () => {
-      // hard coded -> database loading
-      const kitchen = {
-          name: "Din Tai Fung",
-          address: "12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea",
-          imgUrl: ["dintaifung-1", "dintaifung-2"],
-          price: 40000,
-          capacity: 10,
-          ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"],
-          availableDate: "",
-          utensils: [
-              {name: "Stove", num: 6, imgUrl: 'stove'},
-              {name: "Pan", num: 5, imgUrl: 'pan'},
-              {name: "Wok", num: 3, imgUrl: 'wok'},
-              {name: "Oven", num: 1, imgUrl: 'oven'},
-              {name: "Sink", num: 1, imgUrl: 'sink'}
-          ]
-      };
-      onLoad(kitchen);
-  }
   /* hardcoded eg
   const loadKitchenList = () => {
       // hard coded -> database loading
@@ -127,7 +91,7 @@ const SearchPage = () => {
         }
         ]
       };
-      onload(list);
+      setKitchenList(places);
     } */
   
   return <div>
