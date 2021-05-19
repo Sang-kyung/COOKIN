@@ -6,11 +6,14 @@ import SearchHeaderView from '../Components/Views/SearchHeaderView';
 import ListMapView from '../Components/Views/ListMapView';
 import './SearchPage.css'
 const SearchPage = () => {
-  const recommendedPlace = useSelector((state:any) => state.searchCity.recommendedPlace);
+  const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var recommendedPlaceDisplay = '...';
   return <div>
     <SearchHeaderView />
-    <div id="leftBox">
+
+
+    <div className="leftBox">
+      <div>leftbox</div>
       <div id="recommend">
         Recommended place is  {recommendedPlace}
       </div>
@@ -35,7 +38,7 @@ const SearchPage = () => {
         </div>
       </div>  
     </div>
-    <div id="rightBox">
+    <div className="rightBox">
       <MapContainer />
     </div>
 

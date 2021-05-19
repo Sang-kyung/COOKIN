@@ -6,8 +6,8 @@ import './MyPageButton.css'
 
 const MyPageButton = () => {
 
-  return <div style={{height: "100%", width:'auto', backgroundColor:'black', float: 'right'}}>
-    <Link to="/mypage"><img style={{width: 'auto'}} src={imgfile}/></Link>
+  return <div className="myPageBtnWrapper">
+      <Link to="/mypage"><img src={imgfile}/></Link>
     </div>
 }
 

@@ -1,23 +1,24 @@
 import React from 'react';
 import './HeaderView.css'
 import HomePageButton from '../Buttons/homePageButton';
-import SearchResult from './SearchHeaderViewLeftSearchList'
-import { Route, Link, Switch } from 'react-router-dom';
+import SearchResult from './SearchTagItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFirstCity, setFirstCity,deleteSecondCity, setSecondCity,deleteThirdCity, setThirdCity,deleteFourthCity, setFourthCity, setFirstCoord, setSecondCoord, setThirdCoord, setFourthCoord, setRecommendedPlace } from '../../reducers/searchCity';
 import * as SearchMap from './SearchMap'
 
+import './SearchHeaderViewLeft.css';
+
 
 const SearchHeaderViewLeft = () => {
-  const firstCity = useSelector((state:any) => state.searchCity.firstCity);
-  const secondCity = useSelector((state:any) => state.searchCity.secondCity);
-  const thirdCity = useSelector((state:any) => state.searchCity.thirdCity);
-  const fourthCity = useSelector((state:any) => state.searchCity.fourthCity);
-  const firstCoord = useSelector((state:any) => state.searchCity.firstCityCoord);
-  const secondCoord = useSelector((state:any) => state.searchCity.secondCityCoord);
-  const thirdCoord = useSelector((state:any) => state.searchCity.thirdCityCoord);
-  const fourthCoord = useSelector((state:any) => state.searchCity.fourthCityCoord);
-  const cities = useSelector((state:any) => state.searchCity);
+  const firstCity = useSelector((state) => state.searchCity.firstCity);
+  const secondCity = useSelector((state) => state.searchCity.secondCity);
+  const thirdCity = useSelector((state) => state.searchCity.thirdCity);
+  const fourthCity = useSelector((state) => state.searchCity.fourthCity);
+  const firstCoord = useSelector((state) => state.searchCity.firstCityCoord);
+  const secondCoord = useSelector((state) => state.searchCity.secondCityCoord);
+  const thirdCoord = useSelector((state) => state.searchCity.thirdCityCoord);
+  const fourthCoord = useSelector((state) => state.searchCity.fourthCityCoord);
+  const cities = useSelector((state) => state.searchCity);
   if(firstCity != '-' && firstCoord =='-'){
     setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()))},500);
   }
@@ -188,39 +189,46 @@ const SearchHeaderViewLeft = () => {
     }
     
   }
+
+  // const tagItems = [
+  //   {city: "la", func: () => {}},
+  //   {city: "la", func: () => {}},
+  //   {city: "la", func: () => {}},
+  //   {city: "la", func: () => {}}
+  // ]
+
   var this_div = 
-  <div id= "HeaderLeft">
-      <div style={{height: "100%", width:'100%', backgroundColor:'black', float: 'left'}}>
-        <div style={{height: "100%",  width:'auto', backgroundColor:'purple', float: 'left'}}>
-        <HomePageButton />
-        </div>
-        <div style={{height: "50%", width:'60%', backgroundColor:'orange', float:'left', overflow:'auto'}}>
-          <div style={{ height: '50px',width:'fit-content', backgroundColor:'red', display:'inline-block', margin:'10px'}}>
+    <div className="leftHeaderWrapper">
+      <div className="homePageBtnWrapper">
+      <HomePageButton />
+      </div>
+      
+      <div className="searchWrapper">
+        <div className="tagWrapper">
+
+          {/* {tagItems.map((item, index) => {
+            <SearchResult item={item} index={index} />
+          })} */}
+
           <SearchResult item= {{city: firstCity, func: deleteFC}} />
-          </div>
-          <div style={{height: '50px', width:'fit-content', backgroundColor:'orange', display:'inline-block', margin:'10px'}}>
           <SearchResult item= {{city: secondCity, func: deleteSC}} />
-          </div>
-          <div style={{height: '50px', width:'fit-content', backgroundColor:'yellow', display:'inline-block', margin:'10px'}}>
           <SearchResult item= {{city: thirdCity, func: deleteTC}} />
-          </div>
-          <div style={{ height: '50px',width:'fit-content', backgroundColor:'green', display:'inline-block', margin:'10px'}}>
           <SearchResult item= {{city: fourthCity, func: deleteFoC}} />
-          </div>
 
         </div>
-        <div style={{height: "50%", width:'60%', backgroundColor:'red', float:'left'}}>
-          <input id="searchInput" style={{height: "80%", width: '65%'}} onKeyDown = {function(e){
-      if(e.keyCode == 13){
-        updateCity();
-      }
-    }}></input>
-          <button style= {{height:'80%', width: '9%', fontSize:'16px'}} onClick={(e:any) => {updateCity()}}>+</button>
-          <button style= {{height:'80%', width: '20%', fontSize:'16px'}} onClick={(e:any) => {getRecommendation()}}>Recommend</button>
+        <div className="searchInputWrapper">
+          <input className="searchInput" onKeyDown = {function(e){
+            if(e.keyCode == 13){
+              updateCity();
+            }
+          }}></input>
+          <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
+          <button className="recBtn" onClick={(e) => {getRecommendation()}}>R</button>
         </div>
-      
       </div>
-  </div>
+    
+    </div>
+
   return this_div
 }
 
