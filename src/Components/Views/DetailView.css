@@ -1,14 +1,9 @@
 .detailViewWrapper {
     text-align: left;
-    margin: 20px 30px;
+    padding: 20px 120px;
 }
 
 .detailInfoWrapper {
-    display: inline-block;
-    width: 50%;
-}
-
-.reservationInfoWrapper {
     display: inline-block;
     width: 50%;
 }
@@ -29,8 +24,6 @@
     font-weight: bold;
 }
 
-.detailIngredients {
-}
 
 .detailIngredients p {
     color : #000000;
@@ -42,8 +35,32 @@ hr {
     border: 1px solid #c4c4c4;
 }
 
-.rightWrapper {
+.floatingViewWrapper {
     display: inline-block;
-    width: 40%;
 }
+
+.reservationInfoWrapper {
+    border: 1px solid black;
+    border-radius: 10px;
+    position: fixed;
+    width: calc(50% - 120px);
+    top: 30%;
+}
+
+.dateWrapper {
+    padding: 20px 0;
+}
+
+.date {
+    margin-bottom: 10px;
+}
+
+
+.dateWrapper p {
+    display: inline-block;
+}
+
+
+
+
 

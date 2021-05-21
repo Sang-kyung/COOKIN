@@ -1,157 +1,187 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import db from '../../firebase';
 
 //view
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import OrangeButton from '../Buttons/OrangeButton';
+import LoginModalView from './LoginModalView';
+import SearchHeaderView from './SearchHeaderView';
 
 // style
 import './DetailView.css';
+import GrayButton from '../Buttons/GrayButton';
+
 
 const DetailView = () => {
 
-    const [kitchenInfo, onLoad] = useState({});
-    const [options, onChangeOptions] = useState({});
+    const user = useSelector(state => state.user);
 
-    // handling click +, - buttons in ingredients
-    // const onClickPlus = ({name}) => {
-    //     // if there exist ingredient, increase amount
-    //     // else make new ingredient with amount 1
-    //     if (options.find(x => x.name == name)) {
-    //         options.map(item => {
-    //             if (item.name == name) {
-    //                 item.amount += 1
-    //             }
-    //         })
-    //     } else {
-    //         var append_item = {
-    //             name: name,
-    //             amount: 1
-    //         }
-    //         options.push(append_item);
-    //     }
-    //     onChangeOptions(options);
-    // }
+    const [kitchenInfo, onKitchenInfoLoad] = useState({});
+    const [reserveInfo, onChangeReserveInfo] = useState({});
+    const [totalPrice, onChangePrice] = useState(0);
+
+    const [loginModalOpen, onLoginModalUpdate] = useState(false);
+    const [reserveModalOpen, onReserveModalUpdate] = useState(false);
+
+    useEffect(() => {
+        fetchKitchenInfo();
+        onChangePrice(kitchenInfo.price);
+        onChangeReserveInfo({
+            name: "",
+            price: 0,
+            datae: "",
+            ingredients: []
+        });
+    }, []);
+
+    // load kitchen data from firebase
+    const fetchKitchenInfo = () => {
+        db.collection('kitchen_list').doc("Din Tai Fung").get()
+        .then(doc => {
+            onKitchenInfoLoad(doc.data());
+        })
+        .catch((error) => {
+            console.error("database load data failed", error);
+        })
+    }
+
+    // make reserve object for databse
+    const makeReserveObj = (kitchen) => {
+        reserveInfo.name = kitchen.name;
+        reserveInfo.price = kitchen.price;
+        reserveInfo.date = "2021-06-01";
+        onChangeReserveInfo(reserveInfo);
+    }
+
+    const onCloseLoginModal = () => {
+        onLoginModalUpdate(false);
+    }
+
+    const onCloseReserveModal = () => {
+        onReserveModalUpdate(false);
+    }
+
+    const onClickPlus = (name) => {
+        if (reserveInfo.ingredients.find(x => x.name == name)) {
+            reserveInfo.ingredients.map(item => {
+                if (item.name == name) {
+                    item.amount += 1
+                }
+            })
+        } else {
+            let append_item = {
+                name: name,
+                amount: 1
+            }
+            reserveInfo.ingredients.push(append_item);
+        }
+        // onChangeReserveInfo(reserveInfo);
+    }
 
     const onClickMinus = (name) => {
-        options.map(item => {
+        reserveInfo.ingredients.map(item => {
             if (item.name == name) {
                 item.amount -= 1
             }
         })
-        options.filter(item => item.amount > 0)
-        onChangeOptions(options);
+        reserveInfo.ingredients.filter(item => item.amount > 0)
+        // onChangeReserveInfo(reserveInfo);
     }
-
-    const fetchData = (() => {
-        let datas = []
-        db.collection('ingredient_list')
-        .get()
-        .then(query => {
-            query.forEach((doc) => {
-            datas.push(doc.data().name)
-            console.log(datas)
-            })}
-        );
-    });
-
-    useEffect(() => {
-        // Update the document title using the browser API
-        loadKitchenInfo();
-      }, []);
-
-
-
-    // load kitchen data from firebase
-    const loadKitchenInfo = () => {
-        // hard coded -> database loading
-        db.collection('kitchen_list')
-        .doc("Din Tai Fung")
-        .get()
-        .then(doc => {
-            console.log(doc.data())
-            onLoad(doc.data());
-        })
-    }
-
-    const Ingredients = [
-        {name: "Bok choy", price: 860, unit: "100g", imgUrl: 'stove'},
-        {name: "Cilantro", price: 1200, unit: "100g", imgUrl: 'pan'},
-        {name: "Onion", price: 340, unit: "100g", imgUrl: 'wok'},
-        {name: "Gree Onion", price: 870, unit: "100g", imgUrl: 'oven'},
-    ]
-
-    const current_options = [
-        {name: "Bok choy", amount: 3, price: 2520},
-        {name: "Onion", amount: 4, price: 1360},
-    ]
 
     const onClickReserve = () => {
-        
+        makeReserveObj(kitchenInfo)
+        if (user.isloggedIn) {
+            let reservations = []
+            db.collection("reservation_list").doc(user.phone).get()
+            .then((doc) => {
+                if (doc.exists) {
+                    reservations = doc.data();
+                    reservations.push(reserveInfo);
+                } else {
+                    reservations.push(reserveInfo);
+                }
+                db.collection("reservation_list").doc(user.phone).set({reservations})
+                .then(() => {
+                    console.log("updated")
+                })
+                .catch((error) => {
+                    console.error("database update data failed", error);
+                })
+            })
+            .catch((error) => {
+                console.error("database load data failed", error);
+            });
+            onReserveModalUpdate(true);
+        } else {
+            onLoginModalUpdate(true);
+        }
     }
 
-    return <div className={"detailViewWrapper"}>
-        <div className={"detailInfoWrapper"}>
-            <h1>{kitchenInfo.name}</h1>
-            <span>{kitchenInfo.address}</span>
-            <h2>{kitchenInfo.price}</h2>
-            <div className={"detailPicture"}>
-                {/* <img className={"kitchenImg"} src={require('../img/Kitchen/Dintaifung_1.png').default} /> */}
-            </div>
-            <hr />
-            <div className={"detailUtensil"}>
-                <p>Utensils</p>
-                {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
-                    return <UtensilItem 
-                            key={index} 
-                            item={item} 
-                            />
-                })}
-            </div> 
-            <div className={"detailIngredients"}>
-                <p>Ingredients</p>
-                {Ingredients.map((item, index) => {
-                    return <IngredientItem 
-                            key={index} 
-                            item={item}                
-                            // onClickPlus={onClickPlus} 
-                            // onClickMinus={onClickMinus}
-                            />
-                })}
-            </div>
-        </div>
-        <div className={"reservationInfoWrapper"}>
-            <div className={"totalPriceWrapper"}>
-                {/* {options.map((item) => {
-                    
-                })} */}
-            </div>
-            <div className={"dateWrapper"}>
 
+    return (
+        <div>
+            <SearchHeaderView />
+            {kitchenInfo.name && 
+                <div className={"detailViewWrapper"}>
+    `                <div className={"detailInfoWrapper"}>
+                        <div className={"detailHeaderWrapper"}>
+                            <h1>{kitchenInfo.name}</h1>
+                            <span>{kitchenInfo.address}</span>
+                            <h2>{kitchenInfo.price}</h2>
+                            <div className={"detailPicture"}>
+                            <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
+                            </div>
+                        </div>
 
-            </div>
-            <OrangeButton text={"Reserve"} onClickBtn={onClickReserve}/>
+                        <div className={"detailUtensil"}>
+                            <p>Utensils</p>
+                            {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
+                                return <UtensilItem key={index} item={item} />
+                            })}
+                        </div> 
+
+                        <div className={"detailIngredients"}>
+                            <p>Ingredients</p>
+                            {kitchenInfo.ingredients && kitchenInfo.ingredients.map((item, index) => {
+                                return <IngredientItem key={index} item={item} onClickPlus={onClickPlus} onClickMinus={onClickMinus} />
+                            })}
+                        </div>
+                    </div>
+                    <div className={"floatingViewWrapper"}>
+                        <div className={"reservationInfoWrapper"}>
+                            <div className={"totalPriceWrapper"}>
+                                {reserveInfo.ingredients && reserveInfo.ingredients.map((item, index) => {
+                                    return (
+                                        <div key={index}>
+                                            {item.name}
+                                            {item.amount}
+                                        </div>
+                                    )    
+                                })}
+                            </div>
+                            <div className={"dateWrapper"}>
+                                <div className={"date"}>
+                                    <p>Date</p>
+                                    <GrayButton text={"May"}/>
+                                    <GrayButton text={"5"}/>
+                                </div>
+                                <div className={"time"}>
+                                    <p>Time</p>
+                                    <GrayButton text={"14:00"}/>
+                                    <GrayButton text={"17:30"}/>
+                                </div>
+                            </div>
+                            <OrangeButton text={"Reserve"} onClickBtn={onClickReserve}/>
+                        </div>
+                    </div>
+                </div>
+            }
+            {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal}/>}
+            {reserveModalOpen && <reserveModalOpen />}
         </div>
-    </div>
-    
+    )
 }
 
 export default DetailView
-
-        // const kitchen = {
-        //     name: Din Tai Fung,
-        //     address: "12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea",
-        //     imgUrl: ["dintaifung-1", "dintaifung-2"],
-        //     price: 40000,
-        //     capacity: 10,
-        //     ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"],
-        //     availableDate: "",
-        //     utensils: [
-        //         {name: "Stove", num: 6, imgUrl: 'stove'},
-        //         {name: "Pan", num: 5, imgUrl: 'pan'},
-        //         {name: "Wok", num: 3, imgUrl: 'wok'},
-        //         {name: "Oven", num: 1, imgUrl: 'oven'},
-        //         {name: "Sink", num: 1, imgUrl: 'sink'}
-        //     ]
-        // };

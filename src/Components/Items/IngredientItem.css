@@ -1,13 +1,40 @@
-.itemWrapper {
+.ingredientItemWrapper {
+    width: 100%;
+    padding: 10px;
+}
+
+.ingredientImgWrapper {
     display: inline-block;
-    width: 150px;
-    margin: 10px;
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #c4c4c4;
 }
 
-.itemWrapper span {
-    color: #000000;
+.ingredientImg {
+    width: 90px;
+    height: 90px;
+    margin: 20px;
 }
 
-img {
-    width: 100px;
+.ingredientOptionWrapper {
+    display: inline-block;
+    width: calc(100% - 170px);
+    height: 30px;
+    margin-left: 20px;
 }
+
+
+.plusIcon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.minusIcon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px; 
+}
+
+

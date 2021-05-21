@@ -4,16 +4,20 @@ import './LoginModal.css'
 import { useDispatch } from 'react-redux';
 import db from '../../firebase';
 import { login } from '../../reducers/user';
-import { show, setShow } from '../Buttons/MyPageButton';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const LoginModalView = (props) => {
-    const show = props.show;
-    const setShow = props.setShow;
+
+    const {isReservePage, onCloseModal } = props;
+
     const dispatch = useDispatch();
     const history = useHistory();
+
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
+
+    const user = useSelector(state => state.user);
 
     const _login = () => {
     if(phone === "" || name === ""){
@@ -24,12 +28,11 @@ const LoginModalView = (props) => {
         if (doc.exists) {
             if(doc.data().name !== name){
                 alert("Wrong name");
-                setShow(false);
                 return;
             }
             else{
                 dispatch(login({phone, name}));
-                history.push("/mypage");
+                !isReservePage && history.push("/mypage");
             }
         }
         else {
@@ -38,7 +41,7 @@ const LoginModalView = (props) => {
                 phone: phone
             }).then(() => {
                 dispatch(login({phone, name}));
-                history.push("/mypage");
+                !isReservePage && history.push("/mypage");
             })
         }
         }).catch((error) => {
@@ -57,18 +60,9 @@ const LoginModalView = (props) => {
     }
 
     const handleModalClose = (e) => { //input value 비워야돼.
-        const currentClass = e.target.className;
-        switch (currentClass) {
-            case 'modal-close': {
-                setShow(false);
-                setPhone("");
-                setName("");
-                break;
-            }
-            case 'modal-input': {
-                return;
-            }
-        }
+        onCloseModal();
+        setPhone("");
+        setName("");
     };
 
 
@@ -89,7 +83,7 @@ const LoginModalView = (props) => {
 
                 // {/* <span>{"If you are first here, sign up with phone number and name"}</span>
                 // <span>{"If you had logged in before, enter your phone number and name"}</span> */}
-    return <div hidden={!show}>
+    return <div>
             <div className="modal">
                 <div className="modal-login">                
                 <div className="close">
@@ -98,13 +92,22 @@ const LoginModalView = (props) => {
                 <div className="modal-title">
                     COOKIN
                 </div>
+                {isReservePage && user.isloggedIn
+                    ?
+                    <div>
+                        You're logged in. Reserve the kitchen now!
+                    </div> 
+                    :
+                    <div>
+                        <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                        <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
+                        <button className="modal-loginbtn" onClick={_login}>
+                            {" "}
+                            Log In{" "}
+                        </button>
+                    </div>
+                }
                 {/* <Tabs defaultActiveKey="Log In" id="" */}
-                <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
-                <button className="modal-loginbtn" onClick={_login}>
-                    {" "}
-                    Log In{" "}
-                </button>
                 </div>
             </div>
         </div>

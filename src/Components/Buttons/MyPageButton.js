@@ -11,6 +11,7 @@ const MyPageButton = () => {
   const isloggedIn = useSelector(state => state.user.isloggedIn);
 
   const handleModalOpen = () => { // 밑에 onClick={handleModalOpen} 까지.
+    console.log("aa")
     isloggedIn === false ? (
       setShow(true)
     ) : (
@@ -18,8 +19,17 @@ const MyPageButton = () => {
     )
   };
 
+  const onCloseModal = () => {
+    console.log("bb")
+    setShow(false);
+  }
+
   return <div style={{height: "100%", width:'auto', backgroundColor:'black', float: 'right'}}>
-          <LoginModalView show = {show} setShow={setShow}/>
+          {show && 
+            <LoginModalView 
+              isReservePage={false}
+              onCloseModal={onCloseModal}
+            />}
           <button className="button" onClick={handleModalOpen}>
             <img style={{height: '100%', width: 'auto'}} src={imgfile}/>
           </button>
