@@ -1,47 +1,38 @@
-import React from  'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import "./ListMapView.css";
 
-const ListMapView = () => {
-    // hard coded => should be fixed with database
-    const Utensils = [
-        {name: "Stove", num: 6, imgUrl: 'stove'},
-        {name: "Pan", num: 5, imgUrl: 'pan'},
-        {name: "Wok", num: 3, imgUrl: 'wok'},
-        {name: "Oven", num: 1, imgUrl: 'oven'},
-        {name: "Sink", num: 1, imgUrl: 'sink'}
-    ]
-    
-    const Ingredients = [
-        {name: "Bok choy", price: 860, unit: "100g", imgUrl: 'stove'},
-        {name: "Cilantro", price: 1200, unit: "100g", imgUrl: 'pan'},
-        {name: "Onion", price: 340, unit: "100g", imgUrl: 'wok'},
-        {name: "Gree Onion", price: 870, unit: "100g", imgUrl: 'oven'},
-    ]
-
+const ListMapView = ({kitchen}) => {  
     var this_div = 
     <div id="body">
         <div id="photo">
-            hi
-            {/* <img className={"kitchenImg"} src={require('../img/Kitchen/Dintaifung_1.png').default} /> */}
+            hello
         </div>
         <div id="content">
             <div id="name">
-                Restaurant name
+                {kitchen.name}
             </div>
             <div id="information">
-            <p id="price">
-                Price
-            </p>
-            <p id="utensils">
-                Utensils
-            </p>
-            <p id="ingredients">
-                Ingredients
-            </p>
+                <div id="price">
+                    Price: {kitchen.price}
+                </div>
+                <br/>
+                <div id="utensils">
+                    Available Utensils:
+                    {kitchen.utensils.map((items, index) => {
+                        return (<div key={index}>{items.name}: {items.num}</div>)
+                    })}
+                </div>
+                <br/>
+                <div id="ingredients">
+                    Available Ingredients: {kitchen.ingredients.map((items, index) => {
+                        return (<div key={index}>{items}</div>)
+                    })}
+                </div>
             </div>
-        </div>    
+        </div>
     </div>
-    return this_div;
+    return this_div
 }
 
 export default ListMapView;

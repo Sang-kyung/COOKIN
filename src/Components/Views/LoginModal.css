@@ -1,0 +1,62 @@
+.modal {
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-login {
+    width: 480px;
+    height: 540px;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+    margin: 50px auto;
+    padding: 5%;
+    background: #fff;
+}
+
+.close {
+    color: gray;
+    font-size: 30px;
+    text-align: right;
+}
+
+.modal-title {
+    margin-top: 10px;
+    height: 80px;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-input {
+    margin-bottom: 3%;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    height: 10%;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: groove;
+    border-color: darkgray;
+}
+
+.modal-loginbtn {
+    margin-top: 10%;
+    width: 100%;
+    padding: 9px 12px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 4%;
+    border-width: 1px;
+    border-style: groove;
+    border-color: darkgray;
+}
+
+.modal-loginbtn input::placeholder {
+    color: #999999;
+}

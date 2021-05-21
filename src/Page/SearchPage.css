@@ -1,17 +1,13 @@
-#leftBox{
-    Width: 50%;
-    height: 90vh;
-    background-color: yellow;
-    float: left;
-    overflow: hidden;
+.leftBox{
+    width: 40%;
+    display: inline-block;
+    height: 100%;
 }
 
-#rightBox{
-    Width:50%;
-    height: 90vh;
-    background-color: blue;
-    float: left;
-
+.rightBox{
+    width:60%;
+    display: inline-block;
+    height: 100%;
 }
 
 #ListMapView{

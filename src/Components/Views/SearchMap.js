@@ -10,6 +10,10 @@ export function setMapCenter(Lat, Lng) {
     map.setCenter(moveLatLon);
 }
 
+export function setMapZoom(level) {
+    map.setLevel(level);
+}
+
 
 export function searchMapKeyWord(keyword) {
     var ps = new kakao.maps.services.Places(); 
@@ -50,11 +54,7 @@ const MapContainer = () => {
     }, []);
 
     return (
-        <div id='myMap' style={{
-            width: '90%', 
-            height: '90%',
-            margin: 'auto'
-        }}></div>
+        <div id='myMap' style={{width: '96%', height: '80vh', margin: '0 2%', overflow: 'visible'}}></div>
     );
 }
 
