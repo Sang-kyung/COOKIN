@@ -15,24 +15,24 @@ const DetailView = () => {
     const [options, onChangeOptions] = useState({});
 
     // handling click +, - buttons in ingredients
-    const onClickPlus = ({name}) => {
-        // if there exist ingredient, increase amount
-        // else make new ingredient with amount 1
-        if (options.find(x => x.name == name)) {
-            options.map(item => {
-                if (item.name == name) {
-                    item.amount += 1
-                }
-            })
-        } else {
-            var append_item = {
-                name: name,
-                amount: 1
-            }
-            options.push(append_item);
-        }
-        onChangeOptions(options);
-    }
+    // const onClickPlus = ({name}) => {
+    //     // if there exist ingredient, increase amount
+    //     // else make new ingredient with amount 1
+    //     if (options.find(x => x.name == name)) {
+    //         options.map(item => {
+    //             if (item.name == name) {
+    //                 item.amount += 1
+    //             }
+    //         })
+    //     } else {
+    //         var append_item = {
+    //             name: name,
+    //             amount: 1
+    //         }
+    //         options.push(append_item);
+    //     }
+    //     onChangeOptions(options);
+    // }
 
     const onClickMinus = (name) => {
         options.map(item => {
@@ -66,23 +66,13 @@ const DetailView = () => {
     // load kitchen data from firebase
     const loadKitchenInfo = () => {
         // hard coded -> database loading
-        const kitchen = {
-            name: "Din Tai Fung",
-            address: "12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea",
-            imgUrl: ["dintaifung-1", "dintaifung-2"],
-            price: 40000,
-            capacity: 10,
-            ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"],
-            availableDate: "",
-            utensils: [
-                {name: "Stove", num: 6, imgUrl: 'stove'},
-                {name: "Pan", num: 5, imgUrl: 'pan'},
-                {name: "Wok", num: 3, imgUrl: 'wok'},
-                {name: "Oven", num: 1, imgUrl: 'oven'},
-                {name: "Sink", num: 1, imgUrl: 'sink'}
-            ]
-        };
-        onLoad(kitchen);
+        db.collection('kitchen_list')
+        .doc("Din Tai Fung")
+        .get()
+        .then(doc => {
+            console.log(doc.data())
+            onLoad(doc.data());
+        })
     }
 
     const Ingredients = [
@@ -98,7 +88,7 @@ const DetailView = () => {
     ]
 
     const onClickReserve = () => {
-
+        
     }
 
     return <div className={"detailViewWrapper"}>
@@ -125,17 +115,17 @@ const DetailView = () => {
                     return <IngredientItem 
                             key={index} 
                             item={item}                
-                            onClickPlus={onClickPlus} 
-                            onClickMinus={onClickMinus}
+                            // onClickPlus={onClickPlus} 
+                            // onClickMinus={onClickMinus}
                             />
                 })}
             </div>
         </div>
         <div className={"reservationInfoWrapper"}>
             <div className={"totalPriceWrapper"}>
-                {options.map((item) => {
+                {/* {options.map((item) => {
                     
-                })}
+                })} */}
             </div>
             <div className={"dateWrapper"}>
 
@@ -148,3 +138,20 @@ const DetailView = () => {
 }
 
 export default DetailView
+
+        // const kitchen = {
+        //     name: Din Tai Fung,
+        //     address: "12, Seocho-daero 73-gil, Seocho-gu, Seoul, Republic of Korea",
+        //     imgUrl: ["dintaifung-1", "dintaifung-2"],
+        //     price: 40000,
+        //     capacity: 10,
+        //     ingredients: ["Bok choy", "Cilantro", "Onion", "Green Onion"],
+        //     availableDate: "",
+        //     utensils: [
+        //         {name: "Stove", num: 6, imgUrl: 'stove'},
+        //         {name: "Pan", num: 5, imgUrl: 'pan'},
+        //         {name: "Wok", num: 3, imgUrl: 'wok'},
+        //         {name: "Oven", num: 1, imgUrl: 'oven'},
+        //         {name: "Sink", num: 1, imgUrl: 'sink'}
+        //     ]
+        // };

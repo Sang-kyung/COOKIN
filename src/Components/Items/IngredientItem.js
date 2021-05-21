@@ -13,14 +13,14 @@ const IngredientItem = ({item, onClickPlus, onClickMinus}) => {
           <br/>
           <span>{item.price}</span>  
         <div className="buttonWrapper">
-          <img 
+          {/* <img 
             className="plusIcon" 
             src={require(`../../img/Buttons/plus.png`).default}
             onClick={onClickPlus(item.name)}/>
           <img 
             className="minusIcon" 
             src={require(`../../img/Buttons/minus.png`).default}
-            onClick={onClickMinus(item.name)}/>  
+            onClick={onClickMinus(item.name)}/>   */}
         </div>
       </div>
 }
