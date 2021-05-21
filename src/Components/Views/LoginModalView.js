@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import './LoginModal.css'
 import { useDispatch } from 'react-redux';
 import db from '../../firebase';
@@ -60,6 +61,8 @@ const LoginModalView = (props) => {
         switch (currentClass) {
             case 'modal-close': {
                 setShow(false);
+                setPhone("");
+                setName("");
                 break;
             }
             case 'modal-input': {
@@ -68,6 +71,24 @@ const LoginModalView = (props) => {
         }
     };
 
+
+
+
+
+    // <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+    // <Tab eventKey="home" title="Home">
+    //     <Sonnet />
+    // </Tab>
+    // <Tab eventKey="profile" title="Profile">
+    //     <Sonnet />
+    // </Tab>
+    // <Tab eventKey="contact" title="Contact" disabled>
+    //     <Sonnet />
+    // </Tab>
+    // </Tabs>
+
+                // {/* <span>{"If you are first here, sign up with phone number and name"}</span>
+                // <span>{"If you had logged in before, enter your phone number and name"}</span> */}
     return <div hidden={!show}>
             <div className="modal">
                 <div className="modal-login">                
@@ -77,8 +98,9 @@ const LoginModalView = (props) => {
                 <div className="modal-title">
                     COOKIN
                 </div>
-                <input className="modal-input" type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                <input className="modal-input" type="text" onChange={onNameChange} placeholder="Username" />
+                {/* <Tabs defaultActiveKey="Log In" id="" */}
+                <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
                 <button className="modal-loginbtn" onClick={_login}>
                     {" "}
                     Log In{" "}
