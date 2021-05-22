@@ -30,7 +30,7 @@ const SearchView = () => {
       }
     }}>
     </input>
-    <button id="buttonSearchInput" onClick={clickfunction}></button>
+    <button id="buttonSearchInput" onClick={clickfunction}>+</button>
   </div>
   </div>
   return this_div

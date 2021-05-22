@@ -47,10 +47,10 @@ input {
     border-radius: 25px;
     height: 40px;
     width: 40px;
-    color: white;
+    color: black;
+    font-size: 25px;
     margin-left: 20px;
     margin-top: 5px;
-    background: url('./../../images/searchIcon_32px.png');
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
