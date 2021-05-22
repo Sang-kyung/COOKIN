@@ -11,6 +11,12 @@
 .react-tabs__tab {
     text-align: center;
     color: #808080;
+    border-bottom: 1px solid #FA5000;
+}
+
+.react-tabs__tab--selected {
+    border-color: #FA5000;
+    border-bottom: none;
 }
 
 .modal {
@@ -24,12 +30,12 @@
 }
 
 .modal-login {
-    width: 480px;
-    height: 540px;
+    width: 450px;
+    height: 500px;
     background-color: white;
     position: relative;
     box-sizing: border-box;
-    margin: 5% auto;
+    margin: calc((100%-540px)/20) auto;
     padding: 5%;
     background: #fff;
     border-radius: 10px;
@@ -40,13 +46,16 @@
 .close {
     color: gray;
     font-size: 40px;
-    text-align: right;
     cursor: pointer;
+    right: 2%;
+    top: 0%;
+    position: absolute;
 }
 
 .modal-title {
-    margin-top: 10px;
-    height: 75px;
+    margin-bottom: 8%;
+    margin-top: 8%;
+    height: 50px;
     font-size: 35px;
     display: flex;
     justify-content: center;
@@ -69,6 +78,10 @@
     border-radius: 10px;
 }
 
+.modal-input:focus::placeholder {
+    color: transparent;
+}
+
 .modal-loginbtn {
     border-radius: 10px;
     background-color: #FA5000;
@@ -82,6 +95,7 @@
     width: 100%;
     padding: 7px 12px;
     border: none;
+    cursor: pointer;
 }
 
 .warning-wrong {
@@ -96,5 +110,5 @@
 .login-reserve {
     text-align: center;
     font-size: 1.3em;
-    margin-top: 25%;
+    margin-top: 30%;
 }

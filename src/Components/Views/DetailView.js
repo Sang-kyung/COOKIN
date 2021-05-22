@@ -198,8 +198,8 @@ const DetailView = () => {
                     </div>
                 </div>
             }
-            {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal}/>}
-            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal}/>}
+            {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal} />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} />}
         </div>
     )
 }
