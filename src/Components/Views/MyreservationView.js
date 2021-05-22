@@ -12,15 +12,26 @@ const _cancel = () => {
     return;
 }
 
-const MyreservationBox = ({res, time}) => {
+const getFormateDate = (date) => {
+    var year = date.getFullYear();
+    var month = (1 + date.getMonth());
+    month = month >= 10 ? month : '0' + month;
+    var day = date.getDate();
+    day = day >= 10 ? day : '0' + day;
+    return  year + '' + month + '' + day;
+}
+
+const MyreservationBox = ({name, date, ingredients, time}) => {    
+    let temp = getFormateDate(date);
+
     return (
         time == "Future" ? 
         (
             <div className ="reservation_box_future">
                 <div className="reservationWrapper">
-                    <h3>{res.name}</h3>
-                    <h4>date : {res.date}</h4>
-                    <h4 className="options">Ingredients : {res.ingredients.map((item) => {
+                    <h3>{name}</h3>
+                    <h4>date : {temp}</h4>
+                    <h4 className="options">Ingredients : {ingredients.map((item) => {
                                     return <OptionsItem key={item.name} item={item} />
                                 })}
                     </h4>
@@ -36,9 +47,9 @@ const MyreservationBox = ({res, time}) => {
         (
             <div className ="reservation_box_past">
                 <div className="reservationWrapper">
-                    <h3>{res.name}</h3>
-                    <h4>date : {res.date}</h4>
-                    <h4 className="options">Ingredients : {res.ingredients.map((item) => {
+                    <h3>{name}</h3>
+                    <h4>date : {temp}</h4>
+                    <h4 className="options">Ingredients : {ingredients.map((item) => {
                                     return <OptionsItem key={item.name} item={item} />
                                 })}
                     </h4>
@@ -56,7 +67,7 @@ const MyreservationView = (props) => {
                         <h3>Upcoming Reservations</h3>
                         <div>
                             {ups.map((item, index) => {
-                                return <MyreservationBox key={index} res={item} time={"Future"} />
+                                return <MyreservationBox key={index} name={item.name} date={item.date} ingredients={item.ingredients} time={"Future"} />
                             })}
                         </div>
                     </div>
@@ -66,7 +77,7 @@ const MyreservationView = (props) => {
                         <h3>Past Reservations</h3>
                         <div>
                             {pasts.map((item, index) => {
-                                return <MyreservationBox key={index} res={item} time={"Past"} />
+                                return <MyreservationBox key={index} name={item.name} date={item.date} ingredients={item.ingredients} time={"Past"} />
                             })}
                         </div>
                     </div>

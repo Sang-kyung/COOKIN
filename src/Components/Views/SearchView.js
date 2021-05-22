@@ -3,6 +3,7 @@ import './SearchView.css'
 import * as SearchMap from './SearchMap'
 import { deleteFourthCity, deleteSecondCity, deleteThirdCity, setFirstCity, setRecommendedPlace} from '../../reducers/searchCity';
 import { useDispatch} from 'react-redux'
+// import QuestionButton from '../Buttons/QuestionButton';
 
 const SearchView = () => {
   const dispatch = useDispatch();
