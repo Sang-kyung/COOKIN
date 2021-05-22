@@ -30,7 +30,8 @@ const MyPage = () => {
       let pasts_list = []
       if (doc.exists) {
         doc.data().reservations.map((item) => {
-          if(new Date(item.date) >= new Date()) {
+          item.date = new Date(item.date.toDate());
+          if(item.date >= new Date()) {
             ups_list.push(item);
           } else {
             pasts_list.push(item);
@@ -45,9 +46,6 @@ const MyPage = () => {
       }
     })
   }
-
-  console.log("return go");
-
   return (
     <div>
               {user.isloggedIn 
