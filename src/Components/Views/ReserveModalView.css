@@ -9,8 +9,8 @@
 }
 
 .Rmodal-reserve {
-    width: 540px;
-    height: 400px;
+    width: 600px;
+    height: 380px;
     background-color: white;
     position: relative;
     box-sizing: border-box;
@@ -25,8 +25,10 @@
 .Rclose {
     color: gray;
     font-size: 40px;
-    text-align: right;
     cursor: pointer;
+    right: 2%;
+    top: 0%;
+    position: absolute;
 }
 
 .Rmodal-info {
@@ -37,7 +39,7 @@
 
 .Rmodal-buttons {
     text-align: center;
-    margin-top: 14%;
+    margin-top: 10%;
 }
 
 .Rmodal-mypagebutton {

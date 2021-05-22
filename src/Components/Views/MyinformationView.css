@@ -24,6 +24,7 @@
 .myInfoWrapper {
     display: inline-block;
     width: 80%;
+    height: 130px;
 }
 
 .logoutbtn {

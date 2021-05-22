@@ -85,9 +85,7 @@ const LoginModalView = (props) => {
     return <div>
             <div className="modal">
                 <div className="modal-login">                
-                    <div className="close">
-                        <span className="modal-close" onClick={handleModalClose}>&times;</span>
-                    </div>
+                    <span className="close" onClick={handleModalClose}>&times;</span>
                     <div className="modal-title">
                         COOKIN
                     </div>
@@ -102,7 +100,7 @@ const LoginModalView = (props) => {
                         )
                         :
                         (
-                            <Tabs defaultIndex={1}>
+                            <Tabs defaultIndex={0}>
                             <TabList>
                                 <Tab onClick={onClickTab}>Sign Up</Tab>
                                 <Tab onClick={onClickTab}>Log In</Tab>
