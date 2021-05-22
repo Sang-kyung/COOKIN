@@ -1,31 +1,42 @@
 #body{
     border:solid;
     background-color:red;
-    grid-template-columns: 20% 80%;
-    height:auto;
+    grid-template-columns: fit-content(20%) fit-content(80%);
+    height: 20vh;
     display:flex;
+    min-height: 100px;
+    overflow: hidden;
 }
 
 #photo{
     background-color:brown;
-    height:15vh;
+    height:auto;
     width:20%;
 }
 
 #content{
     background-color:forestgreen;
-    height:15vh;
+    height:auto;
     width:80%;
     float:left;
-    grid-template-rows:20% 80%
+    display:flex;
+    flex-direction: column; 
+    grid-template-rows:fit-content(20%) fit-content(80%);
+}
+
+p{
+    margin: 0;
+    padding: 0;
 }
 
 #name{
-    height:20%;
+    height:auto;
+    padding:0;
 }
 
 #information{
-    height:80%;
-    overflow:auto;
+    height:auto;
     border:solid;
+    min-height: 100px;
+    overflow: hidden;
 }

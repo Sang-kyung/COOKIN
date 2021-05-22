@@ -23,7 +23,7 @@ const ListMapView = ({kitchen}) => {
         </div>
         <div id="content">
             <div id="name">
-                {kitchen.name}
+                <p onClick={(e)=>{redirectfunction()}}>{kitchen.name}</p>
             </div>
             <div id="information">
                 <div id="price">
