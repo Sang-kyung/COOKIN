@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../reducers/user';
 
-const MyinformationView = ({res_num ,Upcoming}) => {
+const MyinformationView = ({name, res_num ,Upcoming}) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -14,12 +14,10 @@ const MyinformationView = ({res_num ,Upcoming}) => {
     history.push("/");
   }
 
-  const user = useSelector(state => state.user);
-
-  return <div className="grid">
+  return <div className="InfoBox">
           <div className="myInfoWrapper">
             <img className="myPageUserIcon" src={require('../../img/Main/user.png').default}/>
-            <div className="userName">{user.name}</div>
+            <div className="userName">{name}</div>
             <h4>My Reservation : {res_num}</h4>
             <h4>Upcoming : {Upcoming}</h4>
           </div>

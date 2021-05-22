@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import db from './../../firebase';
+import './SearchMap.css'
 const { kakao } = window;
+
+
 
 var map;
 var center;
@@ -22,6 +26,45 @@ export function searchMapKeyWord(keyword) {
 
 export function getMapCenter() {
     return center;
+}
+
+export function initializeMarkers(){
+    db.collection("kitchen_list")
+    .get()
+    .then(query => {
+      query.forEach((doc) => {
+            var kitchenName = doc.data().name
+            console.log("<div>"+kitchenName)
+            var kitchenLat = doc.data().lat
+            var kitchenLong = doc.data().long
+            var latlng = new kakao.maps.LatLng(kitchenLat, kitchenLong);
+            console.log(doc.data())
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: latlng // 마커의 위치
+            });
+            var infowindow = new kakao.maps.InfoWindow({
+                content: "<div>"+kitchenName+"</div>" // 인포윈도우에 표시할 내용
+            });
+            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        
+      })
+    })
+    
+}
+
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
 }
 
 function placesSearchCB (data, status, pagination) {
@@ -51,10 +94,14 @@ const MapContainer = () => {
 		};
         map = new kakao.maps.Map(container, options);
         searchMapKeyWord(firstCity);
+        initializeMarkers();
+        container.style.width = 'calc(100%)';
+        container.style.height = 'calc(100%)'; 
+        map.relayout();
     }, []);
 
     return (
-        <div id='myMap' style={{width: '96%', height: '80vh', margin: '0 2%', overflow: 'visible'}}></div>
+        <div id='myMap' style={{width: '96%', margin: '0 2%'}}></div>
     );
 }
 

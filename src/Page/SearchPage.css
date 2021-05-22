@@ -7,11 +7,12 @@
 .rightBox{
     width:60%;
     display: inline-block;
-    height: 100%;
+    overflow: hidden;
+    height: 95vh;
 }
 
 #ListMapView{
-    height:83vh;    
+    height:70vh;    
     overflow: auto;
 }
 
@@ -19,8 +20,9 @@
     padding:1em;
     border:solid;
     background-color:#F0FFFF;
+    visibility:hidden;
 }
 
 .ListMapView{
-    padding:1em;
+    padding:3em;
 }

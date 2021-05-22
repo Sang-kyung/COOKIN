@@ -8,6 +8,7 @@ import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import LoginModalView from './LoginModalView';
 import SearchHeaderView from './SearchHeaderView';
+import ReserveModalView from './ReserveModalView';
 
 // style
 import './DetailView.css';
@@ -166,7 +167,7 @@ const DetailView = () => {
                 </div>
             }
             {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal}/>}
-            {reserveModalOpen && <reserveModalOpen />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal}/>}
         </div>
     )
 }

@@ -1,50 +1,73 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import db from '../firebase';
+import './MyPage.css';
 
 // view
 import MyinformationView from '../Components/Views/MyinformationView';
 import MyreservationView from '../Components/Views/MyreservationView';
-import MainHeaderView from '../Components/Views/MainHeaderView';
-
-import './MyPage.css';
+import HomePageButton from '../Components/Buttons/HomePageButton';
 
 const MyPage = () => {
   const history = useHistory();
-  const res = useSelector(state => state.reservation.reservations);
-  const isloggedIn = useSelector(state => state.user.isloggedIn);
+  const user = useSelector(state => state.user);
 
-  var Ups = new Array();
-  var Pasts = new Array();
-  const now = new Date();
+  const [reservationInfo, onLoad] = useState({});
+  const [show, onLoadUpdate] = useState(false);
 
-  for( var i = 0; i < res.length; i++ ){
-    var item = res[i];
-    var date = new Date(item.date);
-    date >= now ? (
-      Ups.push(item)
-    ) : (
-      Pasts.push(item)
-    )
+  useEffect(() => {
+      fetchReservationInfo();
+  }, []);
+
+  const fetchReservationInfo = () => {
+    console.log("fetchReservationInfo");
+    db.collection('reservation_list')
+    .doc(user.phone)
+    .get()
+    .then((doc) => {
+      let ups_list  = []
+      let pasts_list = []
+      if (doc.exists) {
+        doc.data().reservations.map((item) => {
+          if(new Date(item.date) >= new Date()) {
+            ups_list.push(item);
+          } else {
+            pasts_list.push(item);
+          }
+        });
+        onLoad({ups: ups_list, pasts: pasts_list});
+        onLoadUpdate(true);
+      }
+      else{
+        onLoad({ups: ups_list, pasts: pasts_list});
+        onLoadUpdate(true);
+      }
+    })
   }
 
-  var res_num = res.length;
-  var Upcoming = Ups.length;
+  console.log("return go");
 
-  console.log("res_num, Upcoming, Ups, Pasts");
-  console.log(res_num, Upcoming, Ups, Pasts);
-
-  return <div>
-            {isloggedIn ? (
-              <div className="myPageWrapper">
-                <MyinformationView res_num={res_num} Upcoming={Upcoming}/>
-                <MyreservationView Ups={Ups} Pasts={Pasts}/>
-              </div>
-            ) : (
-              alert('You did not log in.') || history.push("/")
-            )
-            }
+  return (
+    <div>
+              {user.isloggedIn 
+              ?
+              (<div>
+                { show &&
+                  <div>
+                    <div className="headwrapper">
+                      <HomePageButton />
+                    </div>
+                    <MyinformationView name={user.name} res_num={reservationInfo.ups.length + reservationInfo.pasts.length} Upcoming={reservationInfo.ups.length}/>
+                    <MyreservationView ups={reservationInfo.ups} pasts={reservationInfo.pasts}/>
+                  </div>
+                }
+              </div>)
+              :
+              (alert('You did not log in.') || history.push("/"))
+              }         
           </div>
+  )
 }
 
 export default MyPage

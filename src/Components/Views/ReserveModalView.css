@@ -1,0 +1,71 @@
+.Rmodal {
+    z-index: 110;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.Rmodal-reserve {
+    width: 540px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+    margin: 10% auto;
+    padding: 5%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.Rclose {
+    color: gray;
+    font-size: 40px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.Rmodal-info {
+    margin: 2%;
+    font-size: 20px;
+    
+}
+
+.Rmodal-buttons {
+    text-align: center;
+    margin-top: 14%;
+}
+
+.Rmodal-mypagebutton {
+    border-radius: 10px;
+    background-color: #FA5000;
+    opacity: 0.9;
+    height: 50px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 4px;
+    width: 45%;
+    margin-right: 4%;
+    padding: 7px 12px;
+    border: none;
+}
+
+.Rmodal-homebutton {
+    margin-left: 4%;
+    border-radius: 10px;
+    background-color: lightgray;
+    opacity: 0.9;
+    height: 50px;
+    color: #000000;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 4px;
+    width: 45%;
+    padding: 7px 12px;
+    border: none;
+}
