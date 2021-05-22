@@ -11,13 +11,8 @@ const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    loadKitchenInfo();
-  }, []);
-
   const loadKitchenInfo = () => {
-    let kitchens = [];
+    var kitchens = [];
     db.collection("kitchen_list")
     .get()
     .then(query => {
@@ -41,7 +36,7 @@ const SearchPage = () => {
                 {kitchensInfo && kitchensInfo.map((item, index) => {
                   return <ListMapView key={index} kitchen={item}/>
                 })}
-            </div>  
+            </div>
           </div>
           <div className="rightBox">
             <MapContainer />

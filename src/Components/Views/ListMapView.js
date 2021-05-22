@@ -23,7 +23,10 @@ const ListMapView = ({kitchen}) => {
                     })}
                 </div>
                 <div id="ingredients">
-                    {kitchen.ingredients}
+                    ingredients:
+                    {kitchen.ingredients.map((items, index) => {
+                        return (<div key={index}>{items.name}</div>)
+                    })}
                 </div>
             </div>
         </div>
