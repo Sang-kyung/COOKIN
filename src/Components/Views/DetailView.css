@@ -1,7 +1,10 @@
 .detailViewWrapper {
-    padding: 2% 5%;
     text-align: left;
-
+    margin-left: 8%;
+    margin-right: 8%;
+    max-width: 1280px;
+    margin-top: 180px;
+    position: relative
 }
 
 .detailInfoWrapper {
@@ -25,10 +28,6 @@
     font-weight: bold;
 }
 
-.detailIngredients {
-    height: 200px;
-}
-
 .detailIngredients p {
     color : #000000;
     font-size: 25px;
@@ -39,8 +38,49 @@ hr {
     border: 1px solid #c4c4c4;
 }
 
-.rightWrapper {
+.floatingViewWrapper {
+    width: 48%;
     display: inline-block;
-    width: 40%;
 }
+
+.reservationInfoWrapper {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 10px;
+    position: fixed;
+    right: 8%;
+    top: 35%;
+    width: 30%;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    padding: 25px;
+}
+
+.infoWrapper {
+    padding: 20px 0;
+}
+
+.date {
+    margin-bottom: 10px;
+}
+
+.infoWrapper p {
+    display: inline-block;
+    width: 50px;
+    font-size: 25px;
+}
+
+.reserveBtn {
+    border-radius: 10px;
+    background-color: #FA5000;
+    opacity: 0.8;
+    height: 50px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding-top: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+
+
 

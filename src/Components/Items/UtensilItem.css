@@ -1,13 +1,15 @@
-.itemWrapper {
+.utensilItemWrapper {
     display: inline-block;
-    width: 150px;
-    margin: 10px 10px;
+    width: 130px;
+    margin: 10px;
 }
 
-.itemWrapper span {
+.utensilItemWrapper span {
     color: #000000;
 }
 
 img {
-    width: 60px;
+    width: 80px;
 }
+
+
