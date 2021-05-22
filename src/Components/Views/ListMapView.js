@@ -15,11 +15,11 @@ const ListMapView = ({kitchen}) => {
         });
     }
 
-
+//kitchen.img[0] = "../img/dintaifung_1.png"
     var this_div = 
-    <div id="body" onClick={(e)=>{redirectfunction()}}>
+    <div id="body" onDoubleClick={(e)=>{redirectfunction()}}>
         <div id="photo">
-            hello
+            <img src={kitchen.img[0]}></img>
         </div>
         <div id="content">
             <div id="name">
