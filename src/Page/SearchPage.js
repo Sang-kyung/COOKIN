@@ -132,7 +132,12 @@ const SearchPage = () => {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
     loadKitchenInfo()
-    document.getElementById("recommend").style.visibility = "visible";
+    if(firstCity== "-"){
+      document.getElementById("recommend").style.visibility = "hidden";
+    }
+    else{
+      document.getElementById("recommend").style.visibility = "visible";
+    }
   }
 
   useEffect(() => {
