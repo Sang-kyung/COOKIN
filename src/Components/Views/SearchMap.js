@@ -96,15 +96,15 @@ const MapContainer = () => {
 			level: 3
 		};
         map = new kakao.maps.Map(container, options);
-        searchMapKeyWord(firstCity);
+        //searchMapKeyWord(firstCity);
         initializeMarkers();
         container.style.width = 'calc(100%)';
         container.style.height = 'calc(100%)'; 
         
         map.relayout();
     }, []);
-    const dispatch = useDispatch();
-    setTimeout(function(){dispatch(setFirstCoord(getMapCenter()))},500);
+    //const dispatch = useDispatch();
+    //setTimeout(function(){dispatch(setFirstCoord(getMapCenter()))},500);
     
     return (
         <div id='myMap' style={{width: '96%', margin: '0 2%'}}></div>

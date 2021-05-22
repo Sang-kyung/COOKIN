@@ -136,15 +136,7 @@ const SearchPage = () => {
     loadKitchenInfo()
     document.getElementById("recommend").style.visibility = "visible";
   }
-  useEffect(() => {
-    if(recommendedPlace!= ". . ."){
-      console.log(recommendedPlace);
-      clickfunction();
-    }
-    else{
-      console.log("it is this")
-    }
-  }, [])
+  
   
   
   return <div>
