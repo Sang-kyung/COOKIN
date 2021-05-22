@@ -1,5 +1,5 @@
 .Rmodal {
-    z-index: 5;
+    z-index: 110;
     position: fixed;
     top: 0;
     right: 0;
@@ -14,7 +14,7 @@
     background-color: white;
     position: relative;
     box-sizing: border-box;
-    margin: 20% auto;
+    margin: 10% auto;
     padding: 5%;
     background: #fff;
     border-radius: 10px;
@@ -27,14 +27,6 @@
     font-size: 40px;
     text-align: right;
     cursor: pointer;
-}
-
-.Rmodal-title {
-    margin-top: 10px;
-    height: 70px;
-    font-size: 35px;
-    display: flex;
-    justify-content: center;
 }
 
 .Rmodal-info {
@@ -57,7 +49,7 @@
     text-align: center;
     font-size: 30px;
     letter-spacing: 4px;
-    width: 40%;
+    width: 45%;
     margin-right: 4%;
     padding: 7px 12px;
     border: none;
@@ -73,7 +65,7 @@
     text-align: center;
     font-size: 30px;
     letter-spacing: 4px;
-    width: 40%;
+    width: 45%;
     padding: 7px 12px;
     border: none;
 }
