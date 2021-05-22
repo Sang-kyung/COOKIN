@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import db from './../../firebase';
+import './SearchMap.css'
 const { kakao } = window;
 
 
@@ -28,25 +29,16 @@ export function getMapCenter() {
 }
 
 export function initializeMarkers(){
-    var markerPosition  = new kakao.maps.LatLng(37.49852839174016, 127.02573024214128); 
-    var positions = [];
-
     db.collection("kitchen_list")
     .get()
     .then(query => {
       query.forEach((doc) => {
-            console.log("dintaifung checked")
             var kitchenName = doc.data().name
             console.log("<div>"+kitchenName)
             var kitchenLat = doc.data().lat
             var kitchenLong = doc.data().long
             var latlng = new kakao.maps.LatLng(kitchenLat, kitchenLong);
-            // positions.push(
-            //     {
-            //         content: '<div>hello</div>', 
-            //         latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-            //     }
-            //    )
+            console.log(doc.data())
             var marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
                 position: latlng // 마커의 위치
@@ -60,26 +52,6 @@ export function initializeMarkers(){
       })
     })
     
-    console.log("here it is")
-    console.log(positions)
-    for (var i = 0; i < positions.length; i ++) {
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng // 마커의 위치
-        });
-        map.setCenter(positions[i].latlng);
-    
-        // 마커에 표시할 인포윈도우를 생성합니다 
-        var infowindow = new kakao.maps.InfoWindow({
-            content: positions[i].content // 인포윈도우에 표시할 내용
-        });
-    
-        // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-        // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-        // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-
-    }
 }
 
 function makeOverListener(map, marker, infowindow) {
@@ -123,10 +95,13 @@ const MapContainer = () => {
         map = new kakao.maps.Map(container, options);
         searchMapKeyWord(firstCity);
         initializeMarkers();
+        container.style.width = 'calc(100%)';
+        container.style.height = 'calc(100%)'; 
+        map.relayout();
     }, []);
 
     return (
-        <div id='myMap' style={{width: '96%', height: '80vh', margin: '0 2%', overflow: 'visible'}}></div>
+        <div id='myMap' style={{width: '96%', margin: '0 2%'}}></div>
     );
 }
 
