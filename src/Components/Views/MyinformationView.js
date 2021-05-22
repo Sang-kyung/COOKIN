@@ -17,8 +17,9 @@ const MyinformationView = ({res_num ,Upcoming}) => {
   const user = useSelector(state => state.user);
 
   return <div className="grid">
-          <div>
-            <h3>{user.name}</h3>
+          <div className="myInfoWrapper">
+            <img className="myPageUserIcon" src={require('../../img/Main/user.png').default}/>
+            <div className="userName">{user.name}</div>
             <h4>My Reservation : {res_num}</h4>
             <h4>Upcoming : {Upcoming}</h4>
           </div>

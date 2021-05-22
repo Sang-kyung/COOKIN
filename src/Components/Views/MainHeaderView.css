@@ -1,5 +1,6 @@
 .headerWrapper {
-    padding: 20px 30px;
+    padding: 0 30px;
+    padding-top: 20px;
     position: fixed;
     top: 0;
     z-index: 100;

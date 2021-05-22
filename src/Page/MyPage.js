@@ -5,7 +5,9 @@ import React from 'react';
 // view
 import MyinformationView from '../Components/Views/MyinformationView';
 import MyreservationView from '../Components/Views/MyreservationView';
-import MainHeaderViewLeft from '../Components/Views/MainHeaderViewLeft';
+import MainHeaderView from '../Components/Views/MainHeaderView';
+
+import './MyPage.css';
 
 const MyPage = () => {
   const history = useHistory();
@@ -34,11 +36,10 @@ const MyPage = () => {
 
   return <div>
             {isloggedIn ? (
-              <div>
-                  <MainHeaderViewLeft />
-                  <MyinformationView res_num={res_num} Upcoming={Upcoming}/>
-                  <MyreservationView Ups={Ups} Pasts={Pasts}/>
-                </div>
+              <div className="myPageWrapper">
+                <MyinformationView res_num={res_num} Upcoming={Upcoming}/>
+                <MyreservationView Ups={Ups} Pasts={Pasts}/>
+              </div>
             ) : (
               alert('You did not log in.') || history.push("/")
             )

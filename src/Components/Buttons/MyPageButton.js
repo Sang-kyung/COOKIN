@@ -32,6 +32,7 @@ const MyPageButton = () => {
         />}
       <div className="btnWrapper" onClick={handleModalOpen}>
         <img className="userIcon" src={require('../../img/Main/user.png').default}/>
+        <div className="userPageText">My Page</div>
       </div>
     </div>
   )

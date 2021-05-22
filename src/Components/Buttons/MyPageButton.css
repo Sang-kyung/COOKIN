@@ -1,19 +1,30 @@
-.myPageBtnWrapper {
+.btnWrapper {
     position: fixed;
     right: 20px;
     top: 20px;
+    padding-top: 10px;
+    padding-right: 5px;
+    border-bottom: 3px solid #C4C4C4;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
-.btnWrapper {
-    background-color: #c4c4c4;
-    border-radius: 20px;
-    width: 100px;
+.btnWrapper:hover {
+    border-bottom: 3px solid rgb(250, 80, 0, 0.9);
 }
 
 
+.userPageText {
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 10px;
+    font-weight: 600;
+}
 
 .userIcon {
-    width: 50px;
+    width: 40px;
+    display: inline-block;
 }
 
 .button {

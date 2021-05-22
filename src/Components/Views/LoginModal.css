@@ -44,22 +44,20 @@
     padding: 10px;
     height: 10%;
     box-sizing: border-box;
-    border-width: 1px;
-    border-style: groove;
-    border-color: darkgray;
+    border: 2px solid #c4c4c4;
     border-radius: 10px;
 }
 
 .modal-input:focus {
     outline: none;
-    border: 2px solid rgb(250, 80, 0, 0.8) ;
+    border: 2px solid rgb(250, 80, 0, 0.9);
     border-radius: 10px;
 }
 
 .modal-loginbtn {
     border-radius: 10px;
     background-color: #FA5000;
-    opacity: 0.8;
+    opacity: 0.9;
     height: 50px;
     color: #ffffff;
     text-align: center;
@@ -72,5 +70,5 @@
 }
 
 .modal-loginbtn input::placeholder {
-    color: #999999;
+    color: #c4c4c4;
 }

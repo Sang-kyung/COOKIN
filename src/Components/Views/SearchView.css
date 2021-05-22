@@ -4,25 +4,37 @@
     height:100px;
     display: flex;
     margin: auto;
-    background-color:orange; 
-    border-radius:15px
+    background-color: rgb(250, 80, 0, 0.8); 
+    border-radius:15px;
 }
 
-#input{width: 900px;
+#input{
+    width: 900px;
     height:70px;
     font-size:50px;
     margin:auto;
     text-align: center;
-    border-radius:15
+    border-radius:10px;
 }
 
-.buttonWrapper {width:930px;
+#input:focus {
+    outline: none;
+}
+
+#input:focus::placeholder {
+    color: transparent;
+}
+
+
+.buttonWrapper {
+    width:930px;
     height:100px;
     display:flex;
     margin:auto
 }
 
-button {width:200px; 
+button {
+    width:200px; 
     height:50px;
     font-size:22px; 
     margin: auto; 
@@ -30,7 +42,7 @@ button {width:200px;
 }
 
 #mainContainer {
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     display: table-cell;
     vertical-align: middle;
