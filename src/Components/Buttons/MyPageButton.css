@@ -1,6 +1,19 @@
-img {
-    height: 100%;
-    width: 150px;
+.myPageBtnWrapper {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.btnWrapper {
+    background-color: #c4c4c4;
+    border-radius: 20px;
+    width: 100px;
+}
+
+
+
+.userIcon {
+    width: 50px;
 }
 
 .button {

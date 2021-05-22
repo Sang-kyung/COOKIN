@@ -136,6 +136,7 @@ const DetailView = () => {
                         </div>
 
                         <div className={"detailUtensil"}>
+                            <hr />
                             <p>Utensils</p>
                             {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
                                 return <UtensilItem key={index} item={item} />
@@ -143,13 +144,14 @@ const DetailView = () => {
                         </div> 
 
                         <div className={"detailIngredients"}>
+                            <hr />
                             <p>Ingredients</p>
                             {kitchenInfo.ingredients && kitchenInfo.ingredients.map((item, index) => {
                                 return <IngredientItem key={index} item={item} onClickPlus={onClickPlus} onClickMinus={onClickMinus} />
                             })}
                         </div>
                     </div>
-                    <div className={"floatingViewWrapper"}>
+                    <div className={"floatingViewWrapper"}>  
                         <div className={"reservationInfoWrapper"}>
                             <div className={"totalPriceWrapper"}>
                                 {reserveInfo.ingredients && reserveInfo.ingredients.map((item, index) => {
@@ -161,7 +163,9 @@ const DetailView = () => {
                                     )    
                                 })}
                             </div>
-                            <div className={"dateWrapper"}>
+                            <div className={"infoWrapper"}>
+                                <div className={"people"}>
+                                </div>
                                 <div className={"date"}>
                                     <p>Date</p>
                                     <GrayButton text={"May"}/>
@@ -173,7 +177,9 @@ const DetailView = () => {
                                     <GrayButton text={"17:30"}/>
                                 </div>
                             </div>
-                            <OrangeButton text={"Reserve"} onClickBtn={onClickReserve}/>
+                            <div className="reserveBtn" onClickBtn={onClickReserve}>
+                                {"Reserve"}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@ import './GrayButton.css';
 const GrayButton = (props) => {
   const { text } = props;
   return <div className={"grayBtn"}>
-      {text}
+        {text}
       </div>
 }
 
