@@ -1,20 +1,16 @@
 import React from 'react';
-import './HeaderView.css'
-import MainHeaderViewLeft from './MainHeaderViewLeft';
-import HeaderViewRight from './HeaderViewRight';
-//<div id= "HeaderRight">
-//<MyPageButton />
-//</div>
-// view
+import './MainHeaderView.css'
 import MyPageButton from '../Buttons/MyPageButton';
+import HomePageButton from '../Buttons/HomePageButton';
 
 const MainHeaderView = () => {
 
-  return <div>
-    <MainHeaderViewLeft />
-    <HeaderViewRight />
-    
-  </div>
+  return (
+    <div className="headerWrapper">
+      <HomePageButton />
+      <MyPageButton />
+    </div>
+  )
 }
 
 export default MainHeaderView

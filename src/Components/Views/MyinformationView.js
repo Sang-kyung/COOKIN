@@ -15,8 +15,9 @@ const MyinformationView = ({name, res_num ,Upcoming}) => {
   }
 
   return <div className="grid">
-          <div>
-            <h3>{name}</h3>
+          <div className="myInfoWrapper">
+            <img className="myPageUserIcon" src={require('../../img/Main/user.png').default}/>
+            <div className="userName">{user.name}</div>
             <h4>My Reservation : {res_num}</h4>
             <h4>Upcoming : {Upcoming}</h4>
           </div>

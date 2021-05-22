@@ -1,5 +1,6 @@
 .reservation_box {
-    border : 5px solid orange;
+    border : 3px solid rgb(250, 80, 0, 0.8);
+    border-radius: 10px;
     margin: 3%;
     margin-top: 1%;
     padding: 3%;

@@ -4,15 +4,20 @@ import './LoginModal.css'
 import { useDispatch } from 'react-redux';
 import db from '../../firebase';
 import { signup, login } from '../../reducers/user';
-import { show, setShow } from '../Buttons/MyPageButton';
+// import { show, setShow } from '../Buttons/MyPageButton';
 import { useHistory } from 'react-router-dom';
 import 'react-tabs/style/react-tabs.css';
+import { login } from '../../reducers/user';
+import { useHistory } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 
 const LoginModalView = (props) => {
-    const show = props.show;
-    const setShow = props.setShow;
+
+    const {isReservePage, onCloseModal } = props;
+
     const dispatch = useDispatch();
     const history = useHistory();
+
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
 
@@ -25,7 +30,7 @@ const LoginModalView = (props) => {
             name: name
         }).then(() => {
             dispatch(signup({phone, name}));
-            history.push("/mypage");
+            !isReservePage && history.push("/mypage");
 
         }).catch((error) => {
             console.error("Error adding document: ", error);
@@ -43,11 +48,10 @@ const LoginModalView = (props) => {
                 console.log("GO LOGIN");
                 console.log(name);
                 dispatch(login({phone, name}));
-                history.push("/mypage");
+                !isReservePage && history.push("/mypage");
             }
-            else{
-                alert("No phone number")
-                return;
+            else {
+                alert('no phone number');
             }
         }).catch((error) => {
             console.log("Login Firestore error: ", error);
@@ -65,50 +69,51 @@ const LoginModalView = (props) => {
     }
 
     const handleModalClose = (e) => { //input value 비워야돼.
-        const currentClass = e.target.className;
-        switch (currentClass) {
-            case 'modal-close': {
-                setShow(false);
-                setPhone("");
-                setName("");
-                break;
-            }
-            case 'modal-input': {
-                return;
-            }
-        }
+        onCloseModal();
+        setPhone("");
+        setName("");
     };
 
-    return <div hidden={!show}>
+    return <div>
             <div className="modal">
                 <div className="modal-login">                
-                <div className="close">
-                    <span className="modal-close" onClick={handleModalClose}>&times;</span>
-                </div>
-                <div className="modal-title">
-                    COOKIN
-                </div>
-                <Tabs>
-                <TabList>
-                    <Tab>Sign Up</Tab>
-                    <Tab>Log In</Tab>
-                </TabList>
-                <TabPanel>
-                    <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                    <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
-                    <button className="modal-loginbtn" onClick={_signup}>
-                        {" "}
-                        Sign Up{" "}
-                    </button>
-                </TabPanel>
-                <TabPanel>
-                    <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                    <button className="modal-loginbtn" onClick={_login}>
-                        {" "}
-                        Log In{" "}
-                    </button>
-                </TabPanel>
-                </Tabs>
+                    <div className="close">
+                        <span className="modal-close" onClick={handleModalClose}>&times;</span>
+                    </div>
+                    <div className="modal-title">
+                        COOKIN
+                    </div>
+                    {isReservePage && user.isloggedIn ?
+                        (
+                            <div>
+                                You're logged in. Reserve the kitchen now!
+                            </div> 
+                        )
+                        :
+                        (
+                            <Tabs>
+                            <TabList>
+                                <Tab>Sign Up</Tab>
+                                <Tab>Log In</Tab>
+                            </TabList>
+                            <TabPanel>
+                                <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                                <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
+                                <button className="modal-loginbtn" onClick={_signup}>
+                                    {" "}
+                                    Sign Up{" "}
+                                </button>
+                            </TabPanel>
+                            <TabPanel>
+                                <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                                <button className="modal-loginbtn" onClick={_login}>
+                                    {" "}
+                                    Log In{" "}
+                                </button>
+                            </TabPanel>
+                            </Tabs>
+                        )
+                    }
                 </div>
             </div>
         </div>

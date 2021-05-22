@@ -1,0 +1,27 @@
+.homeTitleWrapper {
+    display: inline-block;
+}
+
+.icon {
+    display: inline-block;
+    width: 55px;
+}
+
+.titleWrapper {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.titleWrapper h1 {
+    color: #FA5000;
+    opacity: 0.9;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+
+}
+
+.titleWrapper span {
+    color: #000000;
+}

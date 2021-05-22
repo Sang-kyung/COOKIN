@@ -6,7 +6,9 @@ import db from '../firebase';
 // view
 import MyinformationView from '../Components/Views/MyinformationView';
 import MyreservationView from '../Components/Views/MyreservationView';
-import MainHeaderViewLeft from '../Components/Views/MainHeaderViewLeft';
+import MainHeaderView from '../Components/Views/MainHeaderView';
+
+import './MyPage.css';
 
 const MyPage = () => {
   const history = useHistory();

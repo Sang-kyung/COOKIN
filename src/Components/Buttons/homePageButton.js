@@ -1,16 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import imgfile from '../../images/homePageButton.png';
-
-import './MyPageButton.css'
+import './HomePageButton.css'
 
 
 const HomePageButton = () => {
 
-  return <div style={{height: '90px', width:'290px', backgroundColor:'white', float: 'left'}}>
-    <Link to="/"><img style={{width: 'auto'}} src={imgfile}/></Link>
+  return (
+    <Link to="/">
+      <div className="homeTitleWrapper">
+        <img className="icon" src={require(`../../img/Main/chef.png`).default} />
+        <div className="titleWrapper">
+          <h1>CookIn</h1>
+          <span>Find the best kitchen for you!</span>
+        </div>
     </div>
+    </Link>
+  ) 
 }
 
 export default HomePageButton
