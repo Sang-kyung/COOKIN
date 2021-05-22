@@ -1,10 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import "./ListMapView.css";
 
+
 const ListMapView = ({kitchen}) => {  
+    const history = useHistory();
+    const redirectfunction = () => {
+        history.push({
+          pathname:"/detail",
+          state:{
+              key: kitchen.name,
+              data: kitchen
+           }
+        });
+    }
+
+
     var this_div = 
-    <div id="body">
+    <div id="body" onClick={(e)=>{redirectfunction()}}>
         <div id="photo">
             hello
         </div>
@@ -26,7 +39,7 @@ const ListMapView = ({kitchen}) => {
                 <br/>
                 <div id="ingredients">
                     Available Ingredients: {kitchen.ingredients.map((items, index) => {
-                        return (<div key={index}>{items}</div>)
+                        return (<div key={index}>{items.name}</div>)
                     })}
                 </div>
             </div>
