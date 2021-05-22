@@ -17,7 +17,7 @@ const MyPage = () => {
   const [show, onLoadUpdate] = useState(false);
 
   useEffect(() => {
-      fetchReservationInfo();
+      user.isloggedIn && fetchReservationInfo();
   }, []);
 
   const fetchReservationInfo = () => {

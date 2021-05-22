@@ -26,14 +26,6 @@ const DetailView = () => {
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
 
-    // make reserve object for databse
-    // const makeReserveObj = (kitchen) => {
-    //     reserveInfo.name = kitchen.name;
-    //     reserveInfo.price = kitchen.price;
-    //     reserveInfo.date = "2021-06-01";
-    //     onChangeReserveInfo(reserveInfo);
-    // }
-
     const onCloseLoginModal = () => {
         onLoginModalUpdate(false);
     }
@@ -45,7 +37,7 @@ const DetailView = () => {
     const onClickPlus = (name) => {
         const _ = require("lodash");
         let res_copy = _.cloneDeep(reserveInfo);
-        let current_price = totalPrice;
+        // let current_price = totalPrice;
 
         const ind = kitchen.ingredients.find(e => e.name == name);
 
@@ -65,28 +57,27 @@ const DetailView = () => {
             res_copy.ingredients.push(append_item);
         }
 
-        current_price += ind.price;
-
+        res_copy.price += ind.price;
         onChangeReserveInfo(res_copy);
-        onChangePrice(current_price);
+        // onChangePrice(current_price);
     }
 
     const onClickMinus = (name) => {
         const _ = require("lodash");
         let res_copy = _.cloneDeep(reserveInfo);
-        let current_price = totalPrice;
+        // let current_price = totalPrice;
         const ind = kitchen.ingredients.find(e => e.name == name);
 
         res_copy.ingredients.map(item => {
             if (item.name == name && item.amount > 0) {
                 item.amount -= 1;
                 item.myPrice -= ind.price;
-                current_price -= ind.price;
+                res_copy.price -= ind.price;
             }
         })
         res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
         onChangeReserveInfo(res_copy);
-        onChangePrice(current_price);
+        // onChangePrice(current_price);
     }
 
     const onIngDelete = (name) => {
@@ -99,27 +90,29 @@ const DetailView = () => {
             if (item.name == name && item.amount > 0) {
                 item.myPrice -= ind.price * item.amount;
                 current_price -= ind.price * item.amount;
+                res_copy.price -= ind.price * item.amount;
                 item.amount = 0;
             }
         })
         res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
         onChangeReserveInfo(res_copy);
-        onChangePrice(current_price);
+        // onChangePrice(current_price);
     }
 
     const onClickReserve = () => {
-        // makeReserveObj(kitchen);
         if (user.isloggedIn) {
-            let revs = []
+            let reservations = []
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
-                    revs = doc.data();
-                    revs.push(reserveInfo);
+                    reservations = doc.data().reservations;
+                    console.log(reservations);
+                    console.log(user);
+                    reservations.push(reserveInfo);
                 } else {
-                    revs.push(reserveInfo);
+                    reservations.push(reserveInfo);
                 }
-                db.collection("reservation_list").doc(user.phone).set({revs})
+                db.collection("reservation_list").doc(user.phone).set({reservations})
                 .then(() => {
                     console.log("updated")
                 })
@@ -146,9 +139,8 @@ const DetailView = () => {
                         <div className={"detailHeaderWrapper"}>
                             <h1>{kitchen.name}</h1>
                             <span>{kitchen.address}</span>
-                            <h2>{kitchen.price}</h2>
                             <div className={"detailPicture"}>
-                            <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
+                                <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
                             </div>
                         </div>
 
@@ -182,7 +174,7 @@ const DetailView = () => {
                                 <hr />
                                 <div className={"totalPrice"}>
                                     <p>Total</p>
-                                    <div>{totalPrice} KRW</div>
+                                    <div>{reserveInfo.price} KRW</div>
                                 </div>
                             </div>
                             <div className={"infoWrapper"}>

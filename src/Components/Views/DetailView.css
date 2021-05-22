@@ -18,6 +18,9 @@
     color: #888888;
 }
 
+.detailPicture {
+    margin-top: 20px;
+}
 .kitchenImg {
     width: 400px;
 }
@@ -32,6 +35,7 @@
     color : #000000;
     font-size: 25px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 hr {
