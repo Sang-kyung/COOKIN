@@ -188,7 +188,6 @@ const SearchHeaderViewLeft = () => {
     SearchMap.setMapZoom(4);
     dispatch(setRecommendedPlace(nearestPlace));
     }
-    
   }
 
   // const tagItems = [
