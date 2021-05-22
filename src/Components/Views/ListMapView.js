@@ -9,7 +9,6 @@ const ListMapView = ({kitchen}) => {
         history.push({
           pathname:"/detail",
           state:{
-              key: kitchen.name,
               data: kitchen
            }
         });

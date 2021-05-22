@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import db from '../../firebase';
 
 //view
@@ -15,44 +16,22 @@ import GrayButton from '../Buttons/GrayButton';
 
 const DetailView = () => {
 
-    const user = useSelector(state => state.user);
+    const kitchen = useLocation().state.data;
 
-    const [kitchenInfo, onKitchenInfoLoad] = useState({});
-    const [reserveInfo, onChangeReserveInfo] = useState({});
+    const user = useSelector(state => state.user);
+    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: "", ingredients: []});
     const [totalPrice, onChangePrice] = useState(0);
 
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
 
-    useEffect(() => {
-        fetchKitchenInfo();
-        onChangePrice(kitchenInfo.price);
-        onChangeReserveInfo({
-            name: "",
-            price: 0,
-            datae: "",
-            ingredients: []
-        });
-    }, []);
-
-    // load kitchen data from firebase
-    const fetchKitchenInfo = () => {
-        db.collection('kitchen_list').doc("Din Tai Fung").get()
-        .then(doc => {
-            onKitchenInfoLoad(doc.data());
-        })
-        .catch((error) => {
-            console.error("database load data failed", error);
-        })
-    }
-
     // make reserve object for databse
-    const makeReserveObj = (kitchen) => {
-        reserveInfo.name = kitchen.name;
-        reserveInfo.price = kitchen.price;
-        reserveInfo.date = "2021-06-01";
-        onChangeReserveInfo(reserveInfo);
-    }
+    // const makeReserveObj = (kitchen) => {
+    //     reserveInfo.name = kitchen.name;
+    //     reserveInfo.price = kitchen.price;
+    //     reserveInfo.date = "2021-06-01";
+    //     onChangeReserveInfo(reserveInfo);
+    // }
 
     const onCloseLoginModal = () => {
         onLoginModalUpdate(false);
@@ -63,8 +42,11 @@ const DetailView = () => {
     }
 
     const onClickPlus = (name) => {
-        if (reserveInfo.ingredients.find(x => x.name == name)) {
-            reserveInfo.ingredients.map(item => {
+        const _ = require("lodash");
+        const res_copy = _.cloneDeep(reserveInfo);
+
+        if (res_copy.ingredients.find(x => x.name == name)) {
+            res_copy.ingredients.map(item => {
                 if (item.name == name) {
                     item.amount += 1
                 }
@@ -74,23 +56,25 @@ const DetailView = () => {
                 name: name,
                 amount: 1
             }
-            reserveInfo.ingredients.push(append_item);
+            res_copy.ingredients.push(append_item);
         }
-        // onChangeReserveInfo(reserveInfo);
+        onChangeReserveInfo(res_copy);
     }
 
     const onClickMinus = (name) => {
-        reserveInfo.ingredients.map(item => {
-            if (item.name == name) {
-                item.amount -= 1
+        const _ = require("lodash");
+        const res_copy = _.cloneDeep(reserveInfo);
+        res_copy.ingredients.map(item => {
+            if (item.name == name && item.amount > 0) {
+                item.amount -= 1;
             }
         })
-        reserveInfo.ingredients.filter(item => item.amount > 0)
-        // onChangeReserveInfo(reserveInfo);
+        res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
+        onChangeReserveInfo(res_copy);
     }
 
     const onClickReserve = () => {
-        makeReserveObj(kitchenInfo)
+        // makeReserveObj(kitchen);
         if (user.isloggedIn) {
             let reservations = []
             db.collection("reservation_list").doc(user.phone).get()
@@ -122,13 +106,13 @@ const DetailView = () => {
     return (
         <div>
             <SearchHeaderView />
-            {kitchenInfo.name && 
+            {kitchen.name && 
                 <div className={"detailViewWrapper"}>
     `                <div className={"detailInfoWrapper"}>
                         <div className={"detailHeaderWrapper"}>
-                            <h1>{kitchenInfo.name}</h1>
-                            <span>{kitchenInfo.address}</span>
-                            <h2>{kitchenInfo.price}</h2>
+                            <h1>{kitchen.name}</h1>
+                            <span>{kitchen.address}</span>
+                            <h2>{kitchen.price}</h2>
                             <div className={"detailPicture"}>
                             <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
                             </div>
@@ -137,7 +121,7 @@ const DetailView = () => {
                         <div className={"detailUtensil"}>
                             <hr />
                             <p>Utensils</p>
-                            {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
+                            {kitchen.utensils && kitchen.utensils.map((item, index) => {
                                 return <UtensilItem key={index} item={item} />
                             })}
                         </div> 
@@ -145,7 +129,7 @@ const DetailView = () => {
                         <div className={"detailIngredients"}>
                             <hr />
                             <p>Ingredients</p>
-                            {kitchenInfo.ingredients && kitchenInfo.ingredients.map((item, index) => {
+                            {kitchen.ingredients && kitchen.ingredients.map((item, index) => {
                                 return <IngredientItem key={index} item={item} onClickPlus={onClickPlus} onClickMinus={onClickMinus} />
                             })}
                         </div>
@@ -153,13 +137,11 @@ const DetailView = () => {
                     <div className={"floatingViewWrapper"}>  
                         <div className={"reservationInfoWrapper"}>
                             <div className={"totalPriceWrapper"}>
-                                {reserveInfo.ingredients && reserveInfo.ingredients.map((item, index) => {
-                                    return (
-                                        <div key={index}>
+                                {reserveInfo.ingredients.map((item, index) => {
+                                    return <div key={index}>
                                             {item.name}
                                             {item.amount}
-                                        </div>
-                                    )    
+                                        </div>  
                                 })}
                             </div>
                             <div className={"infoWrapper"}>
@@ -176,7 +158,7 @@ const DetailView = () => {
                                     <GrayButton text={"17:30"}/>
                                 </div>
                             </div>
-                            <div className="reserveBtn" onClickBtn={onClickReserve}>
+                            <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
                             </div>
                         </div>

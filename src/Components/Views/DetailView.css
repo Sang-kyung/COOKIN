@@ -52,6 +52,11 @@ hr {
     width: 30%;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     padding: 25px;
+    height: 400px;
+}
+
+.totalPriceWrapper {
+    height: 100px
 }
 
 .infoWrapper {
