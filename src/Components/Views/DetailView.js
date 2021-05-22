@@ -7,6 +7,7 @@ import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import LoginModalView from './LoginModalView';
 import SearchHeaderView from './SearchHeaderView';
+import ReserveModalView from './ReserveModalView';
 
 // style
 import './DetailView.css';
@@ -176,7 +177,7 @@ const DetailView = () => {
                                     <GrayButton text={"17:30"}/>
                                 </div>
                             </div>
-                            <div className="reserveBtn" onClickBtn={onClickReserve}>
+                            <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
                             </div>
                         </div>
@@ -184,7 +185,7 @@ const DetailView = () => {
                 </div>
             }
             {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal}/>}
-            {reserveModalOpen && <reserveModalOpen />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal}/>}
         </div>
     )
 }

@@ -2,19 +2,18 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import db from '../firebase';
+import './MyPage.css';
 
 // view
 import MyinformationView from '../Components/Views/MyinformationView';
 import MyreservationView from '../Components/Views/MyreservationView';
-import MainHeaderView from '../Components/Views/MainHeaderView';
-
-import './MyPage.css';
+import HomePageButton from '../Components/Buttons/HomePageButton';
 
 const MyPage = () => {
   const history = useHistory();
   const user = useSelector(state => state.user);
 
-  const [reservationInfo, onLoad] = useState([]);
+  const [reservationInfo, onLoad] = useState({});
   const [show, onLoadUpdate] = useState(false);
 
   useEffect(() => {
@@ -27,31 +26,40 @@ const MyPage = () => {
     .doc(user.phone)
     .get()
     .then((doc) => {
-      console.log(user.phone);
-      console.log(doc);
+      let ups_list  = []
+      let pasts_list = []
       if (doc.exists) {
-        console.log("doc.exists");
-        onLoad(doc.data().reservations);
+        doc.data().reservations.map((item) => {
+          if(new Date(item.date) >= new Date()) {
+            ups_list.push(item);
+          } else {
+            pasts_list.push(item);
+          }
+        });
+        onLoad({ups: ups_list, pasts: pasts_list});
         onLoadUpdate(true);
-        console.log('aa');
       }
       else{
-        console.log('bb');
+        onLoad({ups: ups_list, pasts: pasts_list});
+        onLoadUpdate(true);
       }
     })
   }
 
   console.log("return go");
 
-  return <div>
+  return (
+    <div>
               {user.isloggedIn 
               ?
               (<div>
                 { show &&
                   <div>
-                    <MainHeaderViewLeft />
-                    <MyinformationView name={user.name} res_num={reservationInfo.length} Upcoming={3}/>
-                    <MyreservationView reservations={reservationInfo} />
+                    <div className="headwrapper">
+                      <HomePageButton />
+                    </div>
+                    <MyinformationView name={user.name} res_num={reservationInfo.ups.length + reservationInfo.pasts.length} Upcoming={reservationInfo.ups.length}/>
+                    <MyreservationView ups={reservationInfo.ups} pasts={reservationInfo.pasts}/>
                   </div>
                 }
               </div>)
@@ -59,6 +67,7 @@ const MyPage = () => {
               (alert('You did not log in.') || history.push("/"))
               }         
           </div>
+  )
 }
 
 export default MyPage

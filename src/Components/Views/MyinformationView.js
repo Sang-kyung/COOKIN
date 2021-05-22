@@ -14,10 +14,10 @@ const MyinformationView = ({name, res_num ,Upcoming}) => {
     history.push("/");
   }
 
-  return <div className="grid">
+  return <div className="InfoBox">
           <div className="myInfoWrapper">
             <img className="myPageUserIcon" src={require('../../img/Main/user.png').default}/>
-            <div className="userName">{user.name}</div>
+            <div className="userName">{name}</div>
             <h4>My Reservation : {res_num}</h4>
             <h4>Upcoming : {Upcoming}</h4>
           </div>

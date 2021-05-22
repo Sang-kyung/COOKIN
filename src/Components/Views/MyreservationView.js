@@ -13,40 +13,64 @@ const _cancel = () => {
 }
 
 const MyreservationBox = ({res, time}) => {
-    return <div className ="reservation_box">
-        <div className ="inform">
-            <div>
-                <h3>{res.name}</h3>
-                <h4>date : {res.date}</h4>
-                <h4 className="options">options : {res.options.map((item) => {
-                                return <OptionsItem key={item.name} item={item} />
-                            })}
-                </h4>
+    return (
+        time == "Future" ? 
+        (
+            <div className ="reservation_box_future">
+                <div className="reservationWrapper">
+                    <h3>{res.name}</h3>
+                    <h4>date : {res.date}</h4>
+                    <h4 className="options">options : {res.options.map((item) => {
+                                    return <OptionsItem key={item.name} item={item} />
+                                })}
+                    </h4>
+                </div>
+                {time == "Future" && 
+                <div className="reservationButtons">
+                    <button className="modify" onClick={_modify}>MODIFY</button>
+                    <button className="cancel" onClick={_cancel}>CANCEL</button>
+                </div>
+                }
             </div>
-            {time == "Future" && 
-            <div>
-                <p className="modify" onClick={_modify}>MODIFY</p>
-                <p className="cancel" onClick={_cancel}>CANCEL</p>
+        ) :
+        (
+            <div className ="reservation_box_past">
+                <div className="reservationWrapper">
+                    <h3>{res.name}</h3>
+                    <h4>date : {res.date}</h4>
+                    <h4 className="options">options : {res.options.map((item) => {
+                                    return <OptionsItem key={item.name} item={item} />
+                                })}
+                    </h4>
+                </div>
             </div>
-            }
-        </div>
-    </div>
+        )
+    )
 }
 
-const MyreservationView = ({reservations}) => {
+const MyreservationView = (props) => {
+    const {ups, pasts} = props
     return <div className ='reservation'>
-                <h3>Upcoming Reservations</h3>
-                <div>
-                    {reservations.map((item, index) => {
-                        return new Date(item.date) >= new Date() && <MyreservationBox key={index} res={item} time={"Future"} />
-                    })}
-                </div>
-                <h3>Past Reservations</h3>
-                <div>
-                    {reservations.map((item, index) => {
-                        return new Date(item.date) < new Date() && <MyreservationBox key={index} res={item} time={"Past"} />
-                    })}
-                </div>
+                {ups.length != 0 && 
+                    <div>
+                        <h3>Upcoming Reservations</h3>
+                        <div>
+                            {ups.map((item, index) => {
+                                return <MyreservationBox key={index} res={item} time={"Future"} />
+                            })}
+                        </div>
+                    </div>
+                }
+                { pasts.length != 0 && 
+                    <div>
+                        <h3>Past Reservations</h3>
+                        <div>
+                            {pasts.map((item, index) => {
+                                return <MyreservationBox key={index} res={item} time={"Past"} />
+                            })}
+                        </div>
+                    </div>
+                }
             </div>
 }
 

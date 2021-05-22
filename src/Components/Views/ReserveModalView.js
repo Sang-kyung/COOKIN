@@ -1,33 +1,53 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import './ReserveModalView.css'
 
 
 const ReserveModalView = (props) => {
 
+    const { onCloseModal } = props;
+    const history = useHistory();
+
+    const handleModalClose = (e) => { //input value 비워야돼.
+        onCloseModal();
+    };
+
+    const goMypage = (e) => {
+        history.push("/mypage");
+    }
+
+    const goHome = (e) => {
+        history.push("/");
+    }
 
     return <div>
-            <div className="modal">
-                <div className="modal-login">                
-                <div className="close">
-                    <span className="modal-close" onClick={handleModalClose}>&times;</span>
-                </div>
-                <div className="modal-title">
-                    COOKIN
-                </div>
-                {isReservePage && user.isloggedIn
-                    ?
-                    <div>
-                        You're logged in. Reserve the kitchen now!
-                    </div> 
-                    :
-                    <div>
-                        <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                        <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
-                        <button className="modal-loginbtn" onClick={_login}>
+            <div className="Rmodal">
+                <div className="Rmodal-reserve">           
+                    <div className="Rclose">
+                        <span className="Rmodal-close" onClick={handleModalClose}>&times;</span>
+                    </div>
+                    <div className="Rmodal-info">
+                        kitchen: 
+                    </div>
+                    <div className="Rmodal-info">
+                        Date: 
+                    </div>
+                    <div className="Rmodal-info">
+                        Time: 
+                    </div>
+                    <div className="Rmodal-info">
+                        Total fee: 
+                    </div>
+                    <div className="Rmodal-buttons">
+                        <button className="Rmodal-mypagebutton" onClick={goMypage}>
                             {" "}
-                            Log In{" "}
+                            My Page{" "}
+                        </button>
+                        <button className="Rmodal-homebutton" onClick={goHome}>
+                            {" "}
+                            Home{" "}
                         </button>
                     </div>
-                }
                 </div>
             </div>
         </div>

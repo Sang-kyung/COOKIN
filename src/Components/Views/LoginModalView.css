@@ -1,3 +1,18 @@
+.modal-loginbtn input::placeholder {
+    color: #999999;
+}
+
+.react-tabs__tab-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+}
+
+.react-tabs__tab {
+    text-align: center;
+    color: #808080;
+}
+
 .modal {
     z-index: 5;
     position: fixed;
@@ -14,7 +29,7 @@
     background-color: white;
     position: relative;
     box-sizing: border-box;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 5%;
     background: #fff;
     border-radius: 10px;
@@ -31,7 +46,7 @@
 
 .modal-title {
     margin-top: 10px;
-    height: 70px;
+    height: 75px;
     font-size: 35px;
     display: flex;
     justify-content: center;
@@ -63,23 +78,23 @@
     text-align: center;
     font-size: 30px;
     letter-spacing: 4px;
-    margin-top: 10%;
+    margin-top: 15%;
     width: 100%;
     padding: 7px 12px;
     border: none;
 }
 
-.modal-loginbtn input::placeholder {
-    color: #999999;
+.warning-wrong {
+    color: red;
 }
 
-.react-tabs__tab-list {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr;
+.warning-reserve {
+    padding-bottom: 10px;
+    color: red;
 }
 
-.react-tabs__tab {
+.login-reserve {
     text-align: center;
-    color: #c4c4c4;
+    font-size: 1.3em;
+    margin-top: 25%;
 }

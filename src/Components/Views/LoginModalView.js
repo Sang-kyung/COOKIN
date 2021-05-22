@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './LoginModal.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import db from '../../firebase';
 import { signup, login } from '../../reducers/user';
-// import { show, setShow } from '../Buttons/MyPageButton';
 import { useHistory } from 'react-router-dom';
 import 'react-tabs/style/react-tabs.css';
-import { login } from '../../reducers/user';
-import { useHistory } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import './LoginModalView.css'
 
 const LoginModalView = (props) => {
 
     const {isReservePage, onCloseModal } = props;
 
+    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
+    const [wrongtext, setWrongText] = useState("");
+    
 
     const _signup = () => {
         if(phone === "" || name === ""){
@@ -51,7 +50,7 @@ const LoginModalView = (props) => {
                 !isReservePage && history.push("/mypage");
             }
             else {
-                alert('no phone number');
+                setWrongText("Wrong phone number.");
             }
         }).catch((error) => {
             console.log("Login Firestore error: ", error);
@@ -61,6 +60,7 @@ const LoginModalView = (props) => {
     const onPhoneChange = (e) => {
         console.log(e.target.value);
         setPhone(e.target.value);
+        setWrongText("");
     }
 
     const onNameChange = (e) => {
@@ -68,10 +68,18 @@ const LoginModalView = (props) => {
         setName(e.target.value);
     }
 
+    const onClickTab = (e) => {
+        setPhone("");
+        setName("");
+        setWrongText("");
+    }
+
+
     const handleModalClose = (e) => { //input value 비워야돼.
         onCloseModal();
         setPhone("");
         setName("");
+        setWrongText("");
     };
 
     return <div>
@@ -83,18 +91,21 @@ const LoginModalView = (props) => {
                     <div className="modal-title">
                         COOKIN
                     </div>
+                    {isReservePage && !user.isloggedIn &&
+                     <div className="warning-reserve">You have to log in first.</div>
+                    }
                     {isReservePage && user.isloggedIn ?
                         (
-                            <div>
-                                You're logged in. Reserve the kitchen now!
+                            <div className="login-reserve">
+                                You're logged in.<br />Reserve the kitchen now!
                             </div> 
                         )
                         :
                         (
-                            <Tabs>
+                            <Tabs defaultIndex={1}>
                             <TabList>
-                                <Tab>Sign Up</Tab>
-                                <Tab>Log In</Tab>
+                                <Tab onClick={onClickTab}>Sign Up</Tab>
+                                <Tab onClick={onClickTab}>Log In</Tab>
                             </TabList>
                             <TabPanel>
                                 <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
@@ -106,6 +117,7 @@ const LoginModalView = (props) => {
                             </TabPanel>
                             <TabPanel>
                                 <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                                <div className="warning-wrong">{wrongtext}</div>
                                 <button className="modal-loginbtn" onClick={_login}>
                                     {" "}
                                     Log In{" "}
