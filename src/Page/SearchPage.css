@@ -20,6 +20,7 @@
     padding:1em;
     border:solid;
     background-color:#F0FFFF;
+    visibility:hidden;
 }
 
 .ListMapView{

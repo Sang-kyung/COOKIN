@@ -10,7 +10,6 @@ import * as SearchMap from '../Components/Views/SearchMap'
 import db from './../firebase';
 
 const SearchPage = () => {
-
   const [kitchensInfo, onLoad] = useState([]);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var localRecommmended = '';
@@ -136,6 +135,7 @@ const SearchPage = () => {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
     loadKitchenInfo()
+    document.getElementById("recommend").style.visibility = "visible";
   }
 
   return <div>
