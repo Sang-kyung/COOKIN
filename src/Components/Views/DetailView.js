@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import db from '../../firebase';
+
+// material ui
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 
 //view
 import UtensilItem from '../Items/UtensilItem';
@@ -13,47 +20,48 @@ import ReserveModalView from './ReserveModalView';
 import './DetailView.css';
 import GrayButton from '../Buttons/GrayButton';
 
+const materialTheme = createMuiTheme({
+    overrides: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: "#fa5000",
+        },
+      },
+      MuiPickersCalendarHeader: {
+        switchHeader: {
+
+        },
+      },
+      MuiPickersDay: {
+        day: {
+          color: "#000000",
+        },
+        daySelected: {
+          backgroundColor: "#fa5000",
+        },
+        dayDisabled: {
+          color: "#c4c4c4",
+        },
+        current: {
+          color: "#fa5000",
+        },
+      },
+      MuiPickersModal: {
+        dialogAction: {
+          color: "#fa5000",
+        },
+      },
+    },
+});
+
 
 const DetailView = () => {
-
+    const kitchen = useLocation().state.data;
     const user = useSelector(state => state.user);
-
-    const [kitchenInfo, onKitchenInfoLoad] = useState({});
-    const [reserveInfo, onChangeReserveInfo] = useState({});
-    const [totalPrice, onChangePrice] = useState(0);
-
+    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: []});
+    const [selectedDate, handleDateChange] = useState(new Date());
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
-
-    useEffect(() => {
-        fetchKitchenInfo();
-        onChangePrice(kitchenInfo.price);
-        onChangeReserveInfo({
-            name: "",
-            price: 0,
-            datae: "",
-            ingredients: []
-        });
-    }, []);
-
-    // load kitchen data from firebase
-    const fetchKitchenInfo = () => {
-        db.collection('kitchen_list').doc("Din Tai Fung").get()
-        .then(doc => {
-            onKitchenInfoLoad(doc.data());
-        })
-        .catch((error) => {
-            console.error("database load data failed", error);
-        })
-    }
-
-    // make reserve object for databse
-    const makeReserveObj = (kitchen) => {
-        reserveInfo.name = kitchen.name;
-        reserveInfo.price = kitchen.price;
-        reserveInfo.date = "2021-06-01";
-        onChangeReserveInfo(reserveInfo);
-    }
 
     const onCloseLoginModal = () => {
         onLoginModalUpdate(false);
@@ -64,40 +72,70 @@ const DetailView = () => {
     }
 
     const onClickPlus = (name) => {
-        if (reserveInfo.ingredients.find(x => x.name == name)) {
-            reserveInfo.ingredients.map(item => {
+        const _ = require("lodash");
+        let res_copy = _.cloneDeep(reserveInfo);
+        const ind = kitchen.ingredients.find(e => e.name == name);
+
+        if (res_copy.ingredients.find(x => x.name == name)) {
+            res_copy.ingredients.map(item => {
                 if (item.name == name) {
-                    item.amount += 1
+                    item.amount += 1;
+                    item.myPrice += ind.price;
                 }
             })
         } else {
             let append_item = {
                 name: name,
-                amount: 1
+                amount: 1,
+                myPrice: ind.price
             }
-            reserveInfo.ingredients.push(append_item);
+            res_copy.ingredients.push(append_item);
         }
-        // onChangeReserveInfo(reserveInfo);
+        res_copy.price += ind.price;
+        onChangeReserveInfo(res_copy);
     }
 
     const onClickMinus = (name) => {
-        reserveInfo.ingredients.map(item => {
-            if (item.name == name) {
-                item.amount -= 1
+        const _ = require("lodash");
+        let res_copy = _.cloneDeep(reserveInfo);
+        const ind = kitchen.ingredients.find(e => e.name == name);
+
+        res_copy.ingredients.map(item => {
+            if (item.name == name && item.amount > 0) {
+                item.amount -= 1;
+                item.myPrice -= ind.price;
+                res_copy.price -= ind.price;
             }
         })
-        reserveInfo.ingredients.filter(item => item.amount > 0)
-        // onChangeReserveInfo(reserveInfo);
+        res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
+        onChangeReserveInfo(res_copy);
+    }
+
+    const onIngDelete = (name) => {
+        const _ = require("lodash");
+        let res_copy = _.cloneDeep(reserveInfo);
+        const ind = kitchen.ingredients.find(e => e.name == name);
+
+        res_copy.ingredients.map(item => {
+            if (item.name == name && item.amount > 0) {
+                item.myPrice -= ind.price * item.amount;
+                res_copy.price -= ind.price * item.amount;
+                item.amount = 0;
+            }
+        })
+        res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
+        onChangeReserveInfo(res_copy);
     }
 
     const onClickReserve = () => {
-        makeReserveObj(kitchenInfo)
         if (user.isloggedIn) {
             let reservations = []
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
-                    reservations = doc.data();
+                    reservations = doc.data().reservations;
+                    console.log(reservations);
+                    console.log(user);
                     reservations.push(reserveInfo);
                 } else {
                     reservations.push(reserveInfo);
@@ -123,22 +161,21 @@ const DetailView = () => {
     return (
         <div>
             <SearchHeaderView />
-            {kitchenInfo.name && 
+            {kitchen.name && 
                 <div className={"detailViewWrapper"}>
     `                <div className={"detailInfoWrapper"}>
                         <div className={"detailHeaderWrapper"}>
-                            <h1>{kitchenInfo.name}</h1>
-                            <span>{kitchenInfo.address}</span>
-                            <h2>{kitchenInfo.price}</h2>
+                            <h1>{kitchen.name}</h1>
+                            <span>{kitchen.address}</span>
                             <div className={"detailPicture"}>
-                            <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
+                                <img className={"kitchenImg"} src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default} />
                             </div>
                         </div>
 
                         <div className={"detailUtensil"}>
                             <hr />
                             <p>Utensils</p>
-                            {kitchenInfo.utensils && kitchenInfo.utensils.map((item, index) => {
+                            {kitchen.utensils && kitchen.utensils.map((item, index) => {
                                 return <UtensilItem key={index} item={item} />
                             })}
                         </div> 
@@ -146,7 +183,7 @@ const DetailView = () => {
                         <div className={"detailIngredients"}>
                             <hr />
                             <p>Ingredients</p>
-                            {kitchenInfo.ingredients && kitchenInfo.ingredients.map((item, index) => {
+                            {kitchen.ingredients && kitchen.ingredients.map((item, index) => {
                                 return <IngredientItem key={index} item={item} onClickPlus={onClickPlus} onClickMinus={onClickMinus} />
                             })}
                         </div>
@@ -154,19 +191,44 @@ const DetailView = () => {
                     <div className={"floatingViewWrapper"}>  
                         <div className={"reservationInfoWrapper"}>
                             <div className={"totalPriceWrapper"}>
-                                {reserveInfo.ingredients && reserveInfo.ingredients.map((item, index) => {
-                                    return (
-                                        <div key={index}>
-                                            {item.name}
-                                            {item.amount}
-                                        </div>
-                                    )    
+                                {reserveInfo.ingredients.map((item, index) => {
+                                    return <div key={index} className={"ingOptions"}>
+                                                <p className={"ingAmount"}>{item.amount}</p>
+                                                <p>{item.name}</p>
+                                                <div>{item.myPrice} KRW</div>
+                                                <div className={"ingCancelBtn"} onClick={() => onIngDelete(item.name)}>X</div>
+                                        </div>  
                                 })}
+                                <hr />
+                                <div className={"totalPrice"}>
+                                    <p>Total</p>
+                                    <div>{reserveInfo.price} KRW</div>
+                                </div>
                             </div>
                             <div className={"infoWrapper"}>
-                                <div className={"people"}>
-                                </div>
                                 <div className={"date"}>
+                                    <p>Date</p>
+                                    <div className={"datePicker"}>
+                                        <ThemeProvider theme={materialTheme}>
+                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                <DatePicker
+                                                    autoOk
+                                                    disablePast
+                                                    variant="inline"
+                                                    inputVariant="outlined"
+                                                    format="MM.dd"
+                                                    value={selectedDate}
+                                                    onChange={date => handleDateChange(date)}
+                                                />
+                                            </MuiPickersUtilsProvider>
+                                        </ThemeProvider>
+                                    </div>
+                                </div>
+                                <div className={"time"}>
+                                    <p>Time</p>
+
+                                </div>
+                                {/* <div className={"date"}>
                                     <p>Date</p>
                                     <GrayButton text={"May"}/>
                                     <GrayButton text={"5"}/>
@@ -175,7 +237,8 @@ const DetailView = () => {
                                     <p>Time</p>
                                     <GrayButton text={"14:00"}/>
                                     <GrayButton text={"17:30"}/>
-                                </div>
+                                </div> */}
+
                             </div>
                             <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
@@ -184,8 +247,8 @@ const DetailView = () => {
                     </div>
                 </div>
             }
-            {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal}/>}
-            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal}/>}
+            {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal} />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} />}
         </div>
     )
 }

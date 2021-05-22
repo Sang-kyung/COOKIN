@@ -17,11 +17,11 @@ const IngredientItem = (props) => {
           <img 
               className="minusIcon" 
               src={require(`../../img/Buttons/minus.png`).default}
-              onClick={onClickMinus(item.name)}/> 
+              onClick={() => onClickMinus(item.name)}/> 
           <img 
             className="plusIcon" 
             src={require(`../../img/Buttons/plus.png`).default}
-            onClick={onClickPlus(item.name)}/> 
+            onClick={() => onClickPlus(item.name)}/> 
       </div> 
     </div>
   )

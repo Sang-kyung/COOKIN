@@ -9,7 +9,6 @@ const ListMapView = ({kitchen}) => {
         history.push({
           pathname:"/detail",
           state:{
-              key: kitchen.name,
               data: kitchen
            }
         });
@@ -31,14 +30,14 @@ const ListMapView = ({kitchen}) => {
                                 <div id="utensils">
                                     <i>Available Utensils</i>:<br/>
                                     {kitchen.utensils.map((items, index) => {
-                                        return (<div class="utensils" key={index}>{items.name}: {items.num}</div>)
+                                        return (<div className="utensils" key={index}>{items.name}: {items.num}</div>)
                                     })}
                                 </div>
                                 <br/>
                                 <div id="ingredients">
                                     <i>Available Ingredients</i>:<br/>
                                     {kitchen.ingredients.map((items, index) => {
-                                        return (<div class="ingredients" key={index}> {items.name} </div>)
+                                        return (<div className="ingredients" key={index}> {items.name} </div>)
                                     })}
                                 </div>
                             </div>

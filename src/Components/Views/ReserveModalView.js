@@ -36,6 +36,9 @@ const ReserveModalView = (props) => {
                         Time: 
                     </div>
                     <div className="Rmodal-info">
+                        Ingredients: 
+                    </div>
+                    <div className="Rmodal-info">
                         Total fee: 
                     </div>
                     <div className="Rmodal-buttons">

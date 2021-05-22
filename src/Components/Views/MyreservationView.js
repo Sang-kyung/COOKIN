@@ -20,7 +20,7 @@ const MyreservationBox = ({res, time}) => {
                 <div className="reservationWrapper">
                     <h3>{res.name}</h3>
                     <h4>date : {res.date}</h4>
-                    <h4 className="options">options : {res.options.map((item) => {
+                    <h4 className="options">Ingredients : {res.ingredients.map((item) => {
                                     return <OptionsItem key={item.name} item={item} />
                                 })}
                     </h4>
@@ -38,7 +38,7 @@ const MyreservationBox = ({res, time}) => {
                 <div className="reservationWrapper">
                     <h3>{res.name}</h3>
                     <h4>date : {res.date}</h4>
-                    <h4 className="options">options : {res.options.map((item) => {
+                    <h4 className="options">Ingredients : {res.ingredients.map((item) => {
                                     return <OptionsItem key={item.name} item={item} />
                                 })}
                     </h4>

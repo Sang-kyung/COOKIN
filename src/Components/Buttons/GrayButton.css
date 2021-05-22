@@ -1,18 +1,18 @@
 .grayBtn {
     background-color: #C4C4C4;
-    opacity: 0.7;
     border-radius: 10px;
-    width: 70px;
+    width: 20%;
     height: 40px;
     padding-top: 18px;
     padding-bottom: 8px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 8%;
+    padding-right: 8%;
     font-size: 25px;
     color: black;
     text-align: center;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 6%;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-
+    letter-spacing: 1px;
+    font-weight: 400;
 }
