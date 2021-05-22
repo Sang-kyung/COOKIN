@@ -65,24 +65,6 @@ const LoginModalView = (props) => {
         setName("");
     };
 
-
-
-
-
-    // <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-    // <Tab eventKey="home" title="Home">
-    //     <Sonnet />
-    // </Tab>
-    // <Tab eventKey="profile" title="Profile">
-    //     <Sonnet />
-    // </Tab>
-    // <Tab eventKey="contact" title="Contact" disabled>
-    //     <Sonnet />
-    // </Tab>
-    // </Tabs>
-
-                // {/* <span>{"If you are first here, sign up with phone number and name"}</span>
-                // <span>{"If you had logged in before, enter your phone number and name"}</span> */}
     return <div>
             <div className="modal">
                 <div className="modal-login">                
