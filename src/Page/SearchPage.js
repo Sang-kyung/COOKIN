@@ -137,15 +137,15 @@ const SearchPage = () => {
     loadKitchenInfo()
   }
 
-  const redirectfunction = (index) => {
-    this.props.history.push({
-      pathname:"/detail",
-      state:{
-          key: index,
-          data: kitchensInfo[index]
-       }
-     });
-  }
+  // const redirectfunction = (index) => {
+  //   this.props.history.push({
+  //     pathname:"/detail",
+  //     state:{
+  //         key: index,
+  //         data: kitchensInfo[index]
+  //      }
+  //    });
+  // }
 
   return <div>
           <SearchHeaderView />
@@ -156,7 +156,7 @@ const SearchPage = () => {
             <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
-                  return <ListMapView key={index} kitchen={item} onClick={redirectfunction(index)}/>
+                  return <ListMapView key={index} kitchen={item} /*onClick={redirectfunction(index)}*//>
                 })}
             </div>
           </div>
