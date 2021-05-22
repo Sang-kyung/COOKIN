@@ -10,8 +10,6 @@ const SearchHeaderView = () => {
   return <div className="headerWrapper">
     <SearchHeaderViewLeft />
     <MyPageButton />
-    {/* <SearchHeaderViewLeft />
-    <HeaderViewRight /> */}
   </div>
 }
 

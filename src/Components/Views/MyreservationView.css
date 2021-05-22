@@ -1,15 +1,23 @@
-.reservation_box {
-    border : 5px solid orange;
+.reservation_box_future {
+    border : 3px solid rgb(250, 80, 0, 0.8);
+    border-radius: 10px;
     margin: 3%;
+    width: auto;
+    text-align: left;
     margin-top: 1%;
-    padding: 3%;
+    padding: 20px 5%;
+    height: 130px;
 }
 
-.inform {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 3fr 1fr;
+.reservation_box_past {
+    border : 3px solid gray;
+    border-radius: 10px;
+    margin: 3%;
+    width: auto;
     text-align: left;
+    margin-top: 1%;
+    padding: 20px 5%;
+    height: 130px;
 }
 
 .reservation h3 {
@@ -19,30 +27,40 @@
     
 }
 
+.reservationWrapper {
+    display: inline-block;
+    width: 80%;
+}
+
+.reservationButtons {
+    display: inline-block;
+    width: 20%;
+    vertical-align: baseline;
+}
+
 .options {
     display: inline;
 }
 
 .modify {
-    height: auto;
-    width: 60%;
-    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 17px;
     padding: 9px 12px;
     box-sizing: border-box;
-    border-radius: 4%;
-    border-width: 1px;
-    border-style: groove;
-    border-color: darkgray;
+    border-radius: 10px;
+    background-color: #c4c4c4;
+    border: none;
 }
 
 .cancel {
-    height: auto;
-    width: 60%;
-    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 17px;
     padding: 9px 12px;
     box-sizing: border-box;
-    border-radius: 4%;
-    border-width: 1px;
-    border-style: groove;
-    border-color: darkgray;
+    border-radius: 10px;
+    background-color: #c4c4c4;
+    border: none;
+    margin-top: 10%;
 }

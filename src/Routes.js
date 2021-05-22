@@ -19,7 +19,10 @@ class Routes extends React.Component {
                     {/* <Route exact path="/home" component={HomePage} /> */}
                     <Route exact path="/mypage" component={MyPage} />
                     <Route exact path="/search" component={SearchPage} />
-                    <Route exact path="/detail" component={DetailPage} />
+                    <Switch>
+                        <Route exact path="/detail/:name" component={DetailPage} />
+                        <Route exact path="/detail" component={DetailPage} />
+                    </Switch>
                 </Switch>
             </Router>
         )

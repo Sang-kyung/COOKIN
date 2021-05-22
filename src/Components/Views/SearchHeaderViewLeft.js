@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderView.css'
-import HomePageButton from '../Buttons/homePageButton';
+import HomePageButton from '../Buttons/HomePageButton';
 import SearchResult from './SearchTagItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFirstCity, setFirstCity,deleteSecondCity, setSecondCity,deleteThirdCity, setThirdCity,deleteFourthCity, setFourthCity, setFirstCoord, setSecondCoord, setThirdCoord, setFourthCoord, setRecommendedPlace } from '../../reducers/searchCity';
