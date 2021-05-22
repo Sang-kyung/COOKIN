@@ -67,28 +67,6 @@
     white-space: pre-line;
 }
 
-/* Designing for scroll-bar */
-::-webkit-scrollbar {
-    width: 6px;
-}
-      
-/* Track */
-::-webkit-scrollbar-track {
-    background: gainsboro;
-    border-radius: 5px;
-}
-      
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #fc854d;
-    border-radius: 5px;
-}
-      
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
 br {
     display: block;
     margin: 2px 0;
