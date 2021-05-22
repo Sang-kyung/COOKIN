@@ -144,7 +144,7 @@ const SearchPage = () => {
       console.log("it is this")
     }
   }, [])
-
+  
   return <div>
           <SearchHeaderView />
           <div className="leftBox">
