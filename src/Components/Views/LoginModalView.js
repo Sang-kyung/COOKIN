@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './LoginModal.css'
 import { useDispatch } from 'react-redux';
 import db from '../../firebase';
-import { login } from '../../reducers/user';
+import { signup, login } from '../../reducers/user';
 import { show, setShow } from '../Buttons/MyPageButton';
 import { useHistory } from 'react-router-dom';
+import 'react-tabs/style/react-tabs.css';
 
 const LoginModalView = (props) => {
     const show = props.show;
@@ -15,32 +16,39 @@ const LoginModalView = (props) => {
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
 
-    const _login = () => {
-    if(phone === "" || name === ""){
-        return;
+    const _signup = () => {
+        if(phone === "" || name === ""){
+            return;
+        }
+        db.collection("user_list").doc(phone).set({
+            phone: phone,
+            name: name
+        }).then(() => {
+            dispatch(signup({phone, name}));
+            history.push("/mypage");
+
+        }).catch((error) => {
+            console.error("Error adding document: ", error);
+        });
     }
-    db.collection("user_list").doc(phone)
-    .get().then((doc) => {
-        if (doc.exists) {
-            if(doc.data().name !== name){
-                alert("Wrong name");
-                setShow(false);
-                return;
+
+    const _login = () => {
+        if(phone === ""){
+            return;
+        }
+        db.collection("user_list").doc(phone)
+        .get().then((doc) => {
+            if (doc.exists) {
+                let name = doc.data().name;
+                console.log("GO LOGIN");
+                console.log(name);
+                dispatch(login({phone, name}));
+                history.push("/mypage");
             }
             else{
-                dispatch(login({phone, name}));
-                history.push("/mypage");
+                alert("No phone number")
+                return;
             }
-        }
-        else {
-            db.collection("user_list").doc(phone).set({
-                name: name,
-                phone: phone
-            }).then(() => {
-                dispatch(login({phone, name}));
-                history.push("/mypage");
-            })
-        }
         }).catch((error) => {
             console.log("Login Firestore error: ", error);
         });
@@ -71,24 +79,6 @@ const LoginModalView = (props) => {
         }
     };
 
-
-
-
-
-    // <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-    // <Tab eventKey="home" title="Home">
-    //     <Sonnet />
-    // </Tab>
-    // <Tab eventKey="profile" title="Profile">
-    //     <Sonnet />
-    // </Tab>
-    // <Tab eventKey="contact" title="Contact" disabled>
-    //     <Sonnet />
-    // </Tab>
-    // </Tabs>
-
-                // {/* <span>{"If you are first here, sign up with phone number and name"}</span>
-                // <span>{"If you had logged in before, enter your phone number and name"}</span> */}
     return <div hidden={!show}>
             <div className="modal">
                 <div className="modal-login">                
@@ -98,13 +88,27 @@ const LoginModalView = (props) => {
                 <div className="modal-title">
                     COOKIN
                 </div>
-                {/* <Tabs defaultActiveKey="Log In" id="" */}
-                <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
-                <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
-                <button className="modal-loginbtn" onClick={_login}>
-                    {" "}
-                    Log In{" "}
-                </button>
+                <Tabs>
+                <TabList>
+                    <Tab>Sign Up</Tab>
+                    <Tab>Log In</Tab>
+                </TabList>
+                <TabPanel>
+                    <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                    <input className="modal-input" value={name} type="text" onChange={onNameChange} placeholder="Username" />
+                    <button className="modal-loginbtn" onClick={_signup}>
+                        {" "}
+                        Sign Up{" "}
+                    </button>
+                </TabPanel>
+                <TabPanel>
+                    <input className="modal-input" value={phone} type="text" onChange={onPhoneChange} placeholder="Phone Number" />
+                    <button className="modal-loginbtn" onClick={_login}>
+                        {" "}
+                        Log In{" "}
+                    </button>
+                </TabPanel>
+                </Tabs>
                 </div>
             </div>
         </div>

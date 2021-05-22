@@ -33,18 +33,18 @@ const MyreservationBox = ({res, time}) => {
     </div>
 }
 
-const MyreservationView = ({Ups, Pasts}) => {
+const MyreservationView = ({reservations}) => {
     return <div className ='reservation'>
                 <h3>Upcoming Reservations</h3>
                 <div>
-                    {Ups.map((item, index) => {
-                        return <MyreservationBox key={index} res={item} time={"Future"} />
+                    {reservations.map((item, index) => {
+                        return new Date(item.date) >= new Date() && <MyreservationBox key={index} res={item} time={"Future"} />
                     })}
                 </div>
                 <h3>Past Reservations</h3>
                 <div>
-                    {Pasts.map((item, index) => {
-                        return <MyreservationBox key={index} res={item} time={"Past"} />
+                    {reservations.map((item, index) => {
+                        return new Date(item.date) < new Date() && <MyreservationBox key={index} res={item} time={"Past"} />
                     })}
                 </div>
             </div>

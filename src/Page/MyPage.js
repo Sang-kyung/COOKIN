@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import db from '../firebase';
 
 // view
 import MyinformationView from '../Components/Views/MyinformationView';
@@ -9,40 +10,52 @@ import MainHeaderViewLeft from '../Components/Views/MainHeaderViewLeft';
 
 const MyPage = () => {
   const history = useHistory();
-  const res = useSelector(state => state.reservation.reservations);
-  const isloggedIn = useSelector(state => state.user.isloggedIn);
+  const user = useSelector(state => state.user);
 
-  var Ups = new Array();
-  var Pasts = new Array();
-  const now = new Date();
+  const [reservationInfo, onLoad] = useState([]);
+  const [show, onLoadUpdate] = useState(false);
 
-  for( var i = 0; i < res.length; i++ ){
-    var item = res[i];
-    var date = new Date(item.date);
-    date >= now ? (
-      Ups.push(item)
-    ) : (
-      Pasts.push(item)
-    )
+  useEffect(() => {
+      fetchReservationInfo();
+  }, []);
+
+  const fetchReservationInfo = () => {
+    console.log("fetchReservationInfo");
+    db.collection('reservation_list')
+    .doc(user.phone)
+    .get()
+    .then((doc) => {
+      console.log(user.phone);
+      console.log(doc);
+      if (doc.exists) {
+        console.log("doc.exists");
+        onLoad(doc.data().reservations);
+        onLoadUpdate(true);
+        console.log('aa');
+      }
+      else{
+        console.log('bb');
+      }
+    })
   }
 
-  var res_num = res.length;
-  var Upcoming = Ups.length;
-
-  console.log("res_num, Upcoming, Ups, Pasts");
-  console.log(res_num, Upcoming, Ups, Pasts);
+  console.log("return go");
 
   return <div>
-            {isloggedIn ? (
-              <div>
-                  <MainHeaderViewLeft />
-                  <MyinformationView res_num={res_num} Upcoming={Upcoming}/>
-                  <MyreservationView Ups={Ups} Pasts={Pasts}/>
-                </div>
-            ) : (
-              alert('You did not log in.') || history.push("/")
-            )
-            }
+              {user.isloggedIn 
+              ?
+              (<div>
+                { show &&
+                  <div>
+                    <MainHeaderViewLeft />
+                    <MyinformationView name={user.name} res_num={reservationInfo.length} Upcoming={3}/>
+                    <MyreservationView reservations={reservationInfo} />
+                  </div>
+                }
+              </div>)
+              :
+              (alert('You did not log in.') || history.push("/"))
+              }         
           </div>
 }
 

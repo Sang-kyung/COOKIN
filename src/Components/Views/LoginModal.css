@@ -27,7 +27,7 @@
 
 .modal-title {
     margin-top: 10px;
-    height: 80px;
+    height: 70px;
     font-size: 35px;
     display: flex;
     justify-content: center;
@@ -59,4 +59,14 @@
 
 .modal-loginbtn input::placeholder {
     color: #999999;
+}
+
+.react-tabs__tab-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+}
+
+.react-tabs__tab {
+    text-align: center;
 }
