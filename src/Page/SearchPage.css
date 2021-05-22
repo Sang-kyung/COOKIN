@@ -8,11 +8,11 @@
     width:60%;
     display: inline-block;
     overflow: hidden;
-    height: 75vh;
+    height: 95vh;
 }
 
 #ListMapView{
-    height:65vh;    
+    height:70vh;    
     overflow: auto;
 }
 

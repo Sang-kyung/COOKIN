@@ -17,14 +17,14 @@
     background-color: #FA5000;
     opacity: 0.8;
     width: 500px;
-    height: 70px;
+    height: 55px;
     margin-top: 10px;
 }
 
 .searchInput {
     display: inline-block;
     height: 40px;
-    width: 340px;
+    width: 410px;
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -43,14 +43,10 @@ input {
 
 .plusBtn {
     display: inline-block;
-
     border-radius: 25px;
-    height: 50px;
-    width: 50px;
-
     height: 40px;
     width: 40px;
-
+    color: white;
     margin-left: 20px;
     margin-top: 5px;
     background: url('./../../images/searchIcon_32px.png');
