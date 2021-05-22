@@ -223,7 +223,7 @@ const SearchHeaderViewLeft = () => {
               updateCity();
             }
           }}></input>
-          <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
+          <button className="plusBtn" onClick={(e) => {updateCity()}}>_</button>
         </div>
       </div>
     

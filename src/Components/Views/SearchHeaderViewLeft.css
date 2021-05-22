@@ -19,7 +19,7 @@
     background-color: #FA5000;
     opacity: 0.7;
     width: 500px;
-    height: 80px;
+    height: 65px;
     margin-top: 20px;
 }
 
@@ -28,7 +28,7 @@
     height: 42px;
     width: 400px;
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 
@@ -40,11 +40,16 @@ input {
 
 .plusBtn {
     display: inline-block;
+    color: white;
     border-radius: 25px;
     height: 50px;
     width: 50px;
     margin-left: 20px;
-    margin-top: 15px;
+    margin-top: 5px;
+    background: url('./../../images/searchIcon_32px.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white;
 }
 
 .recBtn {

@@ -160,7 +160,7 @@ const SearchPage = () => {
                   return <ListMapView key={index} kitchen={item}/>
                 })}
             </div>
-            <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
+            <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>fetch</button>
           </div>
           <div className="rightBox">
             <MapContainer />
