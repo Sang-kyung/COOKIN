@@ -1,21 +1,31 @@
 #body{
     border:2px solid black;
-    grid-template-columns: fit-content(20%) fit-content(80%);
-    height: 20vh;
+    grid-template-columns: fit-content(30%) fit-content(70%);
+    height: auto;
     display:flex;
     min-height: 100px;
     overflow: hidden;
 }
 
 #photo{
-    border: 2px solid black;
     height:auto;
-    width:20%;
+    width:30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo {
+    display:block;
+    margin:auto;
+    width: fit-content;
+    border-radius: 10%;
+    max-width:100%;
 }
 
 #content{
     height:auto;
-    width:80%;
+    width:70%;
     float:left;
     display:flex;
     flex-direction: column; 
@@ -23,20 +33,20 @@
     padding:1.2em;
 }
 
-p{
-    margin: 0;
-    padding: 0;
-}
-
 #name{
     height:auto;
     padding:.2em;
+    font-size: 20px;
+    cursor: pointer;
+    display:inline-block;
+    text-decoration: underline;
 }
 
 #information{
     height:auto;
     min-height: 100px;
     overflow: hidden;
+    font-size: 15px;
 }
 
 .ingredients{
@@ -56,3 +66,8 @@ p{
 #utensils{
     white-space: pre-line;
 }
+
+br {
+    display: block;
+    margin: 2px 0;
+ }

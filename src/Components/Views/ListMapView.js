@@ -14,36 +14,28 @@ const ListMapView = ({kitchen}) => {
         });
     }
 
-    const image = "../../img/kitchen" + kitchen.img[0] + ".png";
-    // <img class="center" src={require({image}).default}></img>
-    // .center {
-    //     display: block;
-    //     margin-left: auto;
-    //     margin-right: auto;
-    //     width: 50%;
-    // }
-
-    var this_div = <div id="body" onDoubleClick={(e)=>{redirectfunction()}}>
-                        <div id="photo"></div>
+    var this_div = <div id="body">
+                        <div id="photo">
+                            {kitchen && <img className="photo" src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default}/>}
+                        </div>
                         <div id="content">
-                            <div id="name">
-                                <p onClick={(e)=>{redirectfunction()}}>{kitchen.name}</p>
+                            <div id="name" onClick={(e)=>{redirectfunction()}}>
+                                {kitchen.name}
                             </div>
                             <div id="information">
-                                <br></br>
                                 <div id="price">
-                                    Price: {kitchen.price}
+                                    <i>Price</i>: {kitchen.price}
                                 </div>
-                                <br></br>
+                                <br/>
                                 <div id="utensils">
-                                    Available Utensils:
+                                    <i>Available Utensils</i>:<br/>
                                     {kitchen.utensils.map((items, index) => {
                                         return (<div className="utensils" key={index}>{items.name}: {items.num}</div>)
                                     })}
                                 </div>
-                                <br></br>
+                                <br/>
                                 <div id="ingredients">
-                                    Available Ingredients:
+                                    <i>Available Ingredients</i>:<br/>
                                     {kitchen.ingredients.map((items, index) => {
                                         return (<div className="ingredients" key={index}> {items.name} </div>)
                                     })}

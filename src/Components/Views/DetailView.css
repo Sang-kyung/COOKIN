@@ -125,6 +125,13 @@ hr {
     font-size: 25px;
 }
 
+.datePicker {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    text-align: right;
+}
+
 .reserveBtn {
     border-radius: 10px;
     background-color: #FA5000;

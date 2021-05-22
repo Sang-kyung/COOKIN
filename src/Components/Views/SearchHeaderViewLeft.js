@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './HeaderView.css'
 import HomePageButton from '../Buttons/HomePageButton';
 import SearchResult from './SearchTagItem'
@@ -190,6 +190,16 @@ const SearchHeaderViewLeft = () => {
     }
     
   }
+  useEffect(() => {
+    if(firstCity!= "-"){
+      console.log("first City is", firstCity)
+      SearchMap.searchMapKeyWord(firstCity);
+      setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()))},500);
+    }
+    else{
+      console.log("it is this . . . . . .. . .. . . . .. . . .")
+    }
+  }, [])
 
   // const tagItems = [
   //   {city: "la", func: () => {}},

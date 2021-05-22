@@ -21,8 +21,39 @@
     border:solid;
     background-color:#F0FFFF;
     visibility:hidden;
+    text-align: center;
 }
 
 .ListMapView{
     padding:3em;
+}
+
+.fetchButton{
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background-color: #fc854d;
+    margin-left: calc(50% - 100px);
+}
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+      
+/* Track */
+::-webkit-scrollbar-track {
+    background: gainsboro;
+    border-radius: 5px;
+}
+      
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #fc854d;
+    border-radius: 5px;
+}
+      
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

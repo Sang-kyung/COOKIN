@@ -6,7 +6,6 @@ import './HomePage.css';
 // view
 import MainHeaderView from '../Components/Views/MainHeaderView';
 import SearchView from '../Components/Views/SearchView';
-import QuestionView from '../Components/Views/QuestionView';
 
 import { deleteFirstCity, deleteSecondCity, deleteThirdCity,deleteFourthCity,} from '../reducers/searchCity';
 import * as SearchMap from '../Components/Views/SearchMap'

@@ -28,7 +28,6 @@ const SearchPage = () => {
   const yeoyidoCoord = {x: 37.52209681000769, y:126.92420114948074};
   const dispatch = useDispatch();
   const history = useHistory();
-
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
       case (gn):{
@@ -114,8 +113,6 @@ const SearchPage = () => {
     localRecommmended = nearestPlace;
     }
   }  
-  
-
 
   const loadKitchenInfo = () => {
     var kitchens = [];
@@ -137,6 +134,7 @@ const SearchPage = () => {
     loadKitchenInfo()
     document.getElementById("recommend").style.visibility = "visible";
   }
+
   useEffect(() => {
     if(recommendedPlace!= ". . ."){
       console.log(recommendedPlace);
@@ -147,12 +145,11 @@ const SearchPage = () => {
     }
   }, [])
   
-  
   return <div>
           <SearchHeaderView />
           <div className="leftBox">
             <div id="recommend">
-              Recommended place is {recommendedPlace}
+              Recommended place is <b>{recommendedPlace}</b>
             </div>
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
