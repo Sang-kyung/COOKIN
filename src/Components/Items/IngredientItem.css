@@ -5,35 +5,49 @@
 
 .ingredientImgWrapper {
     display: inline-block;
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
     border-radius: 10px;
     background-color: #c4c4c4;
 }
 
 .ingredientImg {
-    width: 90px;
-    height: 90px;
-    margin: 20px;
+    width: 75px;
+    height: 75px;
+    margin: 18px;
 }
 
 .ingredientOptionWrapper {
     display: inline-block;
     width: calc(100% - 170px);
     height: 30px;
-    margin-left: 20px;
+    margin-left: 30px;
+    vertical-align: top;
+    padding-top: 8px;
 }
 
+.ingredientName {
+    color: #000000;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.ingredientPrice {
+    color: rgb(113, 113, 113);
+    font-size: 18px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
 
 .plusIcon {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
+    width: 33px;
+    height: 33px;
+    margin-left: 15px;
 }
 
 .minusIcon {
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
     margin-left: 10px; 
 }
 

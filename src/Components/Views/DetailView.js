@@ -5,7 +5,6 @@ import db from '../../firebase';
 //view
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
-import OrangeButton from '../Buttons/OrangeButton';
 import LoginModalView from './LoginModalView';
 import SearchHeaderView from './SearchHeaderView';
 

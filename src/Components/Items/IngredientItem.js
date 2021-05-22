@@ -12,16 +12,16 @@ const IngredientItem = (props) => {
         <img className="ingredientImg" src={require(`../../img/Ingredients/${item.imgUrl}.png`).default}/>
       </div>
       <div className="ingredientOptionWrapper">
-        <div>{item.name}</div>
-        <div>{item.price}</div>  
+        <div className="ingredientName">{item.name}</div>
+        <div className="ingredientPrice">{item.price}KRW / {item.unit}</div>
+          <img 
+              className="minusIcon" 
+              src={require(`../../img/Buttons/minus.png`).default}
+              onClick={onClickMinus(item.name)}/> 
           <img 
             className="plusIcon" 
             src={require(`../../img/Buttons/plus.png`).default}
-            onClick={onClickPlus(item.name)}/>
-          <img 
-            className="minusIcon" 
-            src={require(`../../img/Buttons/minus.png`).default}
-            onClick={onClickMinus(item.name)}/>  
+            onClick={onClickPlus(item.name)}/> 
       </div> 
     </div>
   )
