@@ -144,12 +144,13 @@ const SearchPage = () => {
             <div id="recommend">
               Recommended place is {recommendedPlace}
             </div>
-            <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
+            
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
                   return <ListMapView key={index} kitchen={item}/>
                 })}
             </div>
+            <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
           </div>
           <div className="rightBox">
             <MapContainer />
