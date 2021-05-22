@@ -1,14 +1,14 @@
 #body{
     border:2px solid black;
     grid-template-columns: fit-content(30%) fit-content(70%);
-    height: 23vh;
+    height: auto;
     display:flex;
     min-height: 100px;
     overflow: hidden;
 }
 
 #photo{
-    height:23vh;
+    height:auto;
     width:30%;
     display: flex;
     align-items: center;
