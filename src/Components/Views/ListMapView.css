@@ -1,21 +1,33 @@
 #body{
     border:2px solid black;
-    grid-template-columns: fit-content(20%) fit-content(80%);
-    height: 20vh;
+    grid-template-columns: fit-content(30%) fit-content(70%);
+    height: 25vh;
     display:flex;
     min-height: 100px;
     overflow: hidden;
 }
 
 #photo{
-    border: 2px solid black;
-    height:auto;
-    width:20%;
+    height:25vh;
+    width:30%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    background-color:pink
+}
+
+.center {
+    display: block;
+    text-align: center;
+    margin:auto;
+    align-content: center;
+    width:100%;
+    border-radius: 10%;
 }
 
 #content{
     height:auto;
-    width:80%;
+    width:70%;
     float:left;
     display:flex;
     flex-direction: column; 
@@ -23,20 +35,20 @@
     padding:1.2em;
 }
 
-p{
-    margin: 0;
-    padding: 0;
-}
-
 #name{
     height:auto;
     padding:.2em;
+    font-size: 20px;
+    cursor: pointer;
+    display:inline-block;
+    text-decoration: underline;
 }
 
 #information{
     height:auto;
     min-height: 100px;
     overflow: hidden;
+    font-size: 15px;
 }
 
 .ingredients{
