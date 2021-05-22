@@ -21,7 +21,7 @@ const DetailView = () => {
 
     const user = useSelector(state => state.user);
     const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: "", ingredients: []});
-    const [totalPrice, onChangePrice] = useState(0);
+    const [totalPrice, onChangePrice] = useState(kitchen.price);
 
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
@@ -44,49 +44,82 @@ const DetailView = () => {
 
     const onClickPlus = (name) => {
         const _ = require("lodash");
-        const res_copy = _.cloneDeep(reserveInfo);
+        let res_copy = _.cloneDeep(reserveInfo);
+        let current_price = totalPrice;
+
+        const ind = kitchen.ingredients.find(e => e.name == name);
 
         if (res_copy.ingredients.find(x => x.name == name)) {
             res_copy.ingredients.map(item => {
                 if (item.name == name) {
-                    item.amount += 1
+                    item.amount += 1;
+                    item.myPrice += ind.price;
                 }
             })
         } else {
             let append_item = {
                 name: name,
-                amount: 1
+                amount: 1,
+                myPrice: ind.price
             }
             res_copy.ingredients.push(append_item);
         }
+
+        current_price += ind.price;
+
         onChangeReserveInfo(res_copy);
+        onChangePrice(current_price);
     }
 
     const onClickMinus = (name) => {
         const _ = require("lodash");
-        const res_copy = _.cloneDeep(reserveInfo);
+        let res_copy = _.cloneDeep(reserveInfo);
+        let current_price = totalPrice;
+        const ind = kitchen.ingredients.find(e => e.name == name);
+
         res_copy.ingredients.map(item => {
             if (item.name == name && item.amount > 0) {
                 item.amount -= 1;
+                item.myPrice -= ind.price;
+                current_price -= ind.price;
             }
         })
         res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
         onChangeReserveInfo(res_copy);
+        onChangePrice(current_price);
+    }
+
+    const onIngDelete = (name) => {
+        const _ = require("lodash");
+        let res_copy = _.cloneDeep(reserveInfo);
+        let current_price = totalPrice;
+        const ind = kitchen.ingredients.find(e => e.name == name);
+
+        res_copy.ingredients.map(item => {
+            if (item.name == name && item.amount > 0) {
+                item.myPrice -= ind.price * item.amount;
+                current_price -= ind.price * item.amount;
+                item.amount = 0;
+            }
+        })
+        res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
+        onChangeReserveInfo(res_copy);
+        onChangePrice(current_price);
     }
 
     const onClickReserve = () => {
         // makeReserveObj(kitchen);
         if (user.isloggedIn) {
-            let reservations = []
+            let revs = []
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
-                    reservations = doc.data();
-                    reservations.push(reserveInfo);
+                    revs = doc.data();
+                    revs.push(reserveInfo);
                 } else {
-                    reservations.push(reserveInfo);
+                    revs.push(reserveInfo);
                 }
-                db.collection("reservation_list").doc(user.phone).set({reservations})
+                db.collection("reservation_list").doc(user.phone).set({revs})
                 .then(() => {
                     console.log("updated")
                 })
@@ -139,11 +172,18 @@ const DetailView = () => {
                         <div className={"reservationInfoWrapper"}>
                             <div className={"totalPriceWrapper"}>
                                 {reserveInfo.ingredients.map((item, index) => {
-                                    return <div key={index}>
-                                            {item.name}
-                                            {item.amount}
+                                    return <div key={index} className={"ingOptions"}>
+                                                <p className={"ingAmount"}>{item.amount}</p>
+                                                <p>{item.name}</p>
+                                                <div>{item.myPrice} KRW</div>
+                                                <div className={"ingCancelBtn"} onClick={() => onIngDelete(item.name)}>X</div>
                                         </div>  
                                 })}
+                                <hr />
+                                <div className={"totalPrice"}>
+                                    <p>Total</p>
+                                    <div>{totalPrice} KRW</div>
+                                </div>
                             </div>
                             <div className={"infoWrapper"}>
                                 <div className={"people"}>

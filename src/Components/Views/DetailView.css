@@ -52,11 +52,57 @@ hr {
     width: 30%;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     padding: 25px;
-    height: 400px;
 }
 
-.totalPriceWrapper {
-    height: 100px
+.ingAmount {
+    width: 7% !important;
+    font-size: 20px;
+}
+
+.ingOptions p {
+    display: inline-block;
+    width: 40%;
+    font-size: 20px;
+}
+
+.ingOptions div {
+    display: inline-block;
+    text-align: right;
+    width: 45%;
+    font-size: 20px;
+}
+
+.ingOptions {
+    margin-top: 10px;
+    color: rgb(34, 34, 34);
+}
+
+.ingCancelBtn {
+    width: 5% !important;
+    margin-left: 2%;
+    display: inline-block;
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    text-align: center !important;
+    cursor: pointer;
+}
+.totalPrice {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.totalPrice p {
+    display: inline-block;
+    width: 20%;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.totalPrice div {
+    display: inline-block;
+    text-align: right;
+    width: 80%;
+    font-size: 25px;
 }
 
 .infoWrapper {
@@ -65,11 +111,13 @@ hr {
 
 .date {
     margin-bottom: 10px;
+    width: 100%;
+    color: rgb(34, 34, 34);
 }
 
 .infoWrapper p {
     display: inline-block;
-    width: 50px;
+    width: 15%;
     font-size: 25px;
 }
 
@@ -84,6 +132,7 @@ hr {
     letter-spacing: 4px;
     padding-top: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    cursor: pointer;
 }
 
 
