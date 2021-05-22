@@ -28,7 +28,6 @@ const SearchPage = () => {
   const yeoyidoCoord = {x: 37.52209681000769, y:126.92420114948074};
   const dispatch = useDispatch();
   const history = useHistory();
-
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
       case (gn):{
