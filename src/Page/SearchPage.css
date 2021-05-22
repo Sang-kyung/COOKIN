@@ -21,6 +21,7 @@
     border:solid;
     background-color:#F0FFFF;
     visibility:hidden;
+    text-align: center;
 }
 
 .ListMapView{

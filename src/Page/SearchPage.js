@@ -113,8 +113,6 @@ const SearchPage = () => {
     localRecommmended = nearestPlace;
     }
   }  
-  
-
 
   const loadKitchenInfo = () => {
     var kitchens = [];
@@ -136,14 +134,22 @@ const SearchPage = () => {
     loadKitchenInfo()
     document.getElementById("recommend").style.visibility = "visible";
   }
-  
-  
-  
+
+  useEffect(() => {
+    if(recommendedPlace!= ". . ."){
+      console.log(recommendedPlace);
+      clickfunction();
+    }
+    else{
+      console.log("it is this")
+    }
+  }, [])
+
   return <div>
           <SearchHeaderView />
           <div className="leftBox">
             <div id="recommend">
-              Recommended place is {recommendedPlace}
+              Recommended place is <b>{recommendedPlace}</b>
             </div>
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
