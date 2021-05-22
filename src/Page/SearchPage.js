@@ -12,10 +12,6 @@ const SearchPage = () => {
 
   const [kitchensInfo, onLoad] = useState([]);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
-  const firstCity = useSelector((state) => state.searchCity.firstCity);
-  const secondCity = useSelector((state) => state.searchCity.secondCity);
-  const thirdCity = useSelector((state) => state.searchCity.thirdCity);
-  const fourthCity = useSelector((state) => state.searchCity.fourthCity);
   const firstCoord = useSelector((state) => state.searchCity.firstCityCoord);
   const secondCoord = useSelector((state) => state.searchCity.secondCityCoord);
   const thirdCoord = useSelector((state) => state.searchCity.thirdCityCoord);
@@ -133,16 +129,26 @@ const SearchPage = () => {
     loadKitchenInfo();
   }
 
+  const redirectfunction = (index) => {
+    this.props.history.push({
+      pathname:"/detail",
+      state:{
+          key: index,
+          data: kitchensInfo[index]
+       }
+     });
+  }
+
   return <div>
           <SearchHeaderView />
           <div className="leftBox">
             <div id="recommend">
               Recommended place is {recommendedPlace}
             </div>
-            <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
+            <button type="button" onClick={clickfunction()}>fetch</button>
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
-                  return <ListMapView key={index} kitchen={item}/>
+                  return <ListMapView key={index} kitchen={item} onClick={redirectfunction(index)}/>
                 })}
             </div>
           </div>
