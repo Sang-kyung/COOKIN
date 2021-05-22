@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import MapContainer from '../Components/Views/SearchMap';
 import SearchHeaderView from '../Components/Views/SearchHeaderView';
 import ListMapView from '../Components/Views/ListMapView';
@@ -27,6 +28,7 @@ const SearchPage = () => {
   const jongloCoord = {x: 37.572251494413585,y: 126.98713159681843};
   const yeoyidoCoord = {x: 37.52209681000769, y:126.92420114948074};
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
@@ -129,23 +131,12 @@ const SearchPage = () => {
       onLoad(kitchens);
     })
   } 
-
-  
+   
   const clickfunction = function() {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
     loadKitchenInfo()
   }
-
-  // const redirectfunction = (index) => {
-  //   this.props.history.push({
-  //     pathname:"/detail",
-  //     state:{
-  //         key: index,
-  //         data: kitchensInfo[index]
-  //      }
-  //    });
-  // }
 
   return <div>
           <SearchHeaderView />
@@ -156,7 +147,7 @@ const SearchPage = () => {
             <button type="button" onClick={(e) => {clickfunction()}}>fetch</button>
             <div id="ListMapView">          
                 {kitchensInfo && kitchensInfo.map((item, index) => {
-                  return <ListMapView key={index} kitchen={item} /*onClick={redirectfunction(index)}*//>
+                  return <ListMapView key={index} kitchen={item}/>
                 })}
             </div>
           </div>
