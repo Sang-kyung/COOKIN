@@ -11,11 +11,6 @@ const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    loadKitchenInfo();
-  }, []);
-
   const loadKitchenInfo = () => {
     let kitchens = [];
     db.collection("kitchen_list")
