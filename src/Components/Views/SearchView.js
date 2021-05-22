@@ -29,10 +29,7 @@ const SearchView = () => {
       }
     }}>
     </input>
-  </div>
-  <div className='buttonWrapper'>
-    <button id="buttonSearch" onClick={clickfunction}>Search</button>
-    <button id="buttonRecommendation">Recommend Me</button>
+    <button id="buttonSearchInput" onClick={clickfunction}></button>
   </div>
   </div>
   return this_div

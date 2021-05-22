@@ -1,14 +1,10 @@
 import React from 'react';
+import queryString from 'query-string';
 
 // view
 import DetailView from '../Components/Views/DetailView';
 
 const DetailPage = () => {
-
-    const fetchKitchenData = () => {
-        // use firebase data
-    }
-
     return <div>
         <DetailView />
     </div>

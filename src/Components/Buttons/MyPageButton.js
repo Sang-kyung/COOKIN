@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import imgfile from '../../images/myPageButton.png';
 import './MyPageButton.css'
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -11,6 +10,7 @@ const MyPageButton = () => {
   const isloggedIn = useSelector(state => state.user.isloggedIn);
 
   const handleModalOpen = () => { // 밑에 onClick={handleModalOpen} 까지.
+    console.log("aa")
     isloggedIn === false ? (
       setShow(true)
     ) : (
@@ -18,12 +18,24 @@ const MyPageButton = () => {
     )
   };
 
-  return <div style={{height: "100%", width:'auto', backgroundColor:'black', float: 'right'}}>
-          <LoginModalView show = {show} setShow={setShow}/>
-          <button className="button" onClick={handleModalOpen}>
-            <img style={{height: '100%', width: 'auto'}} src={imgfile}/>
-          </button>
+  const onCloseModal = () => {
+    console.log("bb")
+    setShow(false);
+  }
+
+  return (
+    <div className="myPageBtnWrapper">
+      {show && 
+        <LoginModalView 
+          isReservePage={false}
+          onCloseModal={onCloseModal}
+        />}
+      <div className="btnWrapper" onClick={handleModalOpen}>
+        <img className="userIcon" src={require('../../img/Main/user.png').default}/>
+        <div className="userPageText">My Page</div>
+      </div>
     </div>
+  )
 }
 
 export default MyPageButton;
