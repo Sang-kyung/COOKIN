@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import db from '../../firebase';
+
+// material ui
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 
 //view
 import UtensilItem from '../Items/UtensilItem';
@@ -14,15 +20,46 @@ import ReserveModalView from './ReserveModalView';
 import './DetailView.css';
 import GrayButton from '../Buttons/GrayButton';
 
+const materialTheme = createMuiTheme({
+    overrides: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: "#fa5000",
+        },
+      },
+      MuiPickersCalendarHeader: {
+        switchHeader: {
+
+        },
+      },
+      MuiPickersDay: {
+        day: {
+          color: "#000000",
+        },
+        daySelected: {
+          backgroundColor: "#fa5000",
+        },
+        dayDisabled: {
+          color: "#c4c4c4",
+        },
+        current: {
+          color: "#fa5000",
+        },
+      },
+      MuiPickersModal: {
+        dialogAction: {
+          color: "#fa5000",
+        },
+      },
+    },
+});
+
 
 const DetailView = () => {
-
     const kitchen = useLocation().state.data;
-
     const user = useSelector(state => state.user);
-    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: "", ingredients: []});
-    const [totalPrice, onChangePrice] = useState(kitchen.price);
-
+    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: []});
+    const [selectedDate, handleDateChange] = useState(new Date());
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
 
@@ -37,8 +74,6 @@ const DetailView = () => {
     const onClickPlus = (name) => {
         const _ = require("lodash");
         let res_copy = _.cloneDeep(reserveInfo);
-        // let current_price = totalPrice;
-
         const ind = kitchen.ingredients.find(e => e.name == name);
 
         if (res_copy.ingredients.find(x => x.name == name)) {
@@ -56,16 +91,13 @@ const DetailView = () => {
             }
             res_copy.ingredients.push(append_item);
         }
-
         res_copy.price += ind.price;
         onChangeReserveInfo(res_copy);
-        // onChangePrice(current_price);
     }
 
     const onClickMinus = (name) => {
         const _ = require("lodash");
         let res_copy = _.cloneDeep(reserveInfo);
-        // let current_price = totalPrice;
         const ind = kitchen.ingredients.find(e => e.name == name);
 
         res_copy.ingredients.map(item => {
@@ -77,26 +109,22 @@ const DetailView = () => {
         })
         res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
         onChangeReserveInfo(res_copy);
-        // onChangePrice(current_price);
     }
 
     const onIngDelete = (name) => {
         const _ = require("lodash");
         let res_copy = _.cloneDeep(reserveInfo);
-        let current_price = totalPrice;
         const ind = kitchen.ingredients.find(e => e.name == name);
 
         res_copy.ingredients.map(item => {
             if (item.name == name && item.amount > 0) {
                 item.myPrice -= ind.price * item.amount;
-                current_price -= ind.price * item.amount;
                 res_copy.price -= ind.price * item.amount;
                 item.amount = 0;
             }
         })
         res_copy.ingredients = res_copy.ingredients.filter(item => item.amount > 0);
         onChangeReserveInfo(res_copy);
-        // onChangePrice(current_price);
     }
 
     const onClickReserve = () => {
@@ -140,7 +168,7 @@ const DetailView = () => {
                             <h1>{kitchen.name}</h1>
                             <span>{kitchen.address}</span>
                             <div className={"detailPicture"}>
-                                <img className={"kitchenImg"} src={require('../../img/Kitchen/dintaifung_1.png').default} />
+                                <img className={"kitchenImg"} src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default} />
                             </div>
                         </div>
 
@@ -178,9 +206,29 @@ const DetailView = () => {
                                 </div>
                             </div>
                             <div className={"infoWrapper"}>
-                                <div className={"people"}>
-                                </div>
                                 <div className={"date"}>
+                                    <p>Date</p>
+                                    <div className={"datePicker"}>
+                                        <ThemeProvider theme={materialTheme}>
+                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                <DatePicker
+                                                    autoOk
+                                                    disablePast
+                                                    variant="inline"
+                                                    inputVariant="outlined"
+                                                    format="MM.dd"
+                                                    value={selectedDate}
+                                                    onChange={date => handleDateChange(date)}
+                                                />
+                                            </MuiPickersUtilsProvider>
+                                        </ThemeProvider>
+                                    </div>
+                                </div>
+                                <div className={"time"}>
+                                    <p>Time</p>
+
+                                </div>
+                                {/* <div className={"date"}>
                                     <p>Date</p>
                                     <GrayButton text={"May"}/>
                                     <GrayButton text={"5"}/>
@@ -189,7 +237,8 @@ const DetailView = () => {
                                     <p>Time</p>
                                     <GrayButton text={"14:00"}/>
                                     <GrayButton text={"17:30"}/>
-                                </div>
+                                </div> */}
+
                             </div>
                             <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
