@@ -1,6 +1,5 @@
 #body{
-    border:solid;
-    background-color:red;
+    border:2px solid black;
     grid-template-columns: fit-content(20%) fit-content(80%);
     height: 20vh;
     display:flex;
@@ -9,19 +8,19 @@
 }
 
 #photo{
-    background-color:brown;
+    border: 2px solid black;
     height:auto;
     width:20%;
 }
 
 #content{
-    background-color:forestgreen;
     height:auto;
     width:80%;
     float:left;
     display:flex;
     flex-direction: column; 
     grid-template-rows:fit-content(20%) fit-content(80%);
+    padding:1.2em;
 }
 
 p{
@@ -31,12 +30,29 @@ p{
 
 #name{
     height:auto;
-    padding:0;
+    padding:.2em;
 }
 
 #information{
     height:auto;
-    border:solid;
     min-height: 100px;
     overflow: hidden;
+}
+
+.ingredients{
+    display: inline-block;
+    padding-left: 1em
+}
+
+.utensils{
+    display: inline-block;
+    padding-left: 1em
+}
+
+#ingredients{
+    white-space: pre-line;
+}
+
+#utensils{
+    white-space: pre-line;
 }
