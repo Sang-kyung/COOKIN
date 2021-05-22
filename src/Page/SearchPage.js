@@ -12,6 +12,7 @@ const SearchPage = () => {
 
   const [kitchensInfo, onLoad] = useState([]);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
+  var localRecommmended = '';
   const firstCity = useSelector((state) => state.searchCity.firstCity);
   const secondCity = useSelector((state) => state.searchCity.secondCity);
   const thirdCity = useSelector((state) => state.searchCity.thirdCity);
@@ -109,6 +110,7 @@ const SearchPage = () => {
     //SearchMap.setMapCenter(x_coord,y_coord);
     SearchMap.setMapZoom(4);
     dispatch(setRecommendedPlace(nearestPlace));
+    localRecommmended = nearestPlace;
     }
   }  
   
@@ -120,7 +122,7 @@ const SearchPage = () => {
     .get()
     .then(query => {
       query.forEach((doc) => {
-        if (doc.data().place === recommendedPlace) {
+        if (doc.data().place === localRecommmended) {
           kitchens.push(doc.data())
         }
       })
@@ -128,9 +130,11 @@ const SearchPage = () => {
     })
   } 
 
-  const clickfunction = () => {
+  
+  const clickfunction = function() {
     getRecommendation();
-    loadKitchenInfo();
+    //setTimeout(function(){loadKitchenInfo()},500);
+    loadKitchenInfo()
   }
 
   return <div>
