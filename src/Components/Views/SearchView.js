@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchView.css'
 import * as SearchMap from './SearchMap'
-import { setFirstCity, setRecommendedPlace} from '../../reducers/searchCity';
+import { deleteFourthCity, deleteSecondCity, deleteThirdCity, setFirstCity, setRecommendedPlace} from '../../reducers/searchCity';
 import { useDispatch} from 'react-redux'
 
 const SearchView = () => {
@@ -10,6 +10,9 @@ const SearchView = () => {
     var input = document.getElementById("input").value;
     if(input!= ""){
       dispatch(setFirstCity(input));
+      dispatch(deleteSecondCity());
+      dispatch(deleteThirdCity());
+      dispatch(deleteFourthCity());
       dispatch(setRecommendedPlace(". . ."))
       SearchMap.searchMapKeyWord(input);
       window.location.href="/search";

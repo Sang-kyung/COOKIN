@@ -10,11 +10,6 @@ import { deleteFirstCity, deleteSecondCity, deleteThirdCity,deleteFourthCity,} f
 import * as SearchMap from '../Components/Views/SearchMap'
 
 const Home = () => {
-  const dispatch = useDispatch();
-  dispatch(deleteFirstCity());
-  dispatch(deleteSecondCity());
-  dispatch(deleteThirdCity());
-  dispatch(deleteFourthCity());
   return <div>
     <MainHeaderView />
     <SearchView />
