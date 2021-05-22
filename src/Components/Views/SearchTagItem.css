@@ -3,7 +3,7 @@
     background-color: #c4c4c4;
     display: inline-block;
     width: fit-content;
-    height: 25px;
+    height: 30px;
     margin-left: 5px;
     padding-left: 5px;
     padding-right: 5px;
@@ -20,5 +20,7 @@
     border: none;
     width: 15px;
     height: 15px;
+    color: black;
+    font-size: 12px;
     background-color: transparent;
 }
