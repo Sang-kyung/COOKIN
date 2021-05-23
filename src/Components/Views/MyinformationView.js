@@ -18,8 +18,8 @@ const MyinformationView = ({name, res_num ,Upcoming}) => {
           <div className="myInfoWrapper">
             <img className="myPageUserIcon" src={require('../../img/Main/user.png').default}/>
             <div className="userName">{name}</div>
-            <h4>My Reservation : {res_num}</h4>
-            <h4>Upcoming : {Upcoming}</h4>
+            <h4 className="h4-Info">My Reservation : {res_num}</h4>
+            <h4 className="h4-Info">Upcoming : {Upcoming}</h4>
           </div>
           <button className="logoutbtn" onClick={_logout}>
             {" "}
@@ -29,3 +29,5 @@ const MyinformationView = ({name, res_num ,Upcoming}) => {
 }
 
 export default MyinformationView;
+
+{/* <img src={require('../../images/logout.png').default}/> */}

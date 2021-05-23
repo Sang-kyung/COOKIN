@@ -23,8 +23,7 @@ const MyPage = () => {
   const fetchReservationInfo = () => {
     console.log("fetchReservationInfo");
     db.collection('reservation_list')
-    .doc(user.phone)
-    .get()
+    .doc(user.phone).get()
     .then((doc) => {
       let ups_list  = []
       let pasts_list = []
@@ -47,7 +46,7 @@ const MyPage = () => {
     })
   }
   return (
-    <div>
+          <div> 
               {user.isloggedIn 
               ?
               (<div>

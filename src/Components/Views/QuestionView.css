@@ -17,6 +17,7 @@
     margin: 1%;
     margin-left: 2%;
     padding: 2%;
+    padding-top: 1%;
     background: #fff;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
@@ -44,24 +45,20 @@
     text-align: center;
 }
 
-.Qmodal-buttons {
-    text-align: center;
-    margin-top: 10%;
-}
-
-.Qmodal-mypagebutton {
+.Qmodal-signupbtn {
+    position: fixed;
+    right: 4%;
+    bottom: 6%;
     border-radius: 10px;
     background-color: #FA5000;
     opacity: 0.9;
-    height: 50px;
+    height: 30px;
     color: #ffffff;
     text-align: center;
-    font-size: 30px;
-    letter-spacing: 4px;
-    width: 45%;
-    margin-right: 4%;
-    padding: 7px 12px;
+    font-size: 15px;
+    width: 10%;
     border: none;
+    z-index: 111;
 }
 
 .Qmodal-grid {
@@ -72,10 +69,18 @@
 }
 
 .pictures {
-    width: 95%;
-    height: auto;
+    margin: 1% 5%;
+    padding: 0% 5%;
+    text-align: center;
+    vertical-align: middle;
+    width: 80%;
 }
 
 .descriptions {
-    font-size: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.div-descriptions {
+    text-align: center;
 }

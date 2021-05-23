@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css"
+import "swiper/components/navigation/navigation.min.css"
+
 import { useHistory } from 'react-router';
 import './QuestionView.css'
 
+import SwiperCore, {
+  Pagination,Navigation
+} from 'swiper/core';
+
+SwiperCore.use([Pagination, Navigation]);
 
 const QuestionView = (props) => {
 
@@ -12,14 +22,6 @@ const QuestionView = (props) => {
         onCloseModal();
     };
 
-    const goMypage = (e) => {
-        history.push("/mypage");
-    }
-
-    // const goHome = (e) => {
-    //     history.push("/");
-    // }
-
     return <div>
             <div className="Qmodal">
                 <div className="Qmodal-question">          
@@ -27,40 +29,36 @@ const QuestionView = (props) => {
                     <div className="Qmodal-title">
                         How to use COOKIN
                     </div>
-                    <div className="Qmodal-grid">
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 1. Enter the one of your location.</div>
-                        </div>
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 2. Keep entering you locations one by one.</div>
-                        </div>
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 3. Recommend your shortest location and kitchens in there.</div>
-                        </div>
-                    </div>
-                    <div className="Qmodal-grid">
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 4. Click certain kitchen to look for specifications.</div>
-                        </div>
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 5. Set your data and reserve.</div>
-                        </div>
-                        <div className="Qmodal-info">
-                            <img className="pictures" src={require(`../../img/Tutorials/Home.png`).default} />
-                            <div className="descriptions">Step 6. In Mypage, there are your information.</div>
-                        </div>
-                    </div>
-                    <div className="Qmodal-buttons">
-                        <button className="Qmodal-mypagebutton" onClick={goMypage}>
-                            {" "}
-                            Sign Up{" "}
-                        </button>
-                    </div>
+                    <Swiper pagination={{"type": "progressbar"}} navigation={true} className="mySwiper">
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step1.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 1. Type the one of your location and enter.</span></div>
+                            </SwiperSlide>
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step2.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 2. Keep registering your locations one by one.</span></div>
+                            </SwiperSlide>
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step3.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 3. Click 'fetch' button to recommend your shortest location to cookout</span></div>
+                            </SwiperSlide>
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step4.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 4. Click certain kitchen to look for specifications.</span></div>
+                            </SwiperSlide>
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step5.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 5. Check the options and make a reservation.</span></div>
+                            </SwiperSlide>
+                        <SwiperSlide>
+                                <img className="pictures" src={require(`../../img/Tutorials/step6.png`).default} />
+                                <div className="div-descriptions"><span className="descriptions">Step 6. In My Page, check or cancel your reservation information.</span></div>
+                            </SwiperSlide>
+                        </Swiper>
+                    {/* <button className="Qmodal-signupbtn" onClick={_signup}>
+                        {" "}
+                        Sign up{" "}
+                    </button> */}
                 </div>
             </div>
         </div>
