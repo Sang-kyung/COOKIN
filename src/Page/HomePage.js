@@ -14,7 +14,7 @@ import * as SearchMap from '../Components/Views/SearchMap'
 const Home = () => {
   const [show, setShow] = useState(false);
 
-  const handleModalOpen = () => { // 밑에 onClick={handleModalOpen} 까지.
+  const handleModalOpen = () => {
       setShow(true);
   };
     
