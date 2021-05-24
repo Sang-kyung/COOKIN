@@ -86,7 +86,6 @@ const LoginModalView = (props) => {
         setWrongText("");
     }
 
-
     const handleModalClose = (e) => { //input value 비워야돼.
         onCloseModal();
         setPhone("");
@@ -107,7 +106,7 @@ const LoginModalView = (props) => {
                     {isReservePage && user.isloggedIn ?
                         (
                             <div className="login-reserve">
-                                You're logged in.<br />Reserve the kitchen now!
+                                You're logged in.<br /><br />Reserve the kitchen now!
                             </div> 
                         )
                         :
