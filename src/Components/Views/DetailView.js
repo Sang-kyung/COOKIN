@@ -53,6 +53,7 @@ const DetailView = () => {
     const user = useSelector(state => state.user);
     const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: []});
     const [selectedDate, handleDateChange] = useState(new Date());
+    const [selectedTime, handleTimeChange] = useState("");
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
 
@@ -223,7 +224,14 @@ const DetailView = () => {
                                 </div>
                                 <div className={"time"}>
                                     <p>Time</p>
-
+                                    <select className={"toggle"} onChange={handleTimeChange}>
+                                        <option selected>Select Time</option>
+                                        <option value={selectedTime}>12:00~14:00</option>
+                                        <option value={selectedTime}>14:00~16:00</option>
+                                        <option value={selectedTime}>16:00~18:00</option>
+                                        <option value={selectedTime}>18:00~20:00</option>
+                                        <option value={selectedTime}>20:00~22:00</option>
+                                    </select>
                                 </div>
                                 {/* <div className={"date"}>
                                     <p>Date</p>

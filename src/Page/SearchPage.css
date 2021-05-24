@@ -74,3 +74,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.results {
+    padding-left: 15px;
+}

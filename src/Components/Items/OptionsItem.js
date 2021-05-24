@@ -7,7 +7,7 @@ const OptionsItem = ({item}) => {
 
   return <div className="items">
         <span>{item.name} </span>
-        <span>{item.amount}, </span>
+        <span>{item.amount}&nbsp;</span>
       </div>
 }
 

@@ -126,6 +126,12 @@ hr {
     color: rgb(34, 34, 34);
     vertical-align: top;
 }
+.time {
+    margin-bottom: 10px;
+    width: 100%;
+    color: rgb(34, 34, 34);
+    vertical-align: top;
+}
 
 .infoWrapper p {
     display: inline-block;
@@ -148,6 +154,13 @@ hr {
     padding-top: 0;
 }
 
+.toggle {
+    float: right;
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    text-align: right;
+}
 
 .reserveBtn {
     border-radius: 10px;
