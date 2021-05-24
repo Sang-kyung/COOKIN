@@ -47,7 +47,7 @@ const materialTheme = createMuiTheme({
 const DetailView = () => {
     const kitchen = useLocation().state.data;
     const user = useSelector(state => state.user);
-    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: []});
+    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: [], time: ""});
     const [selectedDate, handleDateChange] = useState(new Date());
     const [selectedTime, handleTimeChange] = useState("");
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
@@ -71,13 +71,15 @@ const DetailView = () => {
                 if (item.name == name) {
                     item.amount += 1;
                     item.myPrice += ind.price;
+                    item.unit = ind.unit;
                 }
             })
         } else {
             let append_item = {
                 name: name,
                 amount: 1,
-                myPrice: ind.price
+                myPrice: ind.price,
+                unit : ind.unit
             }
             res_copy.ingredients.push(append_item);
         }
@@ -154,7 +156,7 @@ const DetailView = () => {
             <DetailHeaderView />
             {kitchen.name && 
                 <div className={"detailViewWrapper"}>
-    `                <div className={"detailInfoWrapper"}>
+                    <div className={"detailInfoWrapper"}>
                         <div className={"detailHeaderWrapper"}>
                             <h1>{kitchen.name}</h1>
                             <span>{kitchen.address}</span>
@@ -238,7 +240,6 @@ const DetailView = () => {
                                         <option value={selectedTime}>20:00</option>
                                     </select>
                                 </div>
-
                             </div>
                             <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
@@ -248,7 +249,7 @@ const DetailView = () => {
                 </div>
             }
             {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal} />}
-            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} reserveInfo={reserveInfo}/>}
         </div>
     )
 }

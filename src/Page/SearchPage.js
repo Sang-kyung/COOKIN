@@ -158,7 +158,7 @@ const SearchPage = () => {
               <div>{recommendedPlace}</div>
             </div>
             <div id="ListMapView">  
-              {kitchensInfo.length > 0 && <div className="results">Results : {kitchensInfo.length}</div>}    
+              {kitchensInfo.length > 0 && <div className="results">{kitchensInfo.length} Results</div>}    
               {kitchensInfo && kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}

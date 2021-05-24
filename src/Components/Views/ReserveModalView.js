@@ -5,7 +5,7 @@ import './ReserveModalView.css'
 
 const ReserveModalView = (props) => {
 
-    const { onCloseModal } = props;
+    const { onCloseModal, reserveInfo } = props;
     const history = useHistory();
 
     const handleModalClose = (e) => { //input value 비워야돼.
@@ -26,20 +26,22 @@ const ReserveModalView = (props) => {
                     <div className="Rclose">
                         <span className="Rmodal-close" onClick={handleModalClose}>&times;</span>
                     </div>
+                    <div>Reservation Complete</div>
+                    
                     <div className="Rmodal-info">
-                        kitchen: 
+                        kitchen: {reserveInfo.name}
                     </div>
                     <div className="Rmodal-info">
                         Date: 
                     </div>
                     <div className="Rmodal-info">
-                        Time: 
+                        Time: {reserveInfo.time}
                     </div>
                     <div className="Rmodal-info">
-                        Ingredients: 
+                        Ingredients: {reserveInfo.ingredients}
                     </div>
                     <div className="Rmodal-info">
-                        Total fee: 
+                        Total fee: {reserveInfo.price}
                     </div>
                     <div className="Rmodal-buttons">
                         <button className="Rmodal-mypagebutton" onClick={goMypage}>
