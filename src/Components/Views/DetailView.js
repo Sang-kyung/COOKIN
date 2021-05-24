@@ -5,7 +5,7 @@ import db from '../../firebase';
 
 // material ui
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -13,7 +13,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import LoginModalView from './LoginModalView';
-import SearchHeaderView from './SearchHeaderView';
+import DetailHeaderView from './DetailHeaderView';
 import ReserveModalView from './ReserveModalView';
 
 // style
@@ -22,9 +22,6 @@ import GrayButton from '../Buttons/GrayButton';
 
 const materialTheme = createMuiTheme({
     overrides: {
-        MuiFormControl: {
-
-        },
       MuiPickersDay: {
         day: {
           color: "#000000",
@@ -47,11 +44,10 @@ const materialTheme = createMuiTheme({
     },
 });
 
-
 const DetailView = () => {
     const kitchen = useLocation().state.data;
     const user = useSelector(state => state.user);
-    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: []});
+    const [reserveInfo, onChangeReserveInfo] = useState({name: kitchen.name, price: kitchen.price, date: new Date(), ingredients: [], time: ""});
     const [selectedDate, handleDateChange] = useState(new Date());
     const [selectedTime, handleTimeChange] = useState("");
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
@@ -75,13 +71,15 @@ const DetailView = () => {
                 if (item.name == name) {
                     item.amount += 1;
                     item.myPrice += ind.price;
+                    item.unit = ind.unit;
                 }
             })
         } else {
             let append_item = {
                 name: name,
                 amount: 1,
-                myPrice: ind.price
+                myPrice: ind.price,
+                unit : ind.unit
             }
             res_copy.ingredients.push(append_item);
         }
@@ -124,6 +122,8 @@ const DetailView = () => {
     const onClickReserve = () => {
         if (user.isloggedIn) {
             let reservations = []
+            reserveInfo.date = selectedDate;
+            console.log(reserveInfo)
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
@@ -151,13 +151,12 @@ const DetailView = () => {
         }
     }
 
-
     return (
         <div>
-            <SearchHeaderView />
+            <DetailHeaderView />
             {kitchen.name && 
                 <div className={"detailViewWrapper"}>
-    `                <div className={"detailInfoWrapper"}>
+                    <div className={"detailInfoWrapper"}>
                         <div className={"detailHeaderWrapper"}>
                             <h1>{kitchen.name}</h1>
                             <span>{kitchen.address}</span>
@@ -205,11 +204,11 @@ const DetailView = () => {
                                     <div className={"datePicker"}>
                                         <ThemeProvider theme={materialTheme}>
                                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                            <DatePicker
+                                            <KeyboardDatePicker
+                                                autoOk
                                                 disableToolbar
                                                 variant="inline"
                                                 format="yyyy.MM.dd"
-                                                margin="normal"
                                                 id="date-picker-inline"
                                                 value={selectedDate}
                                                 onChange={handleDateChange}
@@ -224,26 +223,23 @@ const DetailView = () => {
                                 </div>
                                 <div className={"time"}>
                                     <p>Time</p>
-                                    <select className={"toggle"} onChange={handleTimeChange}>
-                                        <option selected>Select Time</option>
-                                        <option value={selectedTime}>12:00~14:00</option>
-                                        <option value={selectedTime}>14:00~16:00</option>
-                                        <option value={selectedTime}>16:00~18:00</option>
-                                        <option value={selectedTime}>18:00~20:00</option>
-                                        <option value={selectedTime}>20:00~22:00</option>
+                                    <select className={"startTime"} onChange={handleTimeChange}>
+                                        <option value="DEFAULT">Start Time</option>
+                                        <option value={selectedTime}>10:00</option>
+                                        <option value={selectedTime}>12:00</option>
+                                        <option value={selectedTime}>14:00</option>
+                                        <option value={selectedTime}>16:00</option>
+                                        <option value={selectedTime}>18:00</option>
+                                    </select>
+                                    <select className={"endTime"} onChange={handleTimeChange}>
+                                        <option value="DEFAULT">End Time</option>
+                                        <option value={selectedTime}>12:00</option>
+                                        <option value={selectedTime}>14:00</option>
+                                        <option value={selectedTime}>16:00</option>
+                                        <option value={selectedTime}>18:00</option>
+                                        <option value={selectedTime}>20:00</option>
                                     </select>
                                 </div>
-                                {/* <div className={"date"}>
-                                    <p>Date</p>
-                                    <GrayButton text={"May"}/>
-                                    <GrayButton text={"5"}/>
-                                </div>
-                                <div className={"time"}>
-                                    <p>Time</p>
-                                    <GrayButton text={"14:00"}/>
-                                    <GrayButton text={"17:30"}/>
-                                </div> */}
-
                             </div>
                             <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
@@ -253,7 +249,7 @@ const DetailView = () => {
                 </div>
             }
             {loginModalOpen && <LoginModalView isReservePage={true} onCloseModal={onCloseLoginModal} />}
-            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} />}
+            {reserveModalOpen && <ReserveModalView onCloseModal={onCloseReserveModal} reserveInfo={reserveInfo}/>}
         </div>
     )
 }

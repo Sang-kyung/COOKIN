@@ -18,7 +18,7 @@
 
 #ListMapView{ 
     overflow: scroll;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 310px);
 }
 
 #recommend{
@@ -77,4 +77,6 @@
 
 .results {
     padding-left: 15px;
+    font-size: 23px;
+    color: rgb(113, 113, 113);
 }

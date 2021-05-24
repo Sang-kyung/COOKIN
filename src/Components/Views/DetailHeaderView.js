@@ -1,14 +1,14 @@
 import React from 'react';
-import SearchHeaderViewLeft from './SearchHeaderViewLeft';
+import DetailHeaderViewLeft from './DetailHeaderViewLeft';
 import MyPageButton from '../Buttons/MyPageButton';
 
 
-const SearchHeaderView = () => {
+const DetailHeaderView = () => {
 
   return <div className="searchHeader">
-    <SearchHeaderViewLeft />
+    <DetailHeaderViewLeft />
     <MyPageButton />
   </div>
 }
 
-export default SearchHeaderView
+export default DetailHeaderView

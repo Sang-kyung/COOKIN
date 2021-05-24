@@ -31,25 +31,21 @@ const SearchPage = () => {
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
       case (gn):{
-        console.log('gangnam');
         return {location:'Gangnam',
         coord: gangnamCoord};
 
       }
       case (hd):{
-        console.log('hongdae');
         return {location:'Hongdae', 
         coord: hongdaeCoord};
 
       }
       case (yd):{
-        console.log('yeoyido');
         return {location: 'Yeouido', 
         coord: yeoyidoCoord};
 
       }
       case (jl):{
-        console.log('jonglo');
         return {location:'Jonglo', 
         coord: jongloCoord};
 
@@ -62,7 +58,6 @@ const SearchPage = () => {
       alert('You need to input at least one city');
     }
     else{
-      console.log(cities);
     var count = 0;
     var x_coord = 0;
     var y_coord = 0;
@@ -73,39 +68,32 @@ const SearchPage = () => {
       count = 1;
       x_coord += firstCoord.Ma;
       y_coord += firstCoord.La;
-      console.log(x_coord, y_coord);
       if(secondCoord != '-'){
         count = 2;
         x_coord += secondCoord.Ma;
         y_coord += secondCoord.La;
-        console.log(x_coord, y_coord);
         if(thirdCoord != '-'){
           count = 3;
           x_coord += thirdCoord.Ma;
           y_coord += thirdCoord.La;
-          console.log(x_coord, y_coord);
           if(fourthCoord != '-'){
             count = 4
             x_coord += fourthCoord.Ma;
             y_coord += fourthCoord.La;
-            console.log(x_coord, y_coord);
           }
         }
       }
     }
     x_coord = x_coord/count;
     y_coord = y_coord/count;
-    console.log(x_coord, y_coord);
     var gangnamDistance = parseInt(Math.sqrt(Math.pow(gangnamCoord.x - x_coord,2)+Math.pow(gangnamCoord.y - y_coord, 2))*10000);
     var hongdaeDistance = parseInt(Math.sqrt(Math.pow(hongdaeCoord.x - x_coord,2)+Math.pow(hongdaeCoord.y - y_coord, 2))*10000);
     var jongloDistance = parseInt(Math.sqrt(Math.pow(jongloCoord.x - x_coord,2)+Math.pow(jongloCoord.y - y_coord, 2))*10000);
     var yeoyidoDistance = parseInt(Math.sqrt(Math.pow(yeoyidoCoord.x - x_coord,2)+Math.pow(yeoyidoCoord.y - y_coord, 2))*10000);
     const smallestDistance = Math.min(gangnamDistance, hongdaeDistance, jongloDistance, yeoyidoDistance);
-    console.log('gn',gangnamDistance, 'hd',hongdaeDistance,'jl', jongloDistance,'yd', yeoyidoDistance, smallestDistance);
     var minInfo = getMinimum(gangnamDistance, hongdaeDistance, jongloDistance, yeoyidoDistance, smallestDistance);
     nearestPlace = minInfo.location;
     nearestCoord = minInfo.coord;
-    console.log(nearestCoord);
     SearchMap.setMapCenter(nearestCoord.x,nearestCoord.y);
     //SearchMap.setMapCenter(x_coord,y_coord);
     SearchMap.setMapZoom(4);
@@ -142,11 +130,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     if(recommendedPlace!= ". . ."){
-      console.log(recommendedPlace);
       clickfunction();
-    }
-    else{
-      console.log("it is this")
     }
   }, [])
   
@@ -158,7 +142,7 @@ const SearchPage = () => {
               <div>{recommendedPlace}</div>
             </div>
             <div id="ListMapView">  
-              {kitchensInfo.length > 0 && <div className="results">Results : {kitchensInfo.length}</div>}    
+              {kitchensInfo.length > 0 && <div className="results">{kitchensInfo.length} Results</div>}    
               {kitchensInfo && kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}

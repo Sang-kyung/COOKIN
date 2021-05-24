@@ -28,13 +28,13 @@ const ListMapView = ({kitchen}) => {
                             <div id="information">
                                 <div id="utensils">
                                     {kitchen.utensils.map((items, index) => {
-                                        return (<div className="utensils" key={index}> {items.num} {items.name}</div>)
+                                        return (<div className="utensils" key={index}>· {items.num} {items.name}&nbsp;</div>)
                                     })}
                                 </div>
+                                <br />
                                 <div id="ingredients">
-                                    <i>Available Ingredients</i>:<br/>
                                     {kitchen.ingredients.map((items, index) => {
-                                        return (<div className="ingredients" key={index}>{items.name}&nbsp;</div>)
+                                        return (<div className="ingredients" key={index}>· {items.name}&nbsp;</div>)
                                     })}
                                 </div>
                             </div>
