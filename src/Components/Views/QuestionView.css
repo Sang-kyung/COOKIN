@@ -88,3 +88,10 @@
 .swiper-pagination {
     --swiper-theme-color: #FA5000;
 }
+.swiper-button-prev {
+    --swiper-theme-color: #FA5000;
+}
+
+.swiper-button-next {
+    --swiper-theme-color: #FA5000;
+}

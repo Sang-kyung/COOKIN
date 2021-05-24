@@ -5,6 +5,15 @@ import './ReserveModalView.css'
 
 const ReserveModalView = (props) => {
 
+    const getFormatDate = (date) => {
+        var year = date.getFullYear();
+        var month = (1 + date.getMonth());
+        month = month >= 10 ? month : '0' + month;
+        var day = date.getDate();
+        day = day >= 10 ? day : '0' + day;
+        return  year + '-' + month + '-' + day;
+    }
+
     const { onCloseModal, reserveInfo } = props;
     const history = useHistory();
 
@@ -26,22 +35,11 @@ const ReserveModalView = (props) => {
                     <div className="Rclose">
                         <span className="Rmodal-close" onClick={handleModalClose}>&times;</span>
                     </div>
-                    <div>Reservation Complete</div>
-                    
-                    <div className="Rmodal-info">
-                        kitchen: {reserveInfo.name}
+                    <div className="Rmodal-title">
+                        {reserveInfo.name}, {getFormatDate(reserveInfo.date)}, {reserveInfo.time}
                     </div>
-                    <div className="Rmodal-info">
-                        Date: 
-                    </div>
-                    <div className="Rmodal-info">
-                        Time: {reserveInfo.time}
-                    </div>
-                    <div className="Rmodal-info">
-                        Ingredients: {reserveInfo.ingredients}
-                    </div>
-                    <div className="Rmodal-info">
-                        Total fee: {reserveInfo.price}
+                    <div className="Rmodal-title">
+                        Reservation Complete.
                     </div>
                     <div className="Rmodal-buttons">
                         <button className="Rmodal-mypagebutton" onClick={goMypage}>
