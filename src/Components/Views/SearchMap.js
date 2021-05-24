@@ -35,11 +35,9 @@ export function initializeMarkers(){
     .then(query => {
       query.forEach((doc) => {
             var kitchenName = doc.data().name
-            console.log("<div>"+kitchenName)
             var kitchenLat = doc.data().lat
             var kitchenLong = doc.data().long
             var latlng = new kakao.maps.LatLng(kitchenLat, kitchenLong);
-            console.log(doc.data())
             var marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
                 position: latlng // 마커의 위치
@@ -81,7 +79,6 @@ function placesSearchCB (data, status, pagination) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
         center = map.getCenter(); 
-        console.log(center);
     } 
 }
 
