@@ -50,7 +50,7 @@ const SearchPage = () => {
       }
       case (jl):{
         console.log('jonglo');
-        return {location:'Jonglo', 
+        return {location:'Jongno', 
         coord: jongloCoord};
 
       } 
