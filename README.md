@@ -27,4 +27,8 @@ Application created by Team MISS (Make It Simple & Sensitive)
  - Seunghyuck Park 
  - Kunwoo Song
 
-## List the License
+## Library and Frameworks Used
+- Firebase
+- KakaoMap API
+- React.js
+- Swiper
