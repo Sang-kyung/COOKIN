@@ -48,7 +48,7 @@
     color: white;
     border: none;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 
 .h4-res {
