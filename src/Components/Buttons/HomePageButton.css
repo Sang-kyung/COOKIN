@@ -1,12 +1,18 @@
 .homeTitleWrapper {
     display: inline-block;
-    margin-bottom: 2%;
 }
 
 .icon {
     display: inline-block;
     width: 55px;
 }
+
+.question {
+    width: 55px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
 
 .titleWrapper {
     display: inline-block;

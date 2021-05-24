@@ -1,6 +1,7 @@
 .inputWrapper {
     vertical-align: middle;
-    width:1030px; 
+    width: 80%;
+    max-width:1030px; 
     height:100px;
     display: flex;
     margin: auto;
@@ -9,7 +10,8 @@
 }
 
 #input{
-    width: 900px;
+    width: calc(100% - 130px);
+    max-width: 900px;
     height:70px;
     font-size:50px;
     margin:auto;
@@ -42,7 +44,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
-    
+    border: none;
 }
 
 button {width:200px; 

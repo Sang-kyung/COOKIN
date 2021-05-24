@@ -22,16 +22,9 @@ import GrayButton from '../Buttons/GrayButton';
 
 const materialTheme = createMuiTheme({
     overrides: {
-      MuiPickersToolbar: {
-        toolbar: {
-          backgroundColor: "#fa5000",
-        },
-      },
-      MuiPickersCalendarHeader: {
-        switchHeader: {
+        MuiFormControl: {
 
         },
-      },
       MuiPickersDay: {
         day: {
           color: "#000000",
@@ -201,8 +194,8 @@ const DetailView = () => {
                                 })}
                                 <hr />
                                 <div className={"totalPrice"}>
-                                    <p>Total</p>
-                                    <div>{reserveInfo.price} KRW</div>
+                                    <div className="text">Total</div>
+                                    <div className="value">{reserveInfo.price} KRW</div>
                                 </div>
                             </div>
                             <div className={"infoWrapper"}>
@@ -211,14 +204,18 @@ const DetailView = () => {
                                     <div className={"datePicker"}>
                                         <ThemeProvider theme={materialTheme}>
                                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                                <DatePicker
-                                                    autoOk
-                                                    disablePast
-                                                    variant="inline"
-                                                    inputVariant="outlined"
-                                                    format="MM.dd"
-                                                    value={selectedDate}
-                                                    onChange={date => handleDateChange(date)}
+                                            <DatePicker
+                                                disableToolbar
+                                                variant="inline"
+                                                format="yyyy.MM.dd"
+                                                margin="normal"
+                                                id="date-picker-inline"
+                                                value={selectedDate}
+                                                onChange={handleDateChange}
+                                                disablePast
+                                                KeyboardButtonProps={{
+                                                    'aria-label': 'change date',
+                                                }}
                                                 />
                                             </MuiPickersUtilsProvider>
                                         </ThemeProvider>

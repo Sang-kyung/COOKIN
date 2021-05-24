@@ -1,52 +1,69 @@
 .leftBox{
-    width: 40%;
+    width: calc(45% - 40px);
+    margin-left: 30px;
     display: inline-block;
     height: 100%;
+    margin-top: 130px;
+    vertical-align: top;
+    margin-right: 10px;
 }
 
 .rightBox{
-    width:60%;
+    width:55%;
     display: inline-block;
     overflow: hidden;
-    height: 95vh;
+    height: calc(100vh - 134px);
+    margin-top: 130px;
 }
 
-#ListMapView{
-    height:70vh;    
-    overflow: auto;
+#ListMapView{ 
+    overflow: scroll;
+    height: calc(100vh - 300px);
 }
 
 #recommend{
-    padding:1em;
-    border:solid;
-    background-color:#F0FFFF;
+    height: 60px;
     visibility:hidden;
+    text-align: left;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border-radius: 10px;
+    width: calc(80% - 40px);
+    margin-left: 10%;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+#recommend div {
+    color: #fa5000;
+    opacity: 0.9;
+    font-weight: 500;
+    font-size: 32px;
     text-align: center;
 }
 
 .ListMapView{
-    padding:3em;
 }
 
 .fetchButton{
     cursor: pointer;
     border-radius: 15px;
     border: none;
-    background-color: #fc854d;
-    margin-left: calc(50% - 100px);
+    background-color: #fa5000;
+    opacity: 0.8;
+    width: 80%;
+    margin-left: 10%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    height: 54px;
 }
 
 /* Designing for scroll-bar */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
-      
-/* Track */
-::-webkit-scrollbar-track {
-    background: gainsboro;
-    border-radius: 5px;
-}
-      
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #fc854d;

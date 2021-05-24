@@ -3,12 +3,14 @@
 
 .homePageBtnWrapper {
     display: inline-block;
+    margin-top: 10px;
 }
 
 .searchWrapper {
     height: 100%;
     display: inline-block;
     margin-left: 20px;
+    vertical-align: top;
 }
 
 
@@ -16,19 +18,20 @@
     border-radius: 15px;
     background-color: #FA5000;
     opacity: 0.8;
-    width: 500px;
-    height: 55px;
-    margin-top: 10px;
+    width: 460px;
+    height: 48px;
+    margin-top: 4px;
+    padding-top: 7.5px;
+    vertical-align: top;
 }
 
 .searchInput {
     display: inline-block;
     height: 40px;
-    width: 410px;
+    width: 380px;
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 10px;;
+    border-radius: 10px;
+    padding-left: 10px;
 }
 
 .searchInput:focus {
@@ -42,15 +45,16 @@ input {
 }
 
 .plusBtn {
+    vertical-align: top;
     display: inline-block;
     cursor: pointer;
     border-radius: 25px;
     height: 40px;
     width: 40px;
     color: black;
-    font-size: 25px;
-    margin-left: 20px;
-    margin-top: 5px;
+    font-size: 35px;
+    margin-left: 10px;
+    border: none;
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;

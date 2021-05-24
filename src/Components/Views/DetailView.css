@@ -31,6 +31,10 @@
     font-weight: bold;
 }
 
+.detailIngredients {
+    margin-bottom: 30px;
+}
+
 .detailIngredients p {
     color : #000000;
     font-size: 25px;
@@ -52,7 +56,7 @@ hr {
     border-radius: 10px;
     position: fixed;
     right: 8%;
-    top: 35%;
+    top: 180px;
     width: 30%;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     padding: 25px;
@@ -67,6 +71,8 @@ hr {
     display: inline-block;
     width: 40%;
     font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .ingOptions div {
@@ -79,6 +85,7 @@ hr {
 .ingOptions {
     margin-top: 10px;
     color: rgb(34, 34, 34);
+    height: 25px;
 }
 
 .ingCancelBtn {
@@ -95,14 +102,14 @@ hr {
     font-weight: 500;
 }
 
-.totalPrice p {
+.text {
     display: inline-block;
     width: 20%;
     font-size: 25px;
     letter-spacing: 1px;
 }
 
-.totalPrice div {
+.value {
     display: inline-block;
     text-align: right;
     width: 80%;
@@ -117,20 +124,30 @@ hr {
     margin-bottom: 10px;
     width: 100%;
     color: rgb(34, 34, 34);
+    vertical-align: top;
 }
 
 .infoWrapper p {
     display: inline-block;
-    width: 15%;
+    width: 30%;
     font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .datePicker {
+    float: right;
     display: inline-block;
-    width: 70%;
+    width: 30%;
     vertical-align: top;
     text-align: right;
 }
+
+.datePicker input {
+    text-align: right;
+    padding-top: 0;
+}
+
 
 .reserveBtn {
     border-radius: 10px;

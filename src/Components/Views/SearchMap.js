@@ -107,7 +107,7 @@ const MapContainer = () => {
     //setTimeout(function(){dispatch(setFirstCoord(getMapCenter()))},500);
     
     return (
-        <div id='myMap' style={{width: '96%', margin: '0 2%'}}></div>
+        <div id='myMap' style={{width: '96%'}}></div>
     );
 }
 

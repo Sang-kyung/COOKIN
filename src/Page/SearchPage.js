@@ -154,14 +154,16 @@ const SearchPage = () => {
           <SearchHeaderView />
           <div className="leftBox">
             <div id="recommend">
-              Recommended place is <b>{recommendedPlace}</b>
+              CookIn's Choice 
+              <div>{recommendedPlace}</div>
             </div>
-            <div id="ListMapView">          
-                {kitchensInfo && kitchensInfo.map((item, index) => {
-                  return <ListMapView class="ListMapView" key={index} kitchen={item}/>
-                })}
+            <div id="ListMapView">  
+              {kitchensInfo.length > 0 && <div>Results : {kitchensInfo.length}</div>}    
+              {kitchensInfo && kitchensInfo.map((item, index) => {
+                return <ListMapView class="ListMapView" key={index} kitchen={item}/>
+              })}
             </div>
-            <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>fetch</button>
+            <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button>
           </div>
           <div className="rightBox">
             <MapContainer />

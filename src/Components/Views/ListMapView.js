@@ -16,24 +16,21 @@ const ListMapView = ({kitchen}) => {
 
     var this_div = <div id="body">
                         <div id="photo">
-                            {kitchen && <img className="photo" src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default}/>}
+                            {kitchen && <img src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default}/>}
                         </div>
                         <div id="content">
                             <div id="name" onClick={(e)=>{redirectfunction()}}>
                                 {kitchen.name}
                             </div>
+                            <div id="price">
+                                    {kitchen.price}KRW
+                            </div>
                             <div id="information">
-                                <div id="price">
-                                    <i>Price</i>: {kitchen.price}
-                                </div>
-                                <br/>
                                 <div id="utensils">
-                                    <i>Available Utensils</i>:<br/>
                                     {kitchen.utensils.map((items, index) => {
-                                        return (<div className="utensils" key={index}>{items.name}: {items.num}</div>)
+                                        return (<div className="utensils" key={index}> {items.num}{items.name}</div>)
                                     })}
                                 </div>
-                                <br/>
                                 <div id="ingredients">
                                     <i>Available Ingredients</i>:<br/>
                                     {kitchen.ingredients.map((items, index) => {

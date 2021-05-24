@@ -211,7 +211,7 @@ const SearchHeaderViewLeft = () => {
   var this_div = 
     <div className="leftHeaderWrapper">
       <div className="homePageBtnWrapper">
-      <HomePageButton />
+        <HomePageButton />
       </div>
       
       <div className="searchWrapper">
