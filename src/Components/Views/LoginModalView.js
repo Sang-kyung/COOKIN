@@ -96,8 +96,8 @@ const LoginModalView = (props) => {
 
     return <div>
             <div className="modal">
-                <div className="modal-login">                
-                    <span className="close" onClick={handleModalClose}>&times;</span>
+                <div className="modal-login">           
+                    <span className="modal-close" onClick={handleModalClose}>&times;</span>
                     <div className="modal-title">
                         COOKIN
                     </div>

@@ -9,7 +9,7 @@ const OptionsItem = ({item}) => {
 
   return <div className="items">
         <span>·{amount}g </span>
-        <span>{item.name}&nbsp;</span>
+        <span>{item.name}&nbsp;&nbsp;</span>
       </div>
 }
 

@@ -1,25 +1,39 @@
-// export const ADD_RESERVATION = 'ADD_RESERVATION';
+export const RES_INFO = 'RES_INFO';
+export const DELETE = 'DELETE';
 
-// export const reserve = (res) => ({
-//   type: ADD_RESERVATION,
-//   payload: res,
-// });
+export const reserve = ({phone, res}) => ({
+  type: RES_INFO,
+  payload: {phone, res},
+});
 
-// const initialState = {
-//   reservations: [],
-// }
+export const del = () => ({
+  type: DELETE,
+})
 
-// const reservation = (state = initialState, action) => {
-//   switch (action.type) {
-//     case ADD_RESERVATION: {
-//       return {
-//         ...state,
-//         reservations: state.reservations.push(action.payload), 
-//       }
-//     }
-//     default:
-//       return state;
-//   }
-// };
+const initialState = {
+  phone : "",
+  res: {},
+}
 
-// export default reservation;
+const reservation = (state = initialState, action) => {
+  switch (action.type) {
+    case RES_INFO: {
+      return {
+        ...state,
+        phone: action.payload.phone,
+        res: action.payload.res,
+      }
+    }
+    case DELETE: {
+      return {
+        ...state,
+        phone: "",
+        res: {},
+      }
+    }
+    default:
+      return state;
+  }
+};
+
+export default reservation;

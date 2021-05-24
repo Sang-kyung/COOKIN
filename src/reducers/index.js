@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import user from './user';
 import searchCity from './searchCity'
-// import reservation from './reservation';
+import reservation from './reservation';
 
 // import { persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
@@ -14,7 +14,7 @@ import searchCity from './searchCity'
 const appReducer = combineReducers({
   user,
   searchCity,
-  // reservation,
+  reservation,
 });
 
 

@@ -1,4 +1,4 @@
-.Rmodal {
+.Cmodal {
     z-index: 110;
     position: fixed;
     top: 0;
@@ -8,9 +8,9 @@
     background: rgba(0, 0, 0, 0.6);
 }
 
-.Rmodal-reserve {
-    width: 550px;
-    height: 365px;
+.Cmodal-cancel {
+    width: 450px;
+    height: 300px;
     background-color: white;
     position: relative;
     box-sizing: border-box;
@@ -22,28 +22,31 @@
     border: 1px solid rgb(221, 221, 221);
 }
 
-.Rmodal-title {
-    margin: 4%;
-    margin-top: 0%;
+.Cmodal-close {
+    color: gray;
+    font-size: 40px;
+    cursor: pointer;
+    right: 2%;
+    top: 0%;
+    position: absolute;
+}
+
+.Cmodal-title {
+    text-align: center;
+    margin-bottom: 0%;
+    margin-top: 5%;
     margin-left: 1%;
     height: 50px;
     font-size: 32px;
-    display: flex;   
+    display: flex; 
 }
 
-.Rmodal-info {
-    margin: 1%;
-    font-size: 23px;
-    text-align: left;
-    color: gray;
-}
-
-.Rmodal-buttons {
+.Cmodal-buttons {
     text-align: center;
-    margin-top: 8%;
+    margin-top: 15%;
 }
 
-.Rmodal-mypagebutton {
+.Cmodal-cancelbutton {
     border-radius: 10px;
     background-color: #FA5000;
     opacity: 0.9;
@@ -59,7 +62,7 @@
     cursor: pointer;
 }
 
-.Rmodal-homebutton {
+.Cmodal-closebutton {
     margin-left: 4%;
     border-radius: 10px;
     background-color: #c4c4c4;

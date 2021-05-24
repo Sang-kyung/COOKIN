@@ -43,7 +43,7 @@
     border: 1px solid rgb(221, 221, 221);
 }
 
-.close {
+.modal-close {
     color: gray;
     font-size: 40px;
     cursor: pointer;
@@ -96,6 +96,10 @@
     padding: 7px 12px;
     border: none;
     cursor: pointer;
+}
+
+.modal-loginbtn input::placeholder {
+    color: #999999;
 }
 
 .warning-wrong {

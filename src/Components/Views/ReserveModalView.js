@@ -31,15 +31,18 @@ const ReserveModalView = (props) => {
 
     return <div>
             <div className="Rmodal">
-                <div className="Rmodal-reserve">           
-                    <div className="Rclose">
-                        <span className="Rmodal-close" onClick={handleModalClose}>&times;</span>
-                    </div>
+                <div className="Rmodal-reserve">
                     <div className="Rmodal-title">
-                        {reserveInfo.name}, {getFormatDate(reserveInfo.date)}, {reserveInfo.time}
+                        Successfully reservered
                     </div>
-                    <div className="Rmodal-title">
-                        Reservation Complete.
+                    <div className="Rmodal-info">
+                        -{reserveInfo.name}
+                    </div>
+                    <div className="Rmodal-info">
+                        -{getFormatDate(reserveInfo.date)}
+                    </div>
+                    <div className="Rmodal-info">
+                        -{reserveInfo.time}
                     </div>
                     <div className="Rmodal-buttons">
                         <button className="Rmodal-mypagebutton" onClick={goMypage}>

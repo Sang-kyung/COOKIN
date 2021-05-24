@@ -73,6 +73,7 @@ hr {
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 0;
+    overflow-x: hidden;
 }
 
 .ingOptions div {
@@ -121,16 +122,38 @@ hr {
 }
 
 .date {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
     width: 100%;
     color: rgb(34, 34, 34);
     vertical-align: top;
 }
+
 .time {
     width: 100%;
     color: rgb(34, 34, 34);
     vertical-align: top;
 }
+
+.alert {
+    text-align: right;
+    color: red;
+    padding-bottom: 4px;
+}
+
+.timeSelect {
+    float: right;
+    display: inline-block;
+    width: 125px;
+    vertical-align: top;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
+}
+
 
 .infoWrapper p {
     display: inline-block;
@@ -143,7 +166,7 @@ hr {
 .datePicker {
     float: right;
     display: inline-block;
-    width: 150px;
+    width: 125px;
     vertical-align: top;
     text-align: right;
 }
@@ -163,13 +186,6 @@ hr {
     margin-left: 0px;
 }
 
-.toggle {
-    float: right;
-    display: inline-block;
-    width: 30%;
-    vertical-align: top;
-    text-align: right;
-}
 
 .reserveBtn {
     border-radius: 10px;

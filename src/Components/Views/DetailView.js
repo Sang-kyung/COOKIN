@@ -19,6 +19,7 @@ import ReserveModalView from './ReserveModalView';
 // style
 import './DetailView.css';
 import GrayButton from '../Buttons/GrayButton';
+import { resetIdCounter } from 'react-tabs';
 
 const materialTheme = createMuiTheme({
     overrides: {
@@ -52,6 +53,12 @@ const DetailView = () => {
     const [selectedTime, handleTimeChange] = useState("");
     const [loginModalOpen, onLoginModalUpdate] = useState(false);
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
+    const [wrongtext, setWrongText] = useState("");
+
+    const onTimeChange = (e) => {
+        handleTimeChange(e.target.value);
+        setWrongText("");
+    }
 
     const onCloseLoginModal = () => {
         onLoginModalUpdate(false);
@@ -120,10 +127,14 @@ const DetailView = () => {
     }
 
     const onClickReserve = () => {
+        if (selectedTime == ""){
+            setWrongText("Please select the time.");
+            return;
+        }
         if (user.isloggedIn) {
             let reservations = []
             reserveInfo.date = selectedDate;
-            console.log(reserveInfo)
+            reserveInfo.time = selectedTime;
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
@@ -181,7 +192,7 @@ const DetailView = () => {
                             })}
                         </div>
                     </div>
-                    <div className={"floatingViewWrapper"}>  
+                    <div className={"floatingViewWrapper"}>
                         <div className={"reservationInfoWrapper"}>
                             <div className={"totalPriceWrapper"}>
                                 {reserveInfo.ingredients.map((item, index) => {
@@ -223,24 +234,16 @@ const DetailView = () => {
                                 </div>
                                 <div className={"time"}>
                                     <p>Time</p>
-                                    <select className={"startTime"} onChange={handleTimeChange}>
-                                        <option value="DEFAULT">Start Time</option>
-                                        <option value={selectedTime}>10:00</option>
-                                        <option value={selectedTime}>12:00</option>
-                                        <option value={selectedTime}>14:00</option>
-                                        <option value={selectedTime}>16:00</option>
-                                        <option value={selectedTime}>18:00</option>
-                                    </select>
-                                    <select className={"endTime"} onChange={handleTimeChange}>
-                                        <option value="DEFAULT">End Time</option>
-                                        <option value={selectedTime}>12:00</option>
-                                        <option value={selectedTime}>14:00</option>
-                                        <option value={selectedTime}>16:00</option>
-                                        <option value={selectedTime}>18:00</option>
-                                        <option value={selectedTime}>20:00</option>
+                                    <select className={"timeSelect"} onChange={onTimeChange}>
+                                        <option value="">Select Time</option>
+                                        <option value="09:00-12:00">09:00-12:00</option>
+                                        <option value="12:00-15:00">12:00-15:00</option>
+                                        <option value="15:00-18:00">15:00-18:00</option>
+                                        <option value="18:00-21:00">18:00-21:00</option>
                                     </select>
                                 </div>
                             </div>
+                            <div className="alert">{alert && wrongtext}</div>
                             <div className="reserveBtn" onClick={onClickReserve}>
                                 {"Reserve"}
                             </div>

@@ -19,6 +19,7 @@
     font-size: 28px;
     margin-left: 10px;
     vertical-align: top;
+    margin-bottom: 2%;
 }
 
 .myInfoWrapper {
@@ -35,20 +36,18 @@
     padding: 9px 12px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: #c4c4cc;
+    background-color: #c4c4c4;
     color: black;
     border: none;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     opacity: 0.9;
-}
-
-.modal-loginbtn input::placeholder {
-    color: #999999;
+    cursor: pointer;
 }
 
 .h4-Info {
+    display: inline-block;
     font-weight: 400;
     font-size: 20px;
-    margin-top: 3%;
-    margin-bottom: 0%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

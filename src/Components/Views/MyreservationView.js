@@ -1,32 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './MyreservationView.css';
 import OptionsItem from '../Items/OptionsItem.js';
-import db from '../../firebase';
-import { useSelector } from 'react-redux';
+import { reserve } from '../../reducers/reservation';
 
-const _cancel = ({res, phone}) => {
-    let reservations = new Array();
-    db.collection("reservation_list").doc(phone).get()
-            .then((doc) => {
-                reservations = doc.data().reservations;
-                const idx = reservations.findIndex(e => e.name === res.name && new Date(e.date.toDate()).getTime() === new Date(res.date).getTime());
-                if (idx > -1) reservations.splice(idx, 1);
-                console.log("After reservations");
-                console.log(reservations)
-                db.collection("reservation_list").doc(phone).set({reservations})
-                .then(() => {
-                    console.log("canceled")
-                    console.log(reservations);
-                    window.location.reload();
-                })
-                .catch((error) => {
-                    console.error("database cancel reservation failed", error);
-                })
-            })
-            .catch((error) => {
-                console.error("database load reservation failed", error);
-            });
-    return;
+const onClickCancel = (props) => {
+    const {res, phone, _cancel, dispatch} = props;
+    dispatch(reserve({phone, res}));
+    _cancel();
 }
 
 const getFormateDate = (date) => {
@@ -38,7 +19,8 @@ const getFormateDate = (date) => {
     return  year + '-' + month + '-' + day;
 }
 
-const MyreservationBox = ({res, phone, time}) => {
+const MyreservationBox = (props) => {
+    const {res, phone, time, _cancel, dispatch} = props;
     let date = getFormateDate(res.date);
     return (
         time == "Future" ? 
@@ -46,24 +28,28 @@ const MyreservationBox = ({res, phone, time}) => {
             <div className ="reservation_box_future">
                 <div className="reservationWrapper">
                     <h3 className="kitchen_name">{res.name}</h3>
-                    <h4 className="h4-res">date : {date} {res.time}</h4>
-                    <h4 className="h4-res">Ingredients : {res.ingredients.map((item, index) => {
+                    <div className="DateIngredients">date:</div>
+                    <div className="value_DateIngredients">&nbsp;{date}, &nbsp;{res.time}</div><br/>
+                    <div className="DateIngredients">Ingredients:</div>
+                    <div className="value_DateIngredients">&nbsp;{res.ingredients.map((item, index) => {
                                     return <OptionsItem key={index} item={item} />
                                 })}
-                    </h4>
+                    </div>
                 </div>
-                <button className="cancelbtn" onClick={() => _cancel({res, phone})}>CANCEL</button>
+                <button className="cancelbtn" onClick={() => onClickCancel({res, phone, _cancel, dispatch})}>CANCEL</button>
             </div>
         ) :
         (
             <div className ="reservation_box_past">
                 <div className="reservationWrapper">
-                    <div className="kitchen_name">{res.name}</div>
-                    <h4 className="h4-res">date : {date}</h4>
-                    <h4 className="h4-res">Ingredients : {res.ingredients.map((item, index) => {
+                    <h3 className="kitchen_name">{res.name}</h3>
+                    <div className="DateIngredients">date: </div>
+                    <div className="value_DateIngredients">&nbsp;{date}, &nbsp;{res.time}</div><br/>
+                    <div className="DateIngredients">Ingredients: </div>
+                    <div className="value_DateIngredients">&nbsp;{res.ingredients.map((item, index) => {
                                     return <OptionsItem key={index} item={item} />
                                 })}
-                    </h4>
+                    </div>
                 </div>
             </div>
         )
@@ -71,27 +57,28 @@ const MyreservationBox = ({res, phone, time}) => {
 }
 
 const MyreservationView = (props) => {
+    const {ups, pasts, _cancel} = props
     const phone = useSelector(state => state.user.phone);
-    const {ups, pasts} = props
+    const dispatch = useDispatch();
 
     return <div className ='reservation'>
                 {ups.length != 0 && 
                     <div>
-                        <h3>Upcoming Reservations</h3>
+                        <h3 className="UporPasts">Upcoming Reservations</h3>
                         <div>
                         {/* name={item.name} date={item.date} ingredients={item.ingredients} */}
                             {ups.map((item, index) => {
-                                return <MyreservationBox key={index} res={item} phone={phone} time="Future" />
+                                return <MyreservationBox key={index} res={item} phone={phone} time="Future" _cancel={_cancel} dispatch={dispatch}/>
                             })}
                         </div>
                     </div>
                 }
                 { pasts.length != 0 && 
                     <div>
-                        <h3>Past Reservations</h3>
+                        <h3 className="UporPasts">Past Reservations</h3>
                         <div>
                             {pasts.map((item, index) => {
-                                return <MyreservationBox key={index} res={item} phone={phone} time="Past"/>
+                                return <MyreservationBox key={index} res={item} phone={phone} time="Past" _cancel={_cancel} dispatch={dispatch}/>
                             })}
                         </div>
                     </div>
