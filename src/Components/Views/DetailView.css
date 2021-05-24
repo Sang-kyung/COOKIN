@@ -127,7 +127,6 @@ hr {
     vertical-align: top;
 }
 .time {
-    margin-bottom: 10px;
     width: 100%;
     color: rgb(34, 34, 34);
     vertical-align: top;
@@ -136,7 +135,7 @@ hr {
 .infoWrapper p {
     display: inline-block;
     width: 30%;
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -144,7 +143,7 @@ hr {
 .datePicker {
     float: right;
     display: inline-block;
-    width: 30%;
+    width: 150px;
     vertical-align: top;
     text-align: right;
 }
@@ -152,6 +151,16 @@ hr {
 .datePicker input {
     text-align: right;
     padding-top: 0;
+    padding-bottom: 5px;
+    vertical-align: text-bottom;
+}
+
+.datePicker button {
+    width: 32px;
+    vertical-align: text-bottom;
+    padding-bottom: 17px;
+    padding-right: 4px;
+    margin-left: 0px;
 }
 
 .toggle {

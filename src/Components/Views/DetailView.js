@@ -5,7 +5,7 @@ import db from '../../firebase';
 
 // material ui
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -22,9 +22,6 @@ import GrayButton from '../Buttons/GrayButton';
 
 const materialTheme = createMuiTheme({
     overrides: {
-        MuiFormControl: {
-
-        },
       MuiPickersDay: {
         day: {
           color: "#000000",
@@ -46,7 +43,6 @@ const materialTheme = createMuiTheme({
       },
     },
 });
-
 
 const DetailView = () => {
     const kitchen = useLocation().state.data;
@@ -124,6 +120,8 @@ const DetailView = () => {
     const onClickReserve = () => {
         if (user.isloggedIn) {
             let reservations = []
+            reserveInfo.date = selectedDate;
+            console.log(reserveInfo)
             db.collection("reservation_list").doc(user.phone).get()
             .then((doc) => {
                 if (doc.exists) {
@@ -150,7 +148,6 @@ const DetailView = () => {
             onLoginModalUpdate(true);
         }
     }
-
 
     return (
         <div>
@@ -205,11 +202,11 @@ const DetailView = () => {
                                     <div className={"datePicker"}>
                                         <ThemeProvider theme={materialTheme}>
                                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                            <DatePicker
+                                            <KeyboardDatePicker
+                                                autoOk
                                                 disableToolbar
                                                 variant="inline"
                                                 format="yyyy.MM.dd"
-                                                margin="normal"
                                                 id="date-picker-inline"
                                                 value={selectedDate}
                                                 onChange={handleDateChange}
@@ -224,25 +221,23 @@ const DetailView = () => {
                                 </div>
                                 <div className={"time"}>
                                     <p>Time</p>
-                                    <select className={"toggle"} onChange={handleTimeChange}>
-                                        <option selected>Select Time</option>
-                                        <option value={selectedTime}>12:00~14:00</option>
-                                        <option value={selectedTime}>14:00~16:00</option>
-                                        <option value={selectedTime}>16:00~18:00</option>
-                                        <option value={selectedTime}>18:00~20:00</option>
-                                        <option value={selectedTime}>20:00~22:00</option>
+                                    <select className={"startTime"} onChange={handleTimeChange}>
+                                        <option value="DEFAULT">Start Time</option>
+                                        <option value={selectedTime}>10:00</option>
+                                        <option value={selectedTime}>12:00</option>
+                                        <option value={selectedTime}>14:00</option>
+                                        <option value={selectedTime}>16:00</option>
+                                        <option value={selectedTime}>18:00</option>
+                                    </select>
+                                    <select className={"endTime"} onChange={handleTimeChange}>
+                                        <option value="DEFAULT">End Time</option>
+                                        <option value={selectedTime}>12:00</option>
+                                        <option value={selectedTime}>14:00</option>
+                                        <option value={selectedTime}>16:00</option>
+                                        <option value={selectedTime}>18:00</option>
+                                        <option value={selectedTime}>20:00</option>
                                     </select>
                                 </div>
-                                {/* <div className={"date"}>
-                                    <p>Date</p>
-                                    <GrayButton text={"May"}/>
-                                    <GrayButton text={"5"}/>
-                                </div>
-                                <div className={"time"}>
-                                    <p>Time</p>
-                                    <GrayButton text={"14:00"}/>
-                                    <GrayButton text={"17:30"}/>
-                                </div> */}
 
                             </div>
                             <div className="reserveBtn" onClick={onClickReserve}>
