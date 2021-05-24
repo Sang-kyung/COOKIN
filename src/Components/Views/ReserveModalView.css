@@ -31,6 +31,14 @@
     position: absolute;
 }
 
+.Rmodal-title {
+    margin-top: 4%;
+    height: 50px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+}
+
 .Rmodal-info {
     margin: 2%;
     font-size: 20px;

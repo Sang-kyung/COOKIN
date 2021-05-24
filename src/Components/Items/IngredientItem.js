@@ -13,7 +13,7 @@ const IngredientItem = (props) => {
       </div>
       <div className="ingredientOptionWrapper">
         <div className="ingredientName">{item.name}</div>
-        <div className="ingredientPrice">{item.price}KRW / {item.unit}</div>
+        <div className="ingredientPrice">{item.price}KRW / {item.unit}g</div>
           <img 
               className="minusIcon" 
               src={require(`../../img/Buttons/minus.png`).default}

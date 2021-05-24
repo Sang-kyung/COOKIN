@@ -44,7 +44,7 @@
     display: inline-block;
     text-align: center;
 }
-
+/* 
 .Qmodal-signupbtn {
     position: fixed;
     right: 4%;
@@ -59,7 +59,7 @@
     width: 10%;
     border: none;
     z-index: 111;
-}
+} */
 
 .Qmodal-grid {
     display: grid;
@@ -86,5 +86,12 @@
 }
 
 .swiper-pagination {
+    --swiper-theme-color: #FA5000;
+}
+.swiper-button-prev {
+    --swiper-theme-color: #FA5000;
+}
+
+.swiper-button-next {
     --swiper-theme-color: #FA5000;
 }

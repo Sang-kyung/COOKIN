@@ -35,13 +35,7 @@ const getFormateDate = (date) => {
     month = month >= 10 ? month : '0' + month;
     var day = date.getDate();
     day = day >= 10 ? day : '0' + day;
-    var hour = date.getHours();
-    hour = hour >= 10 ? hour : '0' + hour;
-    var min = date.getMinutes();
-    min = min >= 10 ? min : '0' + min;
-    var sec = date.getSeconds();
-    sec = sec >= 10 ? sec : '0' + sec;
-    return  year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
+    return  year + '-' + month + '-' + day;
 }
 
 const MyreservationBox = ({res, phone, time}) => {
@@ -51,16 +45,14 @@ const MyreservationBox = ({res, phone, time}) => {
         (
             <div className ="reservation_box_future">
                 <div className="reservationWrapper">
-                    <h3>{res.name}</h3>
-                    <h4>date : {date}</h4>
-                    <h4 className="options">Ingredients : {res.ingredients.map((item, index) => {
+                    <h3 className="kitchen_name">{res.name}</h3>
+                    <h4 className="h4-res">date : {date} {res.time}</h4>
+                    <h4 className="h4-res">Ingredients : {res.ingredients.map((item, index) => {
                                     return <OptionsItem key={index} item={item} />
                                 })}
                     </h4>
                 </div>
-                <div className="reservationButtons">
-                    <button className="cancel" onClick={() => _cancel({res, phone})}>CANCEL</button>
-                </div>                
+                <button className="cancelbtn" onClick={() => _cancel({res, phone})}>CANCEL</button>
             </div>
         ) :
         (
@@ -73,9 +65,6 @@ const MyreservationBox = ({res, phone, time}) => {
                                 })}
                     </h4>
                 </div>
-                <button className="cancelbtn" onClick={() => _cancel({res, phone})}>
-                    CANCEL
-                </button>
             </div>
         )
     )
@@ -84,6 +73,7 @@ const MyreservationBox = ({res, phone, time}) => {
 const MyreservationView = (props) => {
     const phone = useSelector(state => state.user.phone);
     const {ups, pasts} = props
+
     return <div className ='reservation'>
                 {ups.length != 0 && 
                     <div>

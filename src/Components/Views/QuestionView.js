@@ -30,13 +30,13 @@ const QuestionView = (props) => {
                         How to use COOKIN
                     </div>
                     <Swiper pagination={{"type": "progressbar"}} navigation={true} className="mySwiper">
-                        <SwiperSlide>
+                    <SwiperSlide>
                                 <img className="pictures" src={require(`../../img/Tutorials/step1.png`).default} />
-                                <div className="div-descriptions"><span className="descriptions">Step 1. Type one of your location and enter.</span></div>
+                                <div className="div-descriptions"><span className="descriptions">Step 1. Press the My Page button to sign up or log in.</span></div>
                             </SwiperSlide>
                         <SwiperSlide>
                                 <img className="pictures" src={require(`../../img/Tutorials/step2.png`).default} />
-                                <div className="div-descriptions"><span className="descriptions">Step 2. Keep registering your locations one by one.</span></div>
+                                <div className="div-descriptions"><span className="descriptions">Step 2. Type one of your location and enter.</span></div>
                             </SwiperSlide>
                         <SwiperSlide>
                                 <img className="pictures" src={require(`../../img/Tutorials/step3.png`).default} />
