@@ -13,7 +13,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import UtensilItem from '../Items/UtensilItem';
 import IngredientItem from '../Items/IngredientItem';
 import LoginModalView from './LoginModalView';
-import SearchHeaderView from './SearchHeaderView';
+import DetailHeaderView from './DetailHeaderView';
 import ReserveModalView from './ReserveModalView';
 
 // style
@@ -154,7 +154,7 @@ const DetailView = () => {
 
     return (
         <div>
-            <SearchHeaderView />
+            <DetailHeaderView />
             {kitchen.name && 
                 <div className={"detailViewWrapper"}>
     `                <div className={"detailInfoWrapper"}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './MainHeaderView'
 import SearchHeaderViewLeft from './SearchHeaderViewLeft';
 import MyPageButton from '../Buttons/MyPageButton';
 
