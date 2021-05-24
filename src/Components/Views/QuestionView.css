@@ -84,3 +84,7 @@
 .div-descriptions {
     text-align: center;
 }
+
+.swiper-pagination {
+    --swiper-theme-color: #FA5000;
+}
