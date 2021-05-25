@@ -33,7 +33,7 @@ const ReserveModalView = (props) => {
             <div className="Rmodal">
                 <div className="Rmodal-reserve">
                     <div className="Rmodal-title">
-                        Successfully Reservered
+                        Successfully Reserved
                     </div>
                     <div className="reserveInfo">Reservation Info</div>
                     <div className="Rmodal-info">
