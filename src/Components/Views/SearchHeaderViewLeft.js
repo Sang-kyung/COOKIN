@@ -31,10 +31,7 @@ const SearchHeaderViewLeft = () => {
   const updateCity = () => {
     var thisInput = document.getElementById("searchInput");
     var thisInputValue = thisInput.value;
-    if(fourthCity!='-'){
-      alert('Please follow COVID19 government regulation');
-    }
-    else if(thisInputValue!= ""){
+    if(thisInputValue!= ""){
       if(firstCity == '-'){
         dispatch(setFirstCity(thisInputValue));
         SearchMap.searchMapKeyWord(thisInputValue);
@@ -55,11 +52,11 @@ const SearchHeaderViewLeft = () => {
         SearchMap.searchMapKeyWord(thisInputValue);
         setTimeout(function(){dispatch(setFourthCoord(SearchMap.getMapCenter()))},500);
       }
+      else if(fourthCity!='-'){
+        alert('Please follow COVID19 government regulation');
+      }
       thisInput.value = "";
     }
-    //SearchMap.setMapCenter(35.166668,129.066666);
-    
-    //dispatch(deleteFirstCity())
   }
   const deleteCity = () => {
     if(fourthCity != '-'){
