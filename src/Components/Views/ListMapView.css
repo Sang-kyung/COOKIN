@@ -9,6 +9,7 @@
     height: 90%;
     width: 45%;
     display: inline-block;
+    cursor: pointer;
 }
 
 #photo img {
