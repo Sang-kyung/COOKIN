@@ -31,7 +31,6 @@ const MyPage = () => {
   }
 
   const fetchReservationInfo = () => {
-    console.log("fetchReservationInfo");
     db.collection('reservation_list')
     .doc(user.phone).get()
     .then((doc) => {

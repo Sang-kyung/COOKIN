@@ -139,15 +139,12 @@ const DetailView = () => {
             .then((doc) => {
                 if (doc.exists) {
                     reservations = doc.data().reservations;
-                    console.log(reservations);
-                    console.log(user);
                     reservations.push(reserveInfo);
                 } else {
                     reservations.push(reserveInfo);
                 }
                 db.collection("reservation_list").doc(user.phone).set({reservations})
                 .then(() => {
-                    console.log("updated")
                 })
                 .catch((error) => {
                     console.error("database update data failed", error);

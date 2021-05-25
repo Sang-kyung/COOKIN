@@ -15,7 +15,7 @@
     position: relative;
     box-sizing: border-box;
     margin: 10% auto;
-    padding: 5%;
+    padding: 20px 15px;
     background: #fff;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
@@ -23,19 +23,36 @@
 }
 
 .Rmodal-title {
-    margin: 4%;
-    margin-top: 0%;
-    margin-left: 1%;
     height: 50px;
-    font-size: 32px;
-    display: flex;   
+    font-size: 32px;  
+    text-align: center;
+    border-bottom: 2px solid #c4c4c4;
+    margin-bottom: 30px;
+}
+
+.reserveInfo {
+    margin: 0 1%;
+    font-size: 23px;
+    margin-bottom: 20px;
 }
 
 .Rmodal-info {
     margin: 1%;
-    font-size: 23px;
+    font-size: 21px;
     text-align: left;
-    color: gray;
+}
+
+.reserveModalText {
+    display: inline-block;
+    width: 15%;
+    color: rgb(113, 113, 113);
+}
+
+.reserveModalVal {
+    display: inline-block;
+    width: 80%;
+    margin-left: 5%;
+    color: black;
 }
 
 .Rmodal-buttons {

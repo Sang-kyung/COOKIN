@@ -24,12 +24,8 @@ const CancelModalView = (props) => {
             reservations = doc.data().reservations;
             const idx = reservations.findIndex(e => e.name === res.name && new Date(e.date.toDate()).getTime() === new Date(res.date).getTime());
             if (idx > -1) reservations.splice(idx, 1);
-            console.log("After reservations");
-            console.log(reservations)
             db.collection("reservation_list").doc(phone).set({reservations})
             .then(() => {
-                console.log("canceled")
-                console.log(reservations);
                 dispatch(del());
                 window.location.reload();
             })
@@ -47,7 +43,7 @@ const CancelModalView = (props) => {
             <div className="Cmodal">
                 <div className="Cmodal-cancel">
                     <div className="Cmodal-title">
-                        Really Cancel?
+                        Are you sure to Cancel?
                     </div>
                     <div className="Cmodal-buttons">
                         <button className="Cmodal-cancelbutton" onClick={() => cancel({phone, res})}>

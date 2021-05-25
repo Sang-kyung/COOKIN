@@ -28,7 +28,7 @@ const MyreservationBox = (props) => {
             <div className ="reservation_box_future">
                 <div className="reservationWrapper">
                     <h3 className="kitchen_name">{res.name}</h3>
-                    <div className="DateIngredients">date:</div>
+                    <div className="DateIngredients">Date:</div>
                     <div className="value_DateIngredients">&nbsp;{date}, &nbsp;{res.time}</div><br/>
                     <div className="DateIngredients">Ingredients:</div>
                     <div className="value_DateIngredients">&nbsp;{res.ingredients.map((item, index) => {
@@ -43,7 +43,7 @@ const MyreservationBox = (props) => {
             <div className ="reservation_box_past">
                 <div className="reservationWrapper">
                     <h3 className="kitchen_name">{res.name}</h3>
-                    <div className="DateIngredients">date: </div>
+                    <div className="DateIngredients">Date: </div>
                     <div className="value_DateIngredients">&nbsp;{date}, &nbsp;{res.time}</div><br/>
                     <div className="DateIngredients">Ingredients: </div>
                     <div className="value_DateIngredients">&nbsp;{res.ingredients.map((item, index) => {

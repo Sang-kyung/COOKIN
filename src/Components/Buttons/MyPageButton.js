@@ -10,7 +10,6 @@ const MyPageButton = () => {
   const isloggedIn = useSelector(state => state.user.isloggedIn);
 
   const handleModalOpen = () => { // 밑에 onClick={handleModalOpen} 까지.
-    console.log("aa")
     isloggedIn === false ? (
       setShow(true)
     ) : (
@@ -19,7 +18,6 @@ const MyPageButton = () => {
   };
 
   const onCloseModal = () => {
-    console.log("bb")
     setShow(false);
   }
 

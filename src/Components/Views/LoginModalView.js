@@ -50,8 +50,6 @@ const LoginModalView = (props) => {
         .get().then((doc) => {
             if (doc.exists) {
                 let name = doc.data().name;
-                console.log("GO LOGIN");
-                console.log(name);
                 dispatch(login({phone, name}));
                 !isReservePage && history.push("/mypage");
             }
@@ -70,13 +68,11 @@ const LoginModalView = (props) => {
     }
 
     const onPhoneChange = (e) => {
-        console.log(e.target.value);
         setPhone(e.target.value);
         setWrongText("");
     }
 
     const onNameChange = (e) => {
-        console.log(e.target.value);
         setName(e.target.value);
     }
 

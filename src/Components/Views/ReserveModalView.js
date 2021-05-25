@@ -33,16 +33,20 @@ const ReserveModalView = (props) => {
             <div className="Rmodal">
                 <div className="Rmodal-reserve">
                     <div className="Rmodal-title">
-                        Successfully reservered
+                        Successfully Reservered
+                    </div>
+                    <div className="reserveInfo">Reservation Info</div>
+                    <div className="Rmodal-info">
+                        <div className="reserveModalText">Name</div>
+                        <div className="reserveModalVal">{reserveInfo.name}</div>
                     </div>
                     <div className="Rmodal-info">
-                        -{reserveInfo.name}
+                        <div className="reserveModalText">Date</div>
+                        <div className="reserveModalVal">{getFormatDate(reserveInfo.date)}</div>
                     </div>
                     <div className="Rmodal-info">
-                        -{getFormatDate(reserveInfo.date)}
-                    </div>
-                    <div className="Rmodal-info">
-                        -{reserveInfo.time}
+                        <div className="reserveModalText">Time</div>
+                        <div className="reserveModalVal">{reserveInfo.time}</div>
                     </div>
                     <div className="Rmodal-buttons">
                         <button className="Rmodal-mypagebutton" onClick={goMypage}>

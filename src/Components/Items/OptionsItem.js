@@ -4,7 +4,6 @@ import React from 'react';
 import './OptionsItem.css';
 
 const OptionsItem = ({item}) => {
-  console.log(item.amount, item.unit);
   let amount = item.amount * item.unit;
 
   return <div className="items">
