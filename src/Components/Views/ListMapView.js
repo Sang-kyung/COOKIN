@@ -15,7 +15,7 @@ const ListMapView = ({kitchen}) => {
     }
 
     var this_div = <div id="body">
-                        <div id="photo">
+                        <div id="photo" onClick={(e)=>{redirectfunction()}}>
                             {kitchen && <img src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default}/>}
                         </div>
                         <div id="content">
