@@ -9,8 +9,8 @@
 }
 
 .Cmodal-cancel {
-    width: 450px;
-    height: 300px;
+    width: 550px;
+    height: 330px;
     background-color: white;
     position: relative;
     box-sizing: border-box;
@@ -32,18 +32,22 @@
 }
 
 .Cmodal-title {
-    text-align: center;
-    margin-bottom: 0%;
-    margin-top: 5%;
-    margin-left: 1%;
     height: 50px;
     font-size: 32px;
-    display: flex; 
+    text-align: center;
+    border-bottom: 2px solid #c4c4c4;
+    margin-bottom: 30px;
+}
+
+.Cmodal-Info {
+    margin: 0 1%;
+    font-size: 25px;
+    margin-bottom: 20px;
 }
 
 .Cmodal-buttons {
     text-align: center;
-    margin-top: 15%;
+    margin-top: 100px;
 }
 
 .Cmodal-cancelbutton {

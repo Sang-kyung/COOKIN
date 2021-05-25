@@ -43,6 +43,9 @@ const CancelModalView = (props) => {
             <div className="Cmodal">
                 <div className="Cmodal-cancel">
                     <div className="Cmodal-title">
+                        Cancel
+                    </div>
+                    <div className="Cmodal-Info">
                         Are you sure to Cancel?
                     </div>
                     <div className="Cmodal-buttons">
