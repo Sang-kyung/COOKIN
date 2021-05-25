@@ -57,7 +57,7 @@ const LoginModalView = (props) => {
                 setWrongText("No phone number in here, please sign up first.");
             }
         }).catch((error) => {
-            console.log("Login Firestore error: ", error);
+            console.error("Login Firestore error: ", error);
         });
     }
 

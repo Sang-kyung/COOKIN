@@ -15,9 +15,10 @@
     position: relative;
     box-sizing: border-box;
     margin-left: 30px;
-    margin-top: 30px;
-    padding: 30px;
-    padding-top: 20px;
+    margin-top: 10px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background: #fff;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
@@ -69,11 +70,11 @@
 }
 
 .pictures {
-    margin: 30px 90px;
+    margin: 20px;
     padding: 0% 60px;
     text-align: center;
     vertical-align: middle;
-    width: 80%;
+    width: 70%;
 }
 
 .descriptions {
@@ -94,4 +95,8 @@
 
 .swiper-button-next {
     --swiper-theme-color: #FA5000;
+}
+
+.swiper-slide {
+    text-align: center;
 }
