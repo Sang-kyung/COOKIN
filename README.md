@@ -28,13 +28,12 @@ Application created by Team MISS (Make It Simple & Sensitive)
  - Kunwoo Song
 
 ## Library and Frameworks Used
-- Firebase
-- KakaoMap API
-- React.js
-- React-redux
-- Swiper/react
-- React-tabs
-- React-modal
+- <a href="https://firebase.google.com/?hl=ko">Firebase</a> - web based database system
+- <a href="https://apis.map.kakao.com/web/">KakaoMap API</a> - map API from kakao
+- <a href="https://www.npmjs.com/package/react-redux">React-redux</a> - npm react-redux
+- <a href="https://www.npmjs.com/package/swiper">react-swiper</a> - npm react-swiper
+- <a href="https://www.npmjs.com/package/react-tabs">react-tabs</a> - npm react-tabs
+- <a href="https://www.npmjs.com/package/react-modal">react-modal</a> - npm react-modal
 
 ## Codes
 - Routes.js contains links to each pages
