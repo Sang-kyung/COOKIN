@@ -31,4 +31,9 @@ Application created by Team MISS (Make It Simple & Sensitive)
 - Firebase
 - KakaoMap API
 - React.js
-- Swiper
+- React-redux
+- Swiper/react
+- React-tabs
+- React-modal
+
+## Codes
