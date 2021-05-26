@@ -37,3 +37,10 @@ Application created by Team MISS (Make It Simple & Sensitive)
 - React-modal
 
 ## Codes
+- Routes.js contains links to each pages
+- Divided by Components, Images, Pages, and Reducers folder.
+- Components folder contains almost components in this project. Buttons, Items, or Views.
+- images and img folders contain our image files used by web site. 
+- Page folder contains implementation of pages.
+- reducers and config folders contains about our reducers and persist store.
+- Follow this flow 'Page -> Components -> reducers'. It will be easy to focus on our codes.
