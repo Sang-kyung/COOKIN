@@ -36,10 +36,10 @@ Application created by Team MISS (Make It Simple & Sensitive)
 - <a href="https://www.npmjs.com/package/react-modal">react-modal</a> - npm react-modal
 
 ## Codes
-- Routes.js contains links to each pages.
-- UIs are organized with Pages-Views-items-buttons order.
-- Each pages call views and views call items and buttons.
-- Divided by Components, Images, Pages, Config and Reducers folder.
-- Images and img folders contain our image files used by web site. 
-- Reducers contains our states using redux and functions controlling states.
-- Config contains persist store.
+- Routes.js contains links to each pages
+- UIs are organized with Pages-Views-items-buttons order
+- Each pages call views and views call items and buttons
+- Divided by Components, Images, Pages, Config and Reducers folder
+- Images and img folders contain our image files used by web site
+- Reducers contains our states using redux and functions controlling states
+- Config contains persist store
