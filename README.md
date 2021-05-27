@@ -16,7 +16,7 @@ We focused on tackling 4 main features related to the issue:
 ##### Additional Features
 To allow users to return to their choice, we added a simple login feature that only takes cellphone number and name. After a simple sign up, returning users can check their reservation by signing in through their phone numbers. 
 
-#### Needs for Improvment
+#### Needs for Improvement
 We have not implemented a more advanced search feature involving filtering because of lack of time and experience using React and Firebase.
 Furthermore, the website uses a fixed database with realistic, but fake, data since for the actual application, we would need to get information from the actual kitchen.
 
