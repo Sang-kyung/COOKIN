@@ -26,7 +26,7 @@ const Home = () => {
     <MainHeaderView />
     <SearchView />
     <div className="question_image">
-      <img onClick={handleModalOpen} className="question" src={require(`../images/question-mark.png`).default} />
+      <img onClick={handleModalOpen} className="question" src={require(`../images/question-mark-text.png`).default} />
     </div>
     {show && <QuestionView onCloseModal={onCloseModal} />}
   </div>
