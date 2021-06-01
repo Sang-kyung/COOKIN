@@ -2,6 +2,10 @@
 Our application aims to target the following issue: 
 ___Busy Koreans in their 20s who work and want cookouts with friends need to have an AirB&B for kitchens showing nearby kitchens that can provide proper tools and ingredients because difficulty in finding an adequate location hinders their chances to hold a cookout.___
 
+## Prototype link
+<a href="http://hcidp4.web.app/">CookIn</a>
+
+
 ## Description
 To tackle this issue we decided to use React.js for our website and used Google Firebase's Cloud Firestore feature for our kitchen and user database.
 
