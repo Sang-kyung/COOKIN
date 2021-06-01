@@ -31,22 +31,22 @@ const SearchPage = () => {
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
       case (gn):{
-        return {location:'Gangnam',
+        return {location:'Gangnam Station',
         coord: gangnamCoord};
 
       }
       case (hd):{
-        return {location:'Hongdae', 
+        return {location:'Hongdae University Station', 
         coord: hongdaeCoord};
 
       }
       case (yd):{
-        return {location: 'Yeouido', 
+        return {location: 'Yeouido Station', 
         coord: yeoyidoCoord};
 
       }
       case (jl):{
-        return {location:'Jongno', 
+        return {location:'Jongno 3-ga Station', 
         coord: jongloCoord};
 
       } 
@@ -105,6 +105,7 @@ const SearchPage = () => {
   const loadKitchenInfo = () => {
     var kitchens = [];
     db.collection("kitchen_list")
+    .orderBy("dist")
     .get()
     .then(query => {
       query.forEach((doc) => {
@@ -142,7 +143,7 @@ const SearchPage = () => {
               <div>{recommendedPlace}</div>
             </div>
             <div id="ListMapView">  
-              {kitchensInfo.length > 0 && <div className="results">{kitchensInfo.length} Results</div>}    
+              {kitchensInfo.length > 0 && <div className="results">{kitchensInfo.length} Results Ordered by Distance</div>}    
               {kitchensInfo && kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}

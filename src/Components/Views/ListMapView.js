@@ -22,8 +22,12 @@ const ListMapView = ({kitchen}) => {
                             <div id="name" onClick={(e)=>{redirectfunction()}}>
                                 {kitchen.name}
                             </div>
+                            <br />
+                            <div id="dist">
+                                    {kitchen.dist}km
+                            </div>
                             <div id="price">
-                                    {kitchen.price}KRW
+                                    {kitchen.price}KRW 
                             </div>
                             <div id="information">
                                 <div id="utensils">
