@@ -2,7 +2,7 @@
     border-bottom :2px solid #c4c4c4;
     overflow: hidden;
     padding: 10px 15px;
-    height: 180px;
+    height: 200px;
 }
 
 #photo{
@@ -34,7 +34,6 @@
     display: inline-block;
 }
 
-
 #price {
     font-size: 14px;
     background-color: #c4c4c4;
@@ -42,7 +41,21 @@
     padding: 5px;
     width: fit-content;
     margin-top: 5px;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
+    display:inline-block;
+    margin-left: 5px;
+}
+
+#dist {
+    font-size: 14px;
+    background-color: #FC854d;
+    color:white;
+    border-radius: 10px;
+    padding: 5px;
+    width: fit-content;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
 #information{
