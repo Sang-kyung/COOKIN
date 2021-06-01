@@ -142,8 +142,16 @@ const SearchPage = () => {
               CookIn's Choice 
               <div>{recommendedPlace}</div>
             </div>
+            <div>
+              <div className="resultsContainer">
+              {kitchensInfo.length > 0 && 
+                <div className="resultsBox">
+                  <div className="results">{kitchensInfo.length} Results</div> 
+                  <div className="orderText">ordered by Distance</div>
+                </div>} 
+              </div>
+            </div>
             <div id="ListMapView">  
-              {kitchensInfo.length > 0 && <div className="results">{kitchensInfo.length} Results Ordered by Distance</div>}    
               {kitchensInfo && kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}

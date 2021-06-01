@@ -18,7 +18,7 @@
 
 #ListMapView{ 
     overflow: scroll;
-    height: calc(100vh - 310px);
+    height: calc(100vh - 335px);
 }
 
 #recommend{
@@ -42,8 +42,6 @@
     text-align: center;
 }
 
-.ListMapView{
-}
 
 .fetchButton{
     cursor: pointer;
@@ -75,8 +73,28 @@
     background: #555;
 }
 
+.resultsContainer {
+    height: 20px;
+}
+
+.resultsBox {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
 .results {
+    display: inline-block;
+    width: 40%;
     padding-left: 15px;
-    font-size: 23px;
+    font-size: 20px;
+    color: rgb(113, 113, 113);
+}
+
+.orderText {
+    display: inline-block;
+    width: calc(60% - 30px);
+    padding-right: 15px;
+    text-align: right;
+    font-size: 20px;
     color: rgb(113, 113, 113);
 }

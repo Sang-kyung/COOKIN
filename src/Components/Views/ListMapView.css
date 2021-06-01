@@ -1,12 +1,12 @@
 #body{
     border-bottom :2px solid #c4c4c4;
     overflow: hidden;
-    padding: 10px 15px;
-    height: 200px;
+    padding: 15px 15px;
+    height: 160px;
 }
 
 #photo{
-    height: 90%;
+    height: 100%;
     width: 45%;
     display: inline-block;
     cursor: pointer;
@@ -24,7 +24,7 @@
     margin-left: 20px;
     display: inline-block;
     overflow: hidden;
-    height: 90%;
+    height: 100%;
 }
 
 
