@@ -21,8 +21,8 @@ const Home = () => {
   return <div>
     <MainHeaderView />
     <SearchView />
-    <div className="question_image">
-      <img onClick={handleModalOpen} className="questionImg" src={require(`../images/question-mark.png`).default} />
+    <div onClick={handleModalOpen} className="question_image">
+      <img  className="questionImg" src={require(`../images/question-mark.png`).default} />
       <div className="questionText">How to use CookIn</div>
     </div>
     {show && <QuestionView onCloseModal={onCloseModal} />}
