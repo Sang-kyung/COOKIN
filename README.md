@@ -24,23 +24,7 @@ To allow users to return to their choice, we added a simple login feature that o
 We have not implemented a more advanced search feature involving filtering because of lack of time and experience using React and Firebase.
 Furthermore, the website uses a fixed database with realistic, but fake, data since for the actual application, we would need to get information from the actual kitchen.
 
-## Tutorial for CookIn
-### Login
-![step1](./src/img/Tutorials/step1.png)
-### Search
-![step2](./src/img/Tutorials/step2.png)
-### Add location
-![step3](./src/img/Tutorials/step3.png)
-### Get recommendation
-![step4](./src/img/Tutorials/step4.png)
-### Choose restaurant
-![step5](./src/img/Tutorials/step5.png)
-### Choose ingredients
-![step6](./src/img/Tutorials/step6.png)
-### Choose date
-![step7](./src/img/Tutorials/step7.png)
-### Check reservation on mypage
-![step8](./src/img/Tutorials/step8.png)
+
 
 ## Credits
 Application created by Team MISS (Make It Simple & Sensitive)
@@ -58,10 +42,29 @@ Application created by Team MISS (Make It Simple & Sensitive)
 - <a href="https://www.npmjs.com/package/react-modal">react-modal</a> - npm react-modal
 
 ## Codes
-- Routes.js contains links to each pages
+- ./src/Routes.js contains links to each pages
 - UIs are organized with Pages-Views-items-buttons order
 - Each pages call views and views call items and buttons
 - Divided by Components, Images, Pages, Config and Reducers folder
-- Images and img folders contain our image files used by web site
-- Reducers contains our states using redux and functions controlling states
-- Config contains persist store
+- ./src/images and ./src/img folders contain our image files used by web site
+- Reducers in ./src/reducers/ folder contains our states using redux and functions controlling states
+- ./src/config/store.js contains persist store
+
+
+## Tutorial for CookIn
+### Login
+![step1](./src/img/Tutorials/step1.png)
+### Search
+![step2](./src/img/Tutorials/step2.png)
+### Add location
+![step3](./src/img/Tutorials/step3.png)
+### Get recommendation
+![step4](./src/img/Tutorials/step4.png)
+### Choose restaurant
+![step5](./src/img/Tutorials/step5.png)
+### Choose ingredients
+![step6](./src/img/Tutorials/step6.png)
+### Choose date
+![step7](./src/img/Tutorials/step7.png)
+### Check reservation on mypage
+![step8](./src/img/Tutorials/step8.png)
