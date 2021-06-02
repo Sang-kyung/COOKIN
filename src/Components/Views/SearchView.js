@@ -29,7 +29,6 @@ const SearchView = () => {
       dispatch(deleteFourthCity());
       dispatch(setRecommendedPlace(". . ."))
       SearchMap.searchMapKeyWord(input);
-      //window.location.href="/search";
       redirectfunction()
     }
   }  
