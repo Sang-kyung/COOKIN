@@ -19,9 +19,6 @@ const SearchHeaderViewLeft = () => {
   const thirdCoord = useSelector((state) => state.searchCity.thirdCityCoord);
   const fourthCoord = useSelector((state) => state.searchCity.fourthCityCoord);
   const cities = useSelector((state) => state.searchCity);
-  if(firstCity != '-' && firstCoord =='-'){
-    setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()))},500);
-  }
   const gangnamCoord = {x : 37.49790442354252, y: 127.02801745530111};
   const hongdaeCoord = {x : 37.55716905256646, y:126.92429475166031};
   const jongloCoord = {x: 37.572251494413585,y: 126.98713159681843};
