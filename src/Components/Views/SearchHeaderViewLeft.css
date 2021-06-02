@@ -13,6 +13,15 @@
     vertical-align: top;
 }
 
+.searchInputContainer {
+    width: 430px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+    background-color: white;
+}
+
 
 .searchInputWrapper {
     border-radius: 15px;
@@ -26,49 +35,45 @@
 }
 
 .searchInput {
+    vertical-align: top;
     display: inline-block;
     height: 40px;
-    width: 430px;
+    width: 340px;
     margin-left: 9px;
     border-radius: 10px;
     padding-left: 10px;
+    padding: 0;
+    margin: 0;
+    border-width: 0;
 }
 
 .searchInput:focus {
     outline: none;
 }
 
-input {
-    padding: 0;
-    margin: 0;
-    border-width: 0;
-}
 
 .plusBtn {
-    position: fixed;
-    top: 46px;
-    left: 735px;
+    vertical-align: top;
+    display: inline-block;
     cursor: pointer;
     border-radius: 25px;
     height: 40px;
     width: 40px;
-    color: black;
-    font-size: 35px;
     margin-left: 10px;
     border: none;
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
+    font-size: 32px;
 }
 
 .recBtn {
-    position: fixed;
-    top: 36px;
-    left: 770px;
+    vertical-align: top;
+    display: inline-block;
     height: 29px;
-    margin-left:20px;
-    margin-top: 15px;
+    margin-top: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }  
 
 
