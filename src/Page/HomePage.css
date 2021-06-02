@@ -1,19 +1,12 @@
 .question_image {
     position: fixed;
     top: calc(50% + 120px);
-    left: calc(50% - 105px);
+    left: calc(50% - 110px);
     color: #3c4043;
     padding: 10px 15px;
     cursor: pointer;
-    border: 1.9px solid transparent;
     border-radius: 10px;
 }
-
-.question_image:hover {
-    border: 1.9px solid #c4c4c4;
-    border-radius: 10px;
-}
-
 
 .questionImg {
     width: 30px;
