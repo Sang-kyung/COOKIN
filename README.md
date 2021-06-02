@@ -1,5 +1,5 @@
 # CookIn by Team MISS
-Our application aims to target the following issue: 
+Our application aims to target the following issue: <br/>
 ___Busy Koreans in their 20s who work and want cookouts with friends need to have an AirB&B for kitchens showing nearby kitchens that can provide proper tools and ingredients because difficulty in finding an adequate location hinders their chances to hold a cookout.___
 
 ## Prototype link
