@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import MainHeaderView from '../Components/Views/MainHeaderView';
 import SearchView from '../Components/Views/SearchView';
 import QuestionView from '../Components/Views/QuestionView';
+import MyPageButton from '../Components/Buttons/MyPageButton';
 
 
 const Home = () => {
@@ -20,20 +21,19 @@ const Home = () => {
   }
 
   return <div>
-    <MainHeaderView />
-    <Link to="/">
-      <div id="logo">
-        <div className="toppart">
-          <div className="chef_img">
-            <img className="chef" src={require(`../img/Main/chef.png`).default} />
-          </div>
-          CookIn
+    <MyPageButton />
+    
+    <div id="logo">
+      <div className="toppart">
+        <div className="chef_img">
+          <img className="chef" src={require(`../img/Main/chef.png`).default} />
         </div>
-        <div className="caption">
-          <span>Find the best kitchen for you!</span>
-        </div>  
+        CookIn
       </div>
-    </Link>
+      <div className="caption">
+        <span>Find the best kitchen for you!</span>
+      </div>  
+    </div>
     <SearchView />
     <div onClick={handleModalOpen} className="question_image">
       <img  className="questionImg" src={require(`../images/question-mark.png`).default} />

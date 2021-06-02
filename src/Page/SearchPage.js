@@ -10,7 +10,7 @@ import { useLocation } from 'react-router';
 import './SearchPage.css'
 import * as SearchMap from '../Components/Views/SearchMap'
 import db from './../firebase';
-
+var inputErased = 0;
 const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const isRecommend = useLocation().state.data;
@@ -40,7 +40,7 @@ const SearchPage = () => {
         clickfunction();
         tempIsRec = 0;
         history.replace({ state: {
-          data: '0'
+          data: '2'
        } });
       }
     },500);
@@ -74,8 +74,10 @@ const SearchPage = () => {
   const getRecommendation = () => {
     if(firstCoord == '-' && firstCoordTemp == '-'){
       alert('You need to input at least one city');
+      inputErased = 1;
     }
     else{
+    inputErased = 0;
     var count = 0;
     var x_coord = 0;
     var y_coord = 0;
@@ -183,7 +185,10 @@ const SearchPage = () => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })
               :
-              <img className="chefImg" src= {require("../img/Buttons/chefSays.PNG").default}></img>
+              isRecommend == 0 || isRecommend == 2 && inputErased == 1
+              ?
+              <img className="chefImg" src= {require("../img/Buttons/chefSays.PNG").default}></img>:
+              <div></div>
             }
               
             </div>
