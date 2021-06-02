@@ -36,7 +36,7 @@ const QuestionView = (props) => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step2.png`).default} />
-                            <div className="div-descriptions"><span className="descriptions">Step 2. Type one of your location and enter.</span></div>
+                            <div className="div-descriptions"><span className="descriptions">Step 2. Type one of your location. If you want to add more locations click "Add Location". For immediate recommendation, click enter or "Recommend Me"</span></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step3.png`).default} />
@@ -44,7 +44,7 @@ const QuestionView = (props) => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step4.png`).default} />
-                            <div className="div-descriptions"><span className="descriptions">Step 4. Click the 'Recommend' button to get your recommended shortest location for your cookout.</span></div>
+                            <div className="div-descriptions"><span className="descriptions">Step 4. Click the recommend icon or enter to get your recommended shortest location for your cookout.</span></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step5.png`).default} />
