@@ -45,14 +45,6 @@
     padding: 0;
     margin: 0;
     border-width: 0;
-<<<<<<< HEAD
-}
-
-.searchInput:focus {
-    outline: none;
-}
-
-=======
 }
 
 input {
@@ -61,7 +53,6 @@ input {
     margin: 0;
     border-width: 0;
 }
->>>>>>> fadd0feec3805d381e420ff4fee9cb796adfce74
 
 .searchInput:focus {
     outline: none;
