@@ -32,7 +32,7 @@
 #logo {
     position: fixed;
     top: calc(50% - 315px);
-    left: calc(50% - 245px);
+    left: calc(50% - 230px);
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
