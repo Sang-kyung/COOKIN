@@ -6,17 +6,17 @@
     display: flex;
     margin: auto;
     background-color: rgb(250, 80, 0, 0.8); 
-    border-radius:15px;
+    border-radius:25px;
 }
 
 #input{
-    width: calc(100% - 70px);
+    width: calc(100% - 30px);
     max-width: 960px;
     height:70px;
     font-size:50px;
     margin:auto;
     text-align: center;
-    border-radius:10px;
+    border-radius:20px;
 }
 
 #input:focus {
