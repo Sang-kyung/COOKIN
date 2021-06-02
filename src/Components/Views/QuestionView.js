@@ -32,7 +32,7 @@ const QuestionView = (props) => {
                     <Swiper pagination={{"type": "progressbar"}} navigation={true} className="mySwiper">
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step1.png`).default} />
-                            <div className="div-descriptions"><span className="descriptions">Step 1. Press the My Page button to sign up or log in.</span></div>
+                            <div className="div-descriptions"><span className="descriptions">Step 1. Press the Sign Up/Log In button to sign up or log in.</span></div>
                         </SwiperSlide>
                         <SwiperSlide>
                             <img className="pictures" src={require(`../../img/Tutorials/step2.png`).default} />
