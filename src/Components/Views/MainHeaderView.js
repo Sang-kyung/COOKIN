@@ -7,7 +7,6 @@ const MainHeaderView = () => {
 
   return (
     <div className="headerWrapper">
-      <HomePageButton />
       <MyPageButton />
     </div>
   )

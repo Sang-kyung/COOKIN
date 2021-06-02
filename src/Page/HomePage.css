@@ -28,3 +28,43 @@
     margin-top: 5px;
     font-weight: 500;
 }
+
+#logo {
+    position: fixed;
+    top: calc(50% - 315px);
+    left: calc(50% - 245px);
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.toppart {
+    display: inline-block;
+    margin-left: 20px;
+    color: #FA5000;
+    opacity: 0.9;
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.chef_img {
+    display:inline-block;
+    height: auto;
+    width: 85px;
+    margin-right: 20px;
+}
+
+.chef {
+    max-width: 100%;  
+    height: auto;
+    object-fit: contain;
+}
+
+.caption {
+    color: #3c4043;
+    font-size: 32px;
+    font-weight: bold;
+
+}
