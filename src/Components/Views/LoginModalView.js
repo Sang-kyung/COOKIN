@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useDispatch, useSelector } from 'react-redux';
 import db from '../../firebase';
 import { signup, login } from '../../reducers/user';
-import { useHistory } from 'react-router-dom';
 import 'react-tabs/style/react-tabs.css';
 import './LoginModalView.css'
 
@@ -13,13 +12,11 @@ const LoginModalView = (props) => {
 
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
     const [wrongtext, setWrongText] = useState("");
     
-
     const _signup = () => {
         if(phone === "" || name === ""){
             return;
@@ -29,7 +26,7 @@ const LoginModalView = (props) => {
             name: name
         }).then(() => {
             dispatch(signup({phone, name}));
-            !isReservePage && history.push("/mypage");
+            !isReservePage && window.location.reload();
 
         }).catch((error) => {
             console.error("Error adding document: ", error);
@@ -51,7 +48,7 @@ const LoginModalView = (props) => {
             if (doc.exists) {
                 let name = doc.data().name;
                 dispatch(login({phone, name}));
-                !isReservePage && history.push("/mypage");
+                !isReservePage && window.location.reload();
             }
             else {
                 setWrongText("No phone number in here, please sign up first.");

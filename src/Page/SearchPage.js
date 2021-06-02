@@ -4,13 +4,16 @@ import { useHistory } from 'react-router-dom';
 import MapContainer from '../Components/Views/SearchMap';
 import SearchHeaderView from '../Components/Views/SearchHeaderView';
 import ListMapView from '../Components/Views/ListMapView';
-import { setRecommendedPlace } from './../reducers/searchCity';
+import { setRecommendedPlace, setFirstCoord } from './../reducers/searchCity';
+import { useLocation } from 'react-router';
+
 import './SearchPage.css'
 import * as SearchMap from '../Components/Views/SearchMap'
 import db from './../firebase';
 
 const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
+  const isRecommend = useLocation().state.data;
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var localRecommmended = '';
   const firstCity = useSelector((state) => state.searchCity.firstCity);
@@ -26,8 +29,18 @@ const SearchPage = () => {
   const hongdaeCoord = {x : 37.55716905256646, y:126.92429475166031};
   const jongloCoord = {x: 37.572251494413585,y: 126.98713159681843};
   const yeoyidoCoord = {x: 37.52209681000769, y:126.92420114948074};
+  var firstCoordTemp = '-';
   const dispatch = useDispatch();
   const history = useHistory();
+  if(firstCity != '-' && firstCoord =='-'){
+    setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()));
+      firstCoordTemp = SearchMap.getMapCenter();
+      if(isRecommend == '1'){
+        clickfunction();
+      }
+    },500);
+  }
+
   const getMinimum = (gn, hd, jl, yd, sd) => {
     switch (sd){
       case (gn):{
@@ -54,7 +67,7 @@ const SearchPage = () => {
   }
 
   const getRecommendation = () => {
-    if(firstCoord == '-'){
+    if(firstCoord == '-' && firstCoordTemp == '-'){
       alert('You need to input at least one city');
     }
     else{
@@ -64,10 +77,17 @@ const SearchPage = () => {
     var nearestPlace = '';
     var nearestDistance = 99999;
     var nearestCoord;
-    if(firstCoord != '-'){
+    if(firstCoord != '-' || firstCoordTemp != '-'){
       count = 1;
-      x_coord += firstCoord.Ma;
-      y_coord += firstCoord.La;
+      if(firstCoord == '-'){
+        x_coord += firstCoordTemp.Ma;
+        y_coord += firstCoordTemp.La;
+      }
+      else{
+        x_coord += firstCoord.Ma;
+        y_coord += firstCoord.La;
+      }
+      
       if(secondCoord != '-'){
         count = 2;
         x_coord += secondCoord.Ma;
