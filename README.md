@@ -5,6 +5,11 @@ ___Busy Koreans in their 20s who work and want cookouts with friends need to hav
 ## Prototype link
 <a href="http://hcidp4.web.app/">CookIn</a>
 
+## Set Up
+Phone number for test: 01012345678
+1. Keep full screen while testing
+2. Recommend Chrome browser
+
 
 ## Description
 To tackle this issue we decided to use React.js for our website and used Google Firebase's Cloud Firestore feature for our kitchen and user database.
