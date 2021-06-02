@@ -45,7 +45,7 @@
 
 .fetchButton{
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
     background-color: #fa5000;
     opacity: 0.8;
@@ -74,7 +74,7 @@
 }
 
 .resultsContainer {
-    height: 20px;
+    height: 30px;
 }
 
 .resultsBox {
