@@ -165,33 +165,33 @@ const SearchPage = () => {
   return <div>
           <SearchHeaderView onClickRecommend={clickfunction}/>
           <div className="leftBox">
-            {kitchensInfo.length > 0 ?
-              <div>
-                <div id="recommend">
-                  CookIn's Choice 
-                  <div>{recommendedPlace}</div>
-                </div>
-                <div>
-                  <div className="resultsContainer">
-                  {kitchensInfo.length > 0 && 
-                    <div className="resultsBox">
-                      <div className="results">{kitchensInfo.length} Results</div> 
-                      <div className="orderText">ordered by Distance</div>
-                    </div>} 
-                  </div>
-                </div>
-                <div id="ListMapView">  
-                  {kitchensInfo.map((item, index) => {
-                    return <ListMapView class="ListMapView" key={index} kitchen={item}/>
-                  })}
-                </div>
+            <div id="recommend">
+              CookIn's Choice 
+              <div>{recommendedPlace}</div>
+            </div>
+            <div>
+              <div className="resultsContainer">
+              {kitchensInfo.length > 0 && 
+                <div className="resultsBox">
+                  <div className="results">{kitchensInfo.length} Results</div> 
+                  <div className="orderText">ordered by Distance</div>
+                </div>} 
               </div>
+            </div>
+            <div id="ListMapView">  
+            {kitchensInfo.length > 0 
+              ?
+               kitchensInfo.map((item, index) => {
+                return <ListMapView class="ListMapView" key={index} kitchen={item}/>
+              })
               :
               isRecommend == 0 || isRecommend == 2 && inputErased == 1
               ?
               <img className="chefImg" src= {require("../img/Buttons/chefSays.PNG").default}></img>:
               <div></div>
-              }
+            }
+              
+            </div>
             {/* <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button> */}
           </div>
           <div className="rightBox">
