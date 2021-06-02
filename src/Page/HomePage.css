@@ -1,7 +1,7 @@
 .question_image {
     position: fixed;
     top: calc(50% + 120px);
-    left: calc(50% - 140px);
+    left: calc(50% - 120px);
     background-color: #f8f9fa;
     border: 1.9px solid #f8f9fa;
     border-radius: 10px;
