@@ -26,7 +26,7 @@
     z-index: 500;
     position: fixed;
     top: calc(50% - 315px);
-    left: calc(50% - 230px);
+    left: calc(50% - 210px);
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
@@ -37,7 +37,7 @@
     margin-left: 20px;
     color: #FA5000;
     opacity: 0.9;
-    font-size: 100px;
+    font-size: 80px;
     font-weight: bold;
     letter-spacing: 1px;
     margin: 0;
@@ -58,7 +58,7 @@
 
 .caption {
     color: #3c4043;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
 
 }
