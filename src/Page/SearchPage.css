@@ -78,8 +78,9 @@
 }
 
 .chefImg {
-    height: 600px;
-    margin-left: calc((100% - 454px) /2);
+    width: 50%;
+    margin-left: 25%;
+    height: 90%
 }
 
 .resultsBox {
