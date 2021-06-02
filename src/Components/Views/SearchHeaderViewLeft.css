@@ -28,8 +28,8 @@
 .searchInput {
     display: inline-block;
     height: 40px;
-    width: 380px;
-    margin-left: 10px;
+    width: 430px;
+    margin-left: 9px;
     border-radius: 10px;
     padding-left: 10px;
 }
@@ -45,8 +45,9 @@ input {
 }
 
 .plusBtn {
-    vertical-align: top;
-    display: inline-block;
+    position: fixed;
+    top: 46px;
+    left: 735px;
     cursor: pointer;
     border-radius: 25px;
     height: 40px;
@@ -61,11 +62,13 @@ input {
 }
 
 .recBtn {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
+    position: fixed;
+    top: 36px;
+    left: 770px;
+    height: 29px;
     margin-left:20px;
     margin-top: 15px;
+    cursor: pointer;
 }  
 
 

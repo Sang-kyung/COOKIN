@@ -164,7 +164,7 @@ const SearchHeaderViewLeft = (props) => {
             }
           }}></input>
           <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
-          <img onClick={onClickRecommend} className="recommend_img" src={require(`../../img/Buttons/recommend.png`).default} />
+          <img onClick={onClickRecommend} className="recBtn" src={require(`../../img/Buttons/recommend.png`).default} />
         </div>
       </div>
     
