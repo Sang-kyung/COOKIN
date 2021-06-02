@@ -23,6 +23,7 @@
 }
 
 #logo {
+    z-index: 500;
     position: fixed;
     top: calc(50% - 315px);
     left: calc(50% - 230px);
