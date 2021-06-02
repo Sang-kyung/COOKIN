@@ -15,7 +15,6 @@ const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const isRecommend = useLocation().state.data;
   let tempIsRec = parseInt(isRecommend);
-  console.log(tempIsRec);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var localRecommmended = '';
   const firstCity = useSelector((state) => state.searchCity.firstCity);
@@ -40,7 +39,6 @@ const SearchPage = () => {
       if(tempIsRec == 1){
         clickfunction();
         tempIsRec = 0;
-        console.log(tempIsRec);
         history.replace({ state: {
           data: '2'
        } });
@@ -181,7 +179,7 @@ const SearchPage = () => {
               </div>
             </div>
             <div id="ListMapView">  
-            {kitchensInfo.length>0 
+            {kitchensInfo.length > 0 
               ?
                kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
