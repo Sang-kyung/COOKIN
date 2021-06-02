@@ -63,7 +63,7 @@
     width: 4px;
 }
 /* Handle */
-::-webkit-scrollbar-thumb {
+#ListMapView::-webkit-scrollbar-thumb {
     background: #fc854d;
     border-radius: 5px;
 }
