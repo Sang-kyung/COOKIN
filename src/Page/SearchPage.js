@@ -14,6 +14,8 @@ import db from './../firebase';
 const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const isRecommend = useLocation().state.data;
+  let tempIsRec = parseInt(isRecommend);
+  console.log(tempIsRec);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var localRecommmended = '';
   const firstCity = useSelector((state) => state.searchCity.firstCity);
@@ -35,8 +37,13 @@ const SearchPage = () => {
   if(firstCity != '-' && firstCoord =='-'){
     setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()));
       firstCoordTemp = SearchMap.getMapCenter();
-      if(isRecommend == '1'){
+      if(tempIsRec == 1){
         clickfunction();
+        tempIsRec = 0;
+        console.log(tempIsRec);
+        history.replace({ state: {
+          data: '0'
+       } });
       }
     },500);
   }
