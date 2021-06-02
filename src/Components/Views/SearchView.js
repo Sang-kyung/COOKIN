@@ -61,7 +61,6 @@ const SearchView = () => {
     <div className="btn_wrapper">
       <div onClick={clickfunctionAdd} className="add_btn">
         <img  className="add_img" src={require(`../../img/Buttons/plus.png`).default} />
-        {/* <div className="add_img">+</div> */}
         <div className="btnText">Add Location</div>
       </div>
       <div onClick={clickfunctionReco} className="recommend_btn">

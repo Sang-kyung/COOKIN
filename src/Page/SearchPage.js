@@ -144,7 +144,7 @@ const SearchPage = () => {
     })
   } 
 
-  const clickfunction = function() {
+  const clickfunction = () => {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
     loadKitchenInfo()
@@ -163,7 +163,7 @@ const SearchPage = () => {
   }, [])
   
   return <div>
-          <SearchHeaderView />
+          <SearchHeaderView onClickRecommend={clickfunction}/>
           <div className="leftBox">
             <div id="recommend">
               CookIn's Choice 
@@ -183,7 +183,7 @@ const SearchPage = () => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}
             </div>
-            <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button>
+            {/* <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button> */}
           </div>
           <div className="rightBox">
             <MapContainer />
