@@ -2,7 +2,7 @@
     width: calc(45% - 40px);
     margin-left: 30px;
     display: inline-block;
-    height: 100%;
+    height: calc(100vh - 150px);
     margin-top: 130px;
     vertical-align: top;
     margin-right: 10px;
@@ -63,7 +63,7 @@
     width: 4px;
 }
 /* Handle */
-::-webkit-scrollbar-thumb {
+#ListMapView::-webkit-scrollbar-thumb {
     background: #fc854d;
     border-radius: 5px;
 }
@@ -78,9 +78,10 @@
 }
 
 .chefImg {
+    margin-top: 10%;
     width: 50%;
     margin-left: 25%;
-    height: 90%
+    height: 80%
 }
 
 .resultsBox {
