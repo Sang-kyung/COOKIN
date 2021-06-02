@@ -138,6 +138,12 @@ const SearchHeaderViewLeft = (props) => {
   //   {city: "la", func: () => {}}
   // ]
 
+  const _enter = (e) => {
+    if(e.keyCode == 13){
+      onClickRecommend();
+    }
+}
+
   var this_div = 
     <div className="leftHeaderWrapper">
       <div className="homePageBtnWrapper">
@@ -158,13 +164,11 @@ const SearchHeaderViewLeft = (props) => {
 
         </div>
         <div className="searchInputWrapper">
-          <input id="searchInput" className="searchInput" onKeyDown = {function(e){
-            if(e.keyCode == 13){
-              updateCity();
-            }
-          }}></input>
-          <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
-          <img onClick={onClickRecommend} className="recBtn" src={require(`../../img/Buttons/recommend.png`).default} />
+          <div className="searchInputContainer">
+            <input id="searchInput" className="searchInput" onKeyDown={(e) => _enter(e)}></input>
+            <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
+            <img onClick={onClickRecommend} className="recBtn" src={require(`../../img/Buttons/recommend.png`).default} />
+          </div>
         </div>
       </div>
     
