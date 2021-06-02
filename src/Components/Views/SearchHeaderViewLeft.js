@@ -9,7 +9,8 @@ import * as SearchMap from './SearchMap'
 import './SearchHeaderViewLeft.css';
 
 
-const SearchHeaderViewLeft = () => {
+const SearchHeaderViewLeft = (props) => {
+  const { onClickRecommend } = props;
   const firstCity = useSelector((state) => state.searchCity.firstCity);
   const secondCity = useSelector((state) => state.searchCity.secondCity);
   const thirdCity = useSelector((state) => state.searchCity.thirdCity);
@@ -163,6 +164,7 @@ const SearchHeaderViewLeft = () => {
             }
           }}></input>
           <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
+          <img onClick={onClickRecommend} className="recommend_img" src={require(`../../img/Buttons/recommend.png`).default} />
         </div>
       </div>
     

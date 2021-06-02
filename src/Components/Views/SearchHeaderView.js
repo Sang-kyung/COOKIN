@@ -3,10 +3,10 @@ import SearchHeaderViewLeft from './SearchHeaderViewLeft';
 import MyPageButton from '../Buttons/MyPageButton';
 
 
-const SearchHeaderView = () => {
-
+const SearchHeaderView = (props) => {
+  const { onClickRecommend } = props
   return <div className="searchHeader">
-    <SearchHeaderViewLeft />
+    <SearchHeaderViewLeft onClickRecommend={onClickRecommend}/>
     <MyPageButton />
   </div>
 }

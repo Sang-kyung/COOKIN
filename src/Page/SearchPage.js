@@ -14,6 +14,8 @@ import db from './../firebase';
 const SearchPage = () => {
   const [kitchensInfo, onLoad] = useState([]);
   const isRecommend = useLocation().state.data;
+  let tempIsRec = parseInt(isRecommend);
+  console.log(tempIsRec);
   const recommendedPlace = useSelector((state) => state.searchCity.recommendedPlace);
   var localRecommmended = '';
   const firstCity = useSelector((state) => state.searchCity.firstCity);
@@ -35,8 +37,13 @@ const SearchPage = () => {
   if(firstCity != '-' && firstCoord =='-'){
     setTimeout(function(){dispatch(setFirstCoord(SearchMap.getMapCenter()));
       firstCoordTemp = SearchMap.getMapCenter();
-      if(isRecommend == '1'){
+      if(tempIsRec == 1){
         clickfunction();
+        tempIsRec = 0;
+        console.log(tempIsRec);
+        history.replace({ state: {
+          data: '0'
+       } });
       }
     },500);
   }
@@ -137,7 +144,7 @@ const SearchPage = () => {
     })
   } 
 
-  const clickfunction = function() {
+  const clickfunction = () => {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
     loadKitchenInfo()
@@ -156,7 +163,7 @@ const SearchPage = () => {
   }, [])
   
   return <div>
-          <SearchHeaderView />
+          <SearchHeaderView onClickRecommend={clickfunction}/>
           <div className="leftBox">
             <div id="recommend">
               CookIn's Choice 
@@ -176,7 +183,7 @@ const SearchPage = () => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
               })}
             </div>
-            <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button>
+            {/* <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button> */}
           </div>
           <div className="rightBox">
             <MapContainer />
