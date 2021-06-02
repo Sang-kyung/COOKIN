@@ -179,9 +179,15 @@ const SearchPage = () => {
               </div>
             </div>
             <div id="ListMapView">  
-              {kitchensInfo && kitchensInfo.map((item, index) => {
+            {kitchensInfo.length>0 
+              ?
+               kitchensInfo.map((item, index) => {
                 return <ListMapView class="ListMapView" key={index} kitchen={item}/>
-              })}
+              })
+              :
+              <img className="chefImg" src= {require("../img/Buttons/chefSays.PNG").default}></img>
+            }
+              
             </div>
             {/* <button className="fetchButton" type="button" onClick={(e) => {clickfunction()}}>Recommend</button> */}
           </div>
