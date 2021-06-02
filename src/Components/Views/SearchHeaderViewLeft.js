@@ -140,7 +140,7 @@ const SearchHeaderViewLeft = (props) => {
 
   const _enter = (e) => {
     if(e.keyCode == 13){
-      onClickRecommend();
+      updateCity();
     }
 }
 

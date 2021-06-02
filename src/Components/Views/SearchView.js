@@ -53,7 +53,7 @@ const SearchView = () => {
     <div className= 'inputWrapper' >
       <input type="text" id='input' placeholder="Add your locations" onKeyDown = {function(e){
         if(e.keyCode == 13){
-          clickfunctionReco();
+          clickfunctionAdd();
         }
       }}>
       </input>
