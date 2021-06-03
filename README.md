@@ -6,10 +6,15 @@ ___Busy Koreans in their 20s who work and want cookouts with friends need to hav
 <a href="http://hcidp4.web.app/">CookIn</a>
 
 ## Set Up
-Phone number for test: 01012345678
-1. Keep full screen while testing
-2. Recommend Chrome browser
 
+
+
+## Guidelines
+- Phone number for test: 01012345678
+- Reommend to add locations in Seoul as input to get reasonable recommendation
+(Our prototype recommendation algorithm choose best place among 4 places (Hongdae University Station, Gangnam station, Yeouido Station, Jongno 3-ga Station) with distance from inputs)
+- Recommend Chrome browser
+- Keep full screen while testing
 
 ## Description
 To tackle this issue we decided to use React.js for our website and used Google Firebase's Cloud Firestore feature for our kitchen and user database.
