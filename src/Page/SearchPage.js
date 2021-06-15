@@ -131,8 +131,13 @@ const SearchPage = () => {
 
   const loadKitchenInfo = () => {
     var kitchens = [];
+    var selectOption = document.getElementById('orderOption');
+    var orderByValue = 'dist';
+    if(selectOption){
+      orderByValue = selectOption.value;
+    }
     db.collection("kitchen_list")
-    .orderBy("dist")
+    .orderBy(orderByValue)
     .get()
     .then(query => {
       query.forEach((doc) => {
@@ -144,6 +149,8 @@ const SearchPage = () => {
     })
   } 
 
+
+
   const clickfunction = () => {
     getRecommendation();
     //setTimeout(function(){loadKitchenInfo()},500);
@@ -154,6 +161,8 @@ const SearchPage = () => {
     else{
       document.getElementById("recommend").style.visibility = "visible";
     }
+    var listMapViewBox = document.getElementById('ListMapView');
+    listMapViewBox.scrollTo({top:0})
   }
 
   useEffect(() => {
@@ -174,7 +183,13 @@ const SearchPage = () => {
               {kitchensInfo.length > 0 && 
                 <div className="resultsBox">
                   <div className="results">{kitchensInfo.length} Results</div> 
-                  <div className="orderText">ordered by Distance</div>
+                  <div className="orderText">ordered by  
+                  <select className="orderBy" id="orderOption" onChange = {clickfunction}>
+                    <option value="dist">Distance from Station</option>
+                    <option value="price">Price</option>
+                  </select>
+                  </div>
+                  
                 </div>} 
               </div>
             </div>

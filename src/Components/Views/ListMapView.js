@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import "./ListMapView.css";
+import { overListener, OutListener } from './SearchMap';
 
 const ListMapView = ({kitchen}) => {  
     const history = useHistory();
@@ -14,12 +15,21 @@ const ListMapView = ({kitchen}) => {
         });
     }
 
+    const mouseOver = (e) => {
+        overListener(kitchen.name)
+        
+    }
+
+    const mouseOut = () => {
+        OutListener(kitchen.name)
+    }
+
     var this_div = <div id="body">
-                        <div id="photo" onClick={(e)=>{redirectfunction()}}>
+                        <div id="photo"  onClick={(e)=>{redirectfunction()}}>
                             {kitchen && <img src={require(`../../img/Kitchen/${kitchen.img[0]}.png`).default}/>}
                         </div>
                         <div id="content">
-                            <div id="name" onClick={(e)=>{redirectfunction()}}>
+                            <div id="name" onMouseOver={mouseOver} onMouseOut={mouseOut} onClick={(e)=>{redirectfunction()}}>
                                 {kitchen.name}
                             </div>
                             <br />
