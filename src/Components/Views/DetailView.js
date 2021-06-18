@@ -191,7 +191,14 @@ const DetailView = () => {
                     </div>
                     <div className={"floatingViewWrapper"}>
                         <div className={"reservationInfoWrapper"}>
+
                             <div className={"totalPriceWrapper"}>
+                                <div  className={"ingOptions"}>
+                                    <p className={"ingAmount"}></p>
+                                    <p>Rental Fee</p>
+                                    <div> {kitchen.price} KRW</div>
+                                </div>
+                                <hr />
                                 {reserveInfo.ingredients.map((item, index) => {
                                     return <div key={index} className={"ingOptions"}>
                                                 <p className={"ingAmount"}>{item.amount}</p>

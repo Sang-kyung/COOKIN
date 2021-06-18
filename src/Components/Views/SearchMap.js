@@ -9,7 +9,7 @@ const { kakao } = window;
 
 var map;
 var center;
-
+var infoWindowList = {}
 export function setMapCenter(Lat, Lng) {
     var moveLatLon = new kakao.maps.LatLng(Lat, Lng);
     map.setCenter(moveLatLon);
@@ -47,10 +47,26 @@ export function initializeMarkers(){
             });
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
             kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+            infoWindowList[kitchenName] = {
+                map: map,
+                infoWindow: infowindow,
+                marker: marker
+        }
         
       })
     })
     
+}
+
+export function overListener(kitchenName){
+    var infoWindow = infoWindowList[kitchenName]['infoWindow']
+    var marker = infoWindowList[kitchenName]['marker']
+    infoWindow.open(map, marker)
+}
+
+export function OutListener(kitchenName){
+    var infoWindow = infoWindowList[kitchenName]['infoWindow']
+    infoWindow.close()
 }
 
 function makeOverListener(map, marker, infowindow) {

@@ -104,3 +104,13 @@
     font-size: 20px;
     color: rgb(113, 113, 113);
 }
+.orderBy{
+    text-align: center;
+    height:35px;
+    width: 160px; /* 원하는 너비설정 */
+    padding-left: 0px;
+    margin-left:10px;
+    font-family: inherit;  /* 폰트 상속 */
+    border: 1px solid #999;
+    border-radius: 7px; 
+}
