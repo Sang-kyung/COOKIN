@@ -15,6 +15,7 @@ import IngredientItem from '../Items/IngredientItem';
 import LoginModalView from './LoginModalView';
 import DetailHeaderView from './DetailHeaderView';
 import ReserveModalView from './ReserveModalView';
+import TimeToggleView from './TimeToggleView';
 
 // style
 import './DetailView.css';
@@ -55,8 +56,8 @@ const DetailView = () => {
     const [reserveModalOpen, onReserveModalUpdate] = useState(false);
     const [wrongtext, setWrongText] = useState("");
 
-    const onTimeChange = (e) => {
-        handleTimeChange(e.target.value);
+    const onTimeChange = (time) => {
+        handleTimeChange(time);
         setWrongText("");
     }
 
@@ -237,13 +238,7 @@ const DetailView = () => {
                                 </div>
                                 <div className={"time"}>
                                     <p>Time</p>
-                                    <select className={"timeSelect"} onChange={onTimeChange}>
-                                        <option value="">Select Time</option>
-                                        <option value="09:00-12:00">09:00-12:00</option>
-                                        <option value="12:00-15:00">12:00-15:00</option>
-                                        <option value="15:00-18:00">15:00-18:00</option>
-                                        <option value="18:00-21:00">18:00-21:00</option>
-                                    </select>
+                                    <TimeToggleView onTimeChange={onTimeChange} date={selectedDate} />
                                 </div>
                             </div>
                             <div className="alert">{alert && wrongtext}</div>
