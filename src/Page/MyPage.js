@@ -39,9 +39,22 @@ const MyPage = () => {
       if (doc.exists) {
         doc.data().reservations.map((item) => {
           item.date = new Date(item.date.toDate());
-          if(item.date >= new Date()) {
-            ups_list.push(item);
-          } else {
+          var day = item.date.getDate();
+          var now = new Date();
+          if( day > now.getDate() ){
+            ups_list.push(item); 
+          }
+          else if( day == now.getDate() ){
+            var time = item.time.split(':', 1);
+            time = time[0]
+            if ( time > now.getHours() ){
+              ups_list.push(item);
+            }
+            else{
+              pasts_list.push(item);
+            }
+          }
+          else {
             pasts_list.push(item);
           }
         });
