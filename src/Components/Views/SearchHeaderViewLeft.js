@@ -167,8 +167,10 @@ const SearchHeaderViewLeft = (props) => {
           <div className="searchInputContainer">
             <input id="searchInput" className="searchInput" onKeyDown={(e) => _enter(e)}></input>
             <button className="plusBtn" onClick={(e) => {updateCity()}}>+</button>
-            <img onClick={onClickRecommend} className="recBtn" src={require(`../../img/Buttons/recommend.png`).default} />
           </div>
+        </div>
+        <div className="recBtnWrapper">
+          <img onClick={onClickRecommend} className="recBtn" src={require(`../../img/Buttons/recommend.png`).default} />
         </div>
       </div>
     
