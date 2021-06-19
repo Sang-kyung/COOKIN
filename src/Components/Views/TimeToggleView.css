@@ -1,0 +1,13 @@
+.timeSelect {
+    float: right;
+    display: inline-block;
+    width: 125px;
+    vertical-align: top;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
+}
