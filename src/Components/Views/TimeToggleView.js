@@ -18,11 +18,6 @@ const TimeToggleView = (props) => {
     nowday = now.getDate();
     nowhour = now.getHours();
 
-    console.log(day)
-    console.log(hour)
-    console.log(nowday)
-    console.log(nowhour)
-
     if( day > nowday ){
         future = true;
     }
@@ -51,7 +46,7 @@ const TimeToggleView = (props) => {
                 )
 
         }
-        else if(nowhour > 9 && nowhour < 12){
+        else if(nowhour >= 9 && nowhour < 12){
             return (
                 <select className={"timeSelect"} onChange={handleTimeChange}>
                     <option value="">Select Time</option>
@@ -61,7 +56,7 @@ const TimeToggleView = (props) => {
                 </select>
                 )
         }
-        else if(nowhour > 12 && nowhour < 15){
+        else if(nowhour >= 12 && nowhour < 15){
             return (
                 <select className={"timeSelect"} onChange={handleTimeChange}>
                     <option value="">Select Time</option>
@@ -70,7 +65,7 @@ const TimeToggleView = (props) => {
                 </select>
                 )
         }
-        else if(nowhour > 15 && nowhour < 18){
+        else if(nowhour >= 15 && nowhour < 18){
             return (
                 <select className={"timeSelect"} onChange={handleTimeChange}>
                     <option value="">Select Time</option>
