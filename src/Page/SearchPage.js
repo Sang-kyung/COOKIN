@@ -91,15 +91,13 @@ const SearchPage = () => {
         y_coord += firstCoordTemp.La;
       }
       else{
-        /*if (typeof firstCoord == "undefined"){
+        if (typeof firstCoord == "undefined"){
           console.log("undefined")
         }
         else{
           x_coord += firstCoord.Ma;
           y_coord += firstCoord.La;
-        }*/
-        x_coord += firstCoord.Ma;
-        y_coord += firstCoord.La;
+        }
       }
       
       if(secondCoord != '-'){
