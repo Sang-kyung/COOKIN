@@ -92,7 +92,8 @@ const SearchPage = () => {
       }
       else{
         if (typeof firstCoord == "undefined"){
-          console.log("undefined")
+          x_coord += 37.49787;
+          y_coord += 127.02760;
         }
         else{
           x_coord += firstCoord.Ma;
@@ -102,16 +103,34 @@ const SearchPage = () => {
       
       if(secondCoord != '-'){
         count = 2;
-        x_coord += secondCoord.Ma;
-        y_coord += secondCoord.La;
+        if (typeof secondCoord == "undefined"){
+          x_coord += 37.49787;
+          y_coord += 127.02760;
+        }
+        else{
+          x_coord += secondCoord.Ma;
+          y_coord += secondCoord.La;
+        }
         if(thirdCoord != '-'){
           count = 3;
-          x_coord += thirdCoord.Ma;
-          y_coord += thirdCoord.La;
+          if (typeof thirdCoord == "undefined"){
+            x_coord += 37.49787;
+            y_coord += 127.02760;
+          }
+          else{
+            x_coord += thirdCoord.Ma;
+            y_coord += thirdCoord.La;
+          }
           if(fourthCoord != '-'){
             count = 4
-            x_coord += fourthCoord.Ma;
-            y_coord += fourthCoord.La;
+            if (typeof fourthCoord == "undefined"){
+              x_coord += 37.49787;
+              y_coord += 127.02760;
+            }
+            else{
+              x_coord += fourthCoord.Ma;
+              y_coord += fourthCoord.La;
+            }
           }
         }
       }
