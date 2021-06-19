@@ -193,12 +193,6 @@ const DetailView = () => {
                         <div className={"reservationInfoWrapper"}>
 
                             <div className={"totalPriceWrapper"}>
-                                <div  className={"ingOptions"}>
-                                    <p className={"ingAmount"}></p>
-                                    <p>Rental Fee</p>
-                                    <div> {kitchen.price} KRW</div>
-                                </div>
-                                <hr />
                                 {reserveInfo.ingredients.map((item, index) => {
                                     return <div key={index} className={"ingOptions"}>
                                                 <p className={"ingAmount"}>{item.amount}</p>
@@ -207,6 +201,11 @@ const DetailView = () => {
                                                 <div className={"ingCancelBtn"} onClick={() => onIngDelete(item.name)}>X</div>
                                         </div>  
                                 })}
+
+                                <div  className={"ingOptions"}>
+                                    <p>Rental Fee</p>
+                                    <div className={"kitchenFee"}> {kitchen.price} KRW</div>
+                                </div>
                                 <hr />
                                 <div className={"totalPrice"}>
                                     <div className="text">Total</div>

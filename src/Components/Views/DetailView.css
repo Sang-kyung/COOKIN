@@ -83,6 +83,13 @@ hr {
     font-size: 18px;
 }
 
+.kitchenFee {
+    display: inline-block;
+    text-align: right;
+    width: 60% !important; 
+    font-size: 18px;
+}
+
 .ingOptions {
     margin-top: 10px;
     color: rgb(34, 34, 34);

@@ -31,13 +31,14 @@
     margin-top: 4px;
     padding-top: 7.5px;
     vertical-align: top;
+    display: inline-block;
 }
 
 .searchInput {
     vertical-align: top;
     display: inline-block;
     height: 40px;
-    width: 340px;
+    width: 377px;
     margin-left: 9px;
     border-radius: 10px;
     padding-left: 10px;
@@ -60,26 +61,35 @@ input {
 
 .plusBtn {
     vertical-align: top;
-    display: inline-block;
     cursor: pointer;
     border-radius: 25px;
-    height: 40px;
-    width: 40px;
+    height: 43px;
+    width: 43px;
     margin-left: 10px;
     border: none;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: transparent;
     font-size: 32px;
 }
 
-.recBtn {
-    vertical-align: top;
+.recBtnWrapper {
     display: inline-block;
-    height: 29px;
-    margin-top: 5px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    border: 3px solid #fc854d;
+    margin-left: 10px;
+    margin-top: 7px;
     cursor: pointer;
-    margin-left: 5px;
+    width: 48px;
+    height: 48px;
+}
+
+.recBtn {
+    height: 36px;
+    background-color: transparent;
+    margin-left: 9.5px;
+    margin-top: 7px;
 }  
 
 
