@@ -2,6 +2,9 @@
 Our application aims to target the following issue: <br/>
 ___Busy Koreans in their 20s who work and want cookouts with friends need to have an AirB&B for kitchens showing nearby kitchens that can provide proper tools and ingredients because difficulty in finding an adequate location hinders their chances to hold a cookout.___
 
+## Period
+2021.04 ~ 2021.06
+
 ## Prototype link
 <a href="http://hcidp4.web.app/">CookIn</a>
 
