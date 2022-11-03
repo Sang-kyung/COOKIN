@@ -6,7 +6,7 @@ ___Busy Koreans in their 20s who work and want cookouts with friends need to hav
 2021.04 ~ 2021.06
 
 ## Prototype link
-<a href="http://hcidp4.web.app/">CookIn</a>
+<a href="http://hcidp4.web.app/">CookIn</a> (deprecated)
 
 ## Website
 https://hcidp4.web.app/ (deprecated)
